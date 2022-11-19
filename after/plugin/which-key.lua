@@ -1,5 +1,12 @@
 local which_key = require("which-key")
 
+which_key.setup({
+  triggers = {
+    "<leader>",
+    ",",
+  },
+})
+
 which_key.register({
   ["?"] = {
     name = "print helper",
@@ -11,7 +18,3 @@ which_key.register({
     },
   },
 }, { prefix = "," })
-
--- disable some operators
-local presets = require("which-key.plugins.presets")
-presets.operators["v"] = nil

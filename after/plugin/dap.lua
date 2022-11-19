@@ -16,7 +16,7 @@ end
 
 -- dapui
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dap_ui.open()
+  dap_ui.open({})
 end
 -- dap.listeners.before.event_terminated["dapui_config"] = function()
 --   dap_ui.close()
@@ -105,7 +105,7 @@ dap_ui.setup({
     },
   },
 })
-dap_virtualtext.setup()
+dap_virtualtext.setup({})
 
 -- Go
 dap_go.setup()
