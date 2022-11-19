@@ -191,6 +191,7 @@ return require("packer").startup(function(use)
     "hrsh7th/nvim-cmp",
     requires = {
       { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-cmdline" },
@@ -199,6 +200,8 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
       { "rafamadriz/friendly-snippets" },
+      -- Appearance
+      { "onsails/lspkind.nvim" },
     },
   })
 
@@ -211,12 +214,13 @@ return require("packer").startup(function(use)
   -- Markdown
   use({ "plasticboy/vim-markdown", ft = { "markdown" } })
   -- Nix
-  use({ "LnL7/vim-nix", ft = { "nix" } })
+  -- use({ "LnL7/vim-nix", ft = { "nix" } })
   -- Pandoc
-  use({
-    "vim-pandoc/vim-pandoc",
-    requires = { "vim-pandoc/vim-pandoc-syntax" },
-  })
+  -- use({
+  --   "vim-pandoc/vim-pandoc",
+  --   requires = { "vim-pandoc/vim-pandoc-syntax" },
+  --   ft = { "pandoc" },
+  -- })
   -- Prisma
   use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
   -- Tex
