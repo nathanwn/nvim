@@ -8,5 +8,3 @@ vim.cmd([[ hi WinSeparator guibg=None ]])
 vim.cmd([[ hi NvimTreeWinSeparator guibg=None ]])
 -- Winbar
 vim.opt.winbar = " %f %m"
-
-print("themed!")

@@ -23,12 +23,18 @@ end
 
 return {
   sources = {
-    -- Lua
-    builtins.formatting.stylua,
+    -- Go
+    builtins.diagnostics.golangci_lint,
+    -- Java
+    builtins.formatting.google_java_format.with({
+      command = "java-format",
+    }),
     -- JS/TS
     builtins.diagnostics.eslint_d,
     builtins.completion.spell,
     builtins.formatting.prettierd,
+    -- Lua
+    builtins.formatting.stylua,
     -- Python
     builtins.formatting.black,
     builtins.formatting.isort,
