@@ -1,3 +1,5 @@
+local telescope_builtin = require("telescope.builtin")
+
 local M = {}
 
 M.on_attach = function(client, bufnr)
@@ -28,6 +30,12 @@ M.on_attach = function(client, bufnr)
     "<Leader>gt",
     vim.lsp.buf.type_definition,
     { buffer = 0, desc = "[lsp] Go to type definition" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>gr",
+    telescope_builtin.lsp_references,
+    { buffer = 0, desc = "[lsp] Go to references" }
   )
   vim.keymap.set(
     "n",
@@ -64,16 +72,24 @@ M.on_attach = function(client, bufnr)
   )
   vim.keymap.set(
     "n",
-    "<Leader>[d",
+    "<Leader>[e",
     vim.diagnostic.goto_prev,
     { buffer = 0, desc = "[lsp] Diagnostic - Go to prev" }
   )
   vim.keymap.set(
     "n",
-    "<Leader>]d",
+    "<Leader>]e",
     vim.diagnostic.goto_next,
     { buffer = 0, desc = "[lsp] Diagnostic - Go to next" }
   )
+
+  vim.keymap.set(
+    "n",
+    "<Leader>ge",
+    telescope_builtin.diagnostics,
+    { desc = "[lsp] List diagnostics" }
+  )
+
   vim.keymap.set("n", "<Leader>gq", vim.diagnostic.setloclist, { buffer = 0 })
 
   vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = 0 })
@@ -81,7 +97,6 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set("n", "<Leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, { buffer = 0 })
   vim.keymap.set("n", "<Leader>g*", function()
     vim.cmd("e" .. vim.lsp.get_log_path())
   end, { buffer = 0 })

@@ -26,41 +26,35 @@ return require("packer").startup(function(use)
   use({
     "tpope/vim-fugitive",
     event = "VimEnter *",
-    config = lrequire("plugins/fugitive"),
   })
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = lrequire("plugins/gitsigns"),
+    tag = "release",
   })
   use({
     "ThePrimeagen/git-worktree.nvim",
-    config = lrequire("plugins/git-worktree"),
   })
   -- Tmux
   use({
     "christoomey/vim-tmux-navigator",
     -- event = 'VimEnter *',
-    config = lrequire("plugins/tmux-navigator"),
   })
   -- Undo
   use({
     "mbbill/undotree",
-    config = lrequire("plugins/undotree"),
-    cmd = { "UndotreeToggle" },
+    -- cmd = { "UndotreeToggle" },
   })
   -- Outline
   use({
     "simrat39/symbols-outline.nvim",
-    config = lrequire("plugins/outline"),
-    cmd = { "SymbolsOutline" },
+    -- cmd = { "SymbolsOutline" },
   })
   -- Explorer Tree
   use({
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    config = lrequire("plugins/nvim-tree"),
-    cmd = { "NvimTreeToggle" },
+    -- cmd = { "NvimTreeToggle" },
   })
   -- Colorizer
   use({ "chrisbra/Colorizer" })
@@ -68,18 +62,15 @@ return require("packer").startup(function(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    config = lrequire("plugins/treesitter"),
   })
   use({
     "nvim-treesitter/playground",
     requires = { "nvim-treesitter/nvim-treesitter" },
-    config = lrequire("plugins/treesitter-playground"),
   })
   -- Docstring
   use({
     "kkoomen/vim-doge",
     run = ":call doge#install()",
-    config = lrequire("plugins/vim-doge"),
   })
   -- Grammar checker
   use({ "rhysd/vim-grammarous" })
@@ -119,11 +110,12 @@ return require("packer").startup(function(use)
   -- FUZZY-FINDING
   use({
     "nvim-telescope/telescope.nvim",
+    tag = "0.1.0",
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
     },
-    config = lrequire("plugins/telescope"),
   })
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
@@ -135,8 +127,10 @@ return require("packer").startup(function(use)
   })
   -- Installer
   use({
-    "williamboman/nvim-lsp-installer",
-    config = function() end,
+    "williamboman/mason.nvim",
+    requires = {
+      { "williamboman/mason-lspconfig.nvim" },
+    }
   })
   -- Formatting & Linting
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
@@ -147,17 +141,21 @@ return require("packer").startup(function(use)
       { "kyazdani42/nvim-web-devicons" },
       { "folke/lsp-colors.nvim" },
     },
-    config = lrequire("plugins/trouble"),
   })
   use({
     "folke/lsp-colors.nvim",
-    config = lrequire("plugins/lsp-colors"),
+    -- config = lrequire("plugins/lsp-colors"),
+  })
+  -- Java
+  use({
+    "mfussenegger/nvim-jdtls",
+    -- config = lrequire("lsp.servers.jdtls"),
+    -- ft = { "java" },
   })
   -- Rust
   use({
     "simrat39/rust-tools.nvim",
     requires = { "neovim/nvim-lspconfig" },
-    config = lrequire("plugins/rust-tools"),
   })
   -- Scala
   use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
@@ -202,7 +200,6 @@ return require("packer").startup(function(use)
       { "hrsh7th/vim-vsnip" },
       { "rafamadriz/friendly-snippets" },
     },
-    config = lrequire("plugins/cmp"),
   })
 
   -- LANGUAGE-SPECIFIC
@@ -219,7 +216,6 @@ return require("packer").startup(function(use)
   use({
     "vim-pandoc/vim-pandoc",
     requires = { "vim-pandoc/vim-pandoc-syntax" },
-    config = lrequire("plugins/vim-pandoc"),
   })
   -- Prisma
   use({ "pantharshit00/vim-prisma", ft = { "prisma" } })

@@ -26,10 +26,12 @@ vim.opt.scrolloff = 8
 -- Undo files
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = require("nathan-wien.utils").local_dir_path .. "/undodir"
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 -- Wrap
 vim.opt.linebreak = true
+-- Highlight search
+vim.opt.hlsearch = false
 -- Cursor
 vim.opt.guicursor = ""
 -- Mouse
