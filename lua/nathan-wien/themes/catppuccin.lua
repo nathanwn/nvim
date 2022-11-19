@@ -4,9 +4,44 @@ end
 
 vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 
+local palette = {
+  red = "#af0000",
+  maroon = "#d70000",
+  green = "#008700",
+  pink = "#d70087",
+  mauve = "#8700af",
+  blue = "#005faf",
+  yellow = "#5f8700",
+  sky = "#0087af",
+  teal = "#005f87",
+  peach = "#5f8700",
+  rosewater = "#d04a00",
+  flamingo = "#d04a00",
+  sapphire = "#209F95", -- default
+  lavender = "#5566C0", -- default
+
+  text = "#444444",
+  subtext1 = "#555555",
+  subtext0 = "#666666",
+  overlay2 = "#777777",
+  overlay1 = "#888888",
+  overlay0 = "#999999",
+  surface2 = "#aaaaaa",
+  surface1 = "#bbbbbb",
+  surface0 = "#cccccc",
+
+  base = "#eeeeee",
+  mantle = "#dddddd",
+  crust = "#cccccc",
+}
+
 require("catppuccin").setup({
   integrations = {
     cmp = true,
+    dap = {
+      enabled = true,
+      enable_ui = true, -- nvim-dap-ui
+    },
     gitsigns = true,
     lsp_trouble = true,
     nvimtree = true,
@@ -15,40 +50,23 @@ require("catppuccin").setup({
     which_key = true,
   },
   color_overrides = {
-    latte = {
-      red = "#af0000",
-      maroon = "#d70000",
-      green = "#008700",
-      pink = "#d70087",
-      mauve = "#8700af",
-      blue = "#005faf",
-      yellow = "#5f8700",
-      sky = "#0087af",
-      teal = "#005f87",
-      peach = "#5f8700",
-      rosewater = "#d75f00",
-      flamingo = "#d75f00",
-      sapphire = "#209FB5", -- default
-      lavender = "#7287FD", -- default
-
-      text = "#444444",
-      subtext1 = "#555555",
-      subtext0 = "#666666",
-      overlay2 = "#777777",
-      overlay1 = "#888888",
-      overlay0 = "#999999",
-      surface2 = "#aaaaaa",
-      surface1 = "#bbbbbb",
-      surface0 = "#cccccc",
-
-      base = "#eeeeee",
-      mantle = "#dddddd",
-      crust = "#cccccc",
-    },
+    latte = palette,
   },
   highlight_overrides = {
     latte = {
       Comment = { fg = "#878787" },
+      NvimTreeNormal = {
+        bg = "#e8e8e8",
+      },
+      NvimTreeExecFile = {
+        fg = palette.pink,
+      },
+      DapUIPlayPause = {
+        fg = palette.green,
+      },
+      DapUIRestart = {
+        fg = palette.green,
+      },
     },
   },
 })
