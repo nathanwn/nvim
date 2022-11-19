@@ -56,6 +56,8 @@ return require("packer").startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     -- cmd = { "NvimTreeToggle" },
   })
+  -- Keybindings
+  use({ "folke/which-key.nvim" })
   -- Colorizer
   use({ "chrisbra/Colorizer" })
   -- Treesitter
