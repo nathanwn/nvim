@@ -60,7 +60,29 @@ end
 
 -- Set up dap-related plugins
 -- UI
-dap_ui.setup()
+dap_ui.setup({
+  layouts = {
+    {
+      elements = {
+        -- Elements can be strings or table with id and size keys.
+        { id = "scopes", size = 0.25 },
+        "breakpoints",
+        "stacks",
+        "watches",
+        "repl",
+      },
+      size = 40, -- columns
+      position = "left",
+    },
+    {
+      elements = {
+        "console",
+      },
+      size = 80, -- columns
+      position = "right",
+    },
+  },
+})
 dap_virtualtext.setup()
 
 -- Go
