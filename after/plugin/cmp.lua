@@ -5,10 +5,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -21,7 +18,8 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ["<CR>"] = cmp.mapping.confirm({
-      select = false, -- only complete on Enter if one option has been selected intentionally
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false, -- false == only confirm explicitly selected items
     }),
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
@@ -39,16 +37,12 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
+    -- prioritise according to order
+    { name = "nvim_lua" }, -- this source can detect whether it should turn on
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    -- { name = "vsnip" }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
     { name = "path" },
-  }, {
-    { name = "buffer" },
+    { name = "luasnip" },
+    { name = "buffer", keyword_length = 4 },
   }),
   sorting = {
     comparators = {
@@ -68,10 +62,9 @@ cmp.setup({
       menu = {
         buffer = "[buf]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[api]",
+        nvim_lua = "[nvim]",
         path = "[path]",
         luasnip = "[snip]",
-        gh_issues = "[issues]",
       },
     }),
   },
