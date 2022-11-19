@@ -1,6 +1,6 @@
 local M = {}
 
-M.map = function(bufnr)
+M.setup = function(bufnr)
   local set = function(mode, key, handler, desc)
     vim.keymap.set(mode, key, handler, { buffer = bufnr, desc = "[lsp] " .. desc })
   end

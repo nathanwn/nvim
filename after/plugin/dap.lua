@@ -29,4 +29,4 @@ dap_python.test_runner = "pytest"
 dap_python.setup(dap_python_exec)
 
 -- Keybinding
-require("nathan-wien.dap.keybinder").setup()
+require("nathan-wien.dap.keymap").setup()

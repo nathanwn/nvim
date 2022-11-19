@@ -1,6 +1,6 @@
 return function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  require("nathan-wien.lsp.keymap").map(bufnr)
+  require("nathan-wien.lsp.keymap").setup(bufnr)
   if client.server_capabilities.document_formatting then
     vim.cmd([[
       augroup lsp_buf_format
