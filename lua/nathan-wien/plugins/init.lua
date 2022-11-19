@@ -21,35 +21,21 @@ return require("packer").startup(function(use)
   use({ "nvim-lua/popup.nvim" })
   use({ "nvim-lua/plenary.nvim" })
   -- Git
-  use({
-    "tpope/vim-fugitive",
-    event = "VimEnter *",
-  })
+  use({ "tpope/vim-fugitive" })
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     tag = "v0.5",
   })
-  use({
-    "ThePrimeagen/git-worktree.nvim",
-  })
+  use({ "ThePrimeagen/git-worktree.nvim" })
   -- Tmux
-  use({
-    "christoomey/vim-tmux-navigator",
-    -- event = 'VimEnter *',
-  })
+  use({ "christoomey/vim-tmux-navigator" })
   -- Harpoon
   use({ "ThePrimeagen/harpoon" })
   -- Undo
-  use({
-    "mbbill/undotree",
-    -- cmd = { "UndotreeToggle" },
-  })
+  use({ "mbbill/undotree" })
   -- Outline
-  use({
-    "simrat39/symbols-outline.nvim",
-    -- cmd = { "SymbolsOutline" },
-  })
+  use({ "simrat39/symbols-outline.nvim" })
   -- Explorer Tree
   use({
     "kyazdani42/nvim-tree.lua",
@@ -80,9 +66,7 @@ return require("packer").startup(function(use)
   use({ "lewis6991/impatient.nvim" })
 
   -- THEMES
-  use({
-    "nvim-lualine/lualine.nvim",
-  })
+  use({ "nvim-lualine/lualine.nvim" })
   use({
     "NLKNguyen/papercolor-theme",
     -- "~/work/neovim/plugins/papercolor-theme.git/branches/???",
