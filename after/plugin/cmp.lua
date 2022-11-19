@@ -58,7 +58,7 @@ cmp.setup({
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      require("nathan-wien.plugins.cmp").disprioritise_underscore,
+      require("nathan-wien.cmp.comparators").disprioritise_underscore,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,

@@ -33,3 +33,13 @@ vim.keymap.set("n", "]q", "<cmd>cnext<CR>")
 -- Center the cursor vertically when using C-u/d
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Smart dd. Credit:
+-- https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y/?utm_source=share&utm_medium=web2x&context=3
+vim.keymap.set("n", "dd", function()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return '"_dd'
+  else
+    return "dd"
+  end
+end, { noremap = true, expr = true })

@@ -13,7 +13,7 @@ local default_on_attach = require("nathan-wien.lsp.default.on_attach")
 config.on_attach = function(client, bufnr)
   vim.keymap.set(
     "n",
-    "<Leader>gd",
+    "<Leader>gs",
     telescope_metal_commands,
     { buffer = bufnr, desc = "[lsp] Commands" }
   )

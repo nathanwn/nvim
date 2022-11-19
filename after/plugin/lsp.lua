@@ -1,16 +1,3 @@
--- Make diagnostics less aggressive
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    -- virtual_text = {
-    --   spacing = 8,
-    --   -- severity_limit = 'Error',
-    -- },
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  })
-
 local lsp_servers = require("nathan-wien.lsp.servers")
 local default_config = require("nathan-wien.lsp.default.config")
 
@@ -19,9 +6,14 @@ for _, server in ipairs(lsp_servers) do
   server.instance.setup(vim.tbl_deep_extend("force", default_config, server.config))
 end
 
--- Virtual text coloring
+-- Virtual text
+-- coloring
 -- Read: https://neovim.io/doc/user/lsp.html
-vim.cmd([[ hi LspDiagnosticsDefaultHint guifg='#A0A0A0' ]])
+-- vim.cmd([[ hi LspDiagnosticsDefaultHint guifg='#A0A0A0' ]])
+-- disable
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 -- Signs
 -- Read: https://neovim.io/doc/user/diagnostic.html
