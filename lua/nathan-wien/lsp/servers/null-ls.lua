@@ -27,7 +27,11 @@ return {
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.formatting.prettierd.with({
       filetypes = vim.tbl_filter(function(ft)
-        return ft ~= "yaml"
+        return not vim.tbl_contains({
+          -- disable for these filetypes
+          "yaml",
+          "markdown",
+        }, ft)
       end, null_ls.builtins.formatting.prettierd.filetypes),
     }),
     -- Lua
@@ -46,7 +50,7 @@ return {
     -- Spelling?
     -- builtins.completion.spell,
   },
-  diagnostics_format = "[#{c}|#{s}] #{m}",
+  diagnostics_format = "[#{s}|#{c}] #{m}",
   should_attach = should_attach, -- check if null-ls should attach or not
   root_dir = nvim_lsp_util.root_pattern(".null-ls-root", ".git"),
   on_attach = function(client, bufnr)
