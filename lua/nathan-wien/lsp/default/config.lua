@@ -4,8 +4,6 @@ return {
   flags = {
     debounce_text_changes = 150,
   },
-  capabilities = require("cmp_nvim_lsp").update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  ),
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
   on_attach = default_on_attach,
 }
