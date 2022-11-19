@@ -15,8 +15,13 @@ local equinox_jar_path =
 local lombok_jar_path = jdtls_install_dir .. "/lombok.jar"
 
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = vim.fn.stdpath("data") .. "/jdtls/workspaces/" .. project_name
+local project_name = function()
+  local cwd = vim.fn.getcwd()
+  local current_dir_name = vim.fn.fnamemodify(cwd, ":p:h:t")
+  local parent_dir_name = vim.fn.fnamemodify(cwd, ":p:h:h:t")
+  return parent_dir_name .. "_" .. current_dir_name
+end
+local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-ws/" .. project_name()
 
 -- jar files for debugging
 -- from java-debug
