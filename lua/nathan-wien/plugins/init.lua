@@ -39,7 +39,7 @@ return require("packer").startup(function(use)
   -- Explorer Tree
   use({
     "kyazdani42/nvim-tree.lua",
-    commit = "875d38e52cc4367bad10e648a906a6bd73b3691c",
+    tag = "nightly",
   })
   -- Keybindings
   use({ "folke/which-key.nvim" })
