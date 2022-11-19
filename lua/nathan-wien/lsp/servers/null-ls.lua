@@ -3,12 +3,23 @@ local null_ls = require("null-ls")
 local default_on_attach = require("nathan-wien.lsp.default.on_attach")
 
 local should_attach = function(bufnr)
-  local disabled_filetypes = { "cpp" }
+  local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
-  for _, ft in ipairs(disabled_filetypes) do
-    if vim.api.nvim_buf_get_option(bufnr, "filetype") == ft then
-      return false
-    end
+  local disabled = {
+    filetypes = {
+      "cpp",
+    },
+    filenames = {
+      "grammar.js", -- treesitter
+    },
+  }
+
+  if vim.tbl_contains(disabled.filetypes, filetype) then
+    return false
+  end
+  if vim.tbl_contains(disabled.filenames, filename) then
+    return false
   end
 
   return true
