@@ -29,3 +29,7 @@ vim.keymap.set("n", "$", "v:count == 0 ? 'g$' : '$'", { expr = true, silent = tr
 -- Quickfix list
 vim.keymap.set("n", "[q", "<cmd>cprevious<CR>")
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>")
+
+-- Center the cursor vertically when using C-u/d
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
