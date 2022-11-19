@@ -20,6 +20,21 @@ local rep = require("luasnip.extras").rep
 
 return {
   s(
+    "block",
+    fmt(
+      [[
+  \begin{{block}}{{{}}}
+    {}
+  \end{{block}}
+    ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
+  s("cmd", fmt("\\{}{{{}}}", { i(1), i(2) })),
+  s(
     "env",
     fmt(
       [[
@@ -48,5 +63,4 @@ return {
     )
   ),
   s("lstinline", fmt("\\lstinline{{{}}}", { i(1) })),
-  s("cmd", fmt("\\{}{{{}}}", { i(1), i(2) })),
 }

@@ -57,6 +57,9 @@ require("catppuccin").setup({
       Comment = {
         fg = "#878787",
       },
+      Conceal = {
+        fg = palette.red,
+      },
       NvimTreeNormal = {
         bg = "#e8e8e8",
       },
