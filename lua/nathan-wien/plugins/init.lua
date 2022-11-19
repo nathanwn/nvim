@@ -197,6 +197,8 @@ return require("packer").startup(function(use)
   -- })
   -- Tex
   use({ "lervag/vimtex", ft = { "tex" } })
+  -- Lark
+  use({ "lark-parser/vim-lark-syntax" })
 
   -- Auto-install
   if packer_bootstrap then
