@@ -8,6 +8,8 @@ vim.filetype.add({
     ts = "typescript",
   },
   filename = {
+
+    [".flake8"] = "cfg",
     ["Jenkinsfile"] = "groovy",
     [".eslintrc"] = "json",
     [".prettierrc"] = "json",
@@ -16,5 +18,7 @@ vim.filetype.add({
     [".terraformrc"] = "terraform",
     ["terraform.rc"] = "terraform",
   },
-  pattern = {},
+  pattern = {
+    ["*.clang-format"] = "yaml",
+  },
 })
