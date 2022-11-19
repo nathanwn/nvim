@@ -54,7 +54,9 @@ require("catppuccin").setup({
   },
   highlight_overrides = {
     latte = {
-      Comment = { fg = "#878787" },
+      Comment = {
+        fg = "#878787",
+      },
       NvimTreeNormal = {
         bg = "#e8e8e8",
       },
@@ -66,6 +68,18 @@ require("catppuccin").setup({
       },
       DapUIRestart = {
         fg = palette.green,
+      },
+      DapUIStepOut = {
+        fg = palette.blue,
+      },
+      DapUIStepBack = {
+        fg = palette.blue,
+      },
+      DapUIStepInto = {
+        fg = palette.blue,
+      },
+      DapUIStepOver = {
+        fg = palette.blue,
       },
     },
   },
