@@ -27,6 +27,9 @@ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.souffle = {
   install_info = {
     url = "https://github.com/nathan-wien/tree-sitter-souffle", -- local path or git repo
+    -- other implementations:
+    -- https://github.com/julienhenry/tree-sitter-souffle
+    -- https://github.com/langston-barrett/tree-sitter-souffle
     files = { "src/parser.c" },
     -- optional entries:
     branch = "master", -- default branch in case of git repo if different from master

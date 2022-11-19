@@ -30,48 +30,39 @@ telescope.load_extension("dap")
 telescope.load_extension("git_worktree")
 telescope.load_extension("ui-select")
 
-vim.keymap.set("n", "<Leader>ff", function()
-  telescope_builtin.find_files({ hidden = true })
-end, { desc = "[telescope] Find files" })
-vim.keymap.set("n", "<Leader>fb", function()
-  telescope_builtin.buffers({ previewer = false })
-end, { desc = "[telescope] List buffers" })
-vim.keymap.set(
-  "n",
-  "<Leader>fc",
-  telescope_builtin.current_buffer_fuzzy_find,
-  { desc = "[telescope] Find in current buffer" }
-)
-vim.keymap.set(
-  "n",
-  "<Leader>fg",
-  telescope_builtin.live_grep,
-  { desc = "[telescope] Live grep" }
-)
-vim.keymap.set("n", "<Leader>fG", function()
-  telescope_builtin.live_grep({ hidden = true })
-end, { desc = "[telescope] Live grep (hidden files included)" })
-vim.keymap.set(
-  "n",
-  "<Leader>fh",
-  telescope_builtin.help_tags,
-  { desc = "[telescope] List help tags" }
-)
-vim.keymap.set(
-  "n",
-  "<Leader>fk",
-  telescope_builtin.keymaps,
-  { desc = "[telescope] List keymappings" }
-)
-vim.keymap.set("n", "<Leader>f.", function()
-  telescope_builtin.find_files({
-    cwd = vim.fn.getenv("HOME") .. "/dotfiles",
-    hidden = true,
-  })
-end, { desc = "[telescope] Find in dotfiles" })
-vim.keymap.set(
-  "n",
-  "<Leader>fw",
-  telescope.extensions.git_worktree.git_worktrees,
-  { desc = "[telescope] List worktrees" }
-)
+local handlers = {
+  files = function()
+    telescope_builtin.find_files({ hidden = true })
+  end,
+  buffers = function()
+    telescope_builtin.buffers({ previewer = false })
+  end,
+  current_buffer = telescope_builtin.current_buffer_fuzzy_find,
+  grep = telescope_builtin.live_grep,
+  grep_include_hidden = function()
+    telescope_builtin.live_grep({ hidden = true })
+  end,
+  help_tags = telescope_builtin.help_tags,
+  keys = telescope_builtin.keymaps,
+  dotfiles = function()
+    telescope_builtin.find_files({
+      cwd = vim.fn.getenv("HOME") .. "/dotfiles",
+      hidden = true,
+    })
+  end,
+  worktrees = telescope.extensions.git_worktree.git_worktrees,
+}
+
+local set_key = function(mode, key, handler, desc)
+  vim.keymap.set(mode, key, handler, { desc = "[telescope] " .. desc })
+end
+
+set_key("n", "<Leader>ff", handlers.files, "Files")
+set_key("n", "<Leader>fb", handlers.buffers, "Buffers")
+set_key("n", "<Leader>fc", handlers.current_buffer, "Current buffer")
+set_key("n", "<Leader>fg", handlers.grep, "Grep")
+set_key("n", "<Leader>fG", handlers.grep_include_hidden, "Grep include hidden")
+set_key("n", "<Leader>fh", handlers.help_tags, "Help tags")
+set_key("n", "<Leader>fk", handlers.keys, "Keys")
+set_key("n", "<Leader>f.", handlers.dotfiles, "Dotfiles")
+set_key("n", "<Leader>fw", handlers.worktrees, "Worktrees")
