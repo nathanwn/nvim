@@ -51,6 +51,7 @@ local handlers = {
     })
   end,
   worktrees = telescope.extensions.git_worktree.git_worktrees,
+  resume = telescope_builtin.resume,
 }
 
 local set_key = function(mode, key, handler, desc)
@@ -66,3 +67,4 @@ set_key("n", "<Leader>fh", handlers.help_tags, "Help tags")
 set_key("n", "<Leader>fk", handlers.keys, "Keys")
 set_key("n", "<Leader>f.", handlers.dotfiles, "Dotfiles")
 set_key("n", "<Leader>fw", handlers.worktrees, "Worktrees")
+set_key("n", "<Leader>fo", handlers.resume, "Resume")
