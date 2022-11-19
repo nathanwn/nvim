@@ -8,7 +8,8 @@ telescope.setup({
       prompt_position = "top",
     },
     file_ignore_patterns = {
-      ".git",
+      ".git/",
+      "__pycache__",
     },
   },
   extensions = {
@@ -30,16 +31,8 @@ telescope.load_extension("git_worktree")
 telescope.load_extension("ui-select")
 
 vim.keymap.set("n", "<Leader>ff", function()
-  telescope_builtin.find_files({ previewer = false })
+  telescope_builtin.find_files({ hidden = true })
 end, { desc = "[telescope] Find files" })
-vim.keymap.set("n", "<Leader>fF", function()
-  telescope_builtin.find_files({ previewer = false, hidden = true })
-end, { desc = "[telescope] Find files (hidden files included)" })
-
-vim.keymap.set("n", "<Leader>fP", function()
-  telescope_builtin.find_files()
-end, { desc = "[telescope] Find files with previewer" })
-
 vim.keymap.set("n", "<Leader>fb", function()
   telescope_builtin.buffers({ previewer = false })
 end, { desc = "[telescope] List buffers" })
@@ -60,13 +53,13 @@ vim.keymap.set("n", "<Leader>fG", function()
 end, { desc = "[telescope] Live grep (hidden files included)" })
 vim.keymap.set(
   "n",
-  "<Leader>fH",
+  "<Leader>fh",
   telescope_builtin.help_tags,
   { desc = "[telescope] List help tags" }
 )
 vim.keymap.set(
   "n",
-  "<Leader>fK",
+  "<Leader>fk",
   telescope_builtin.keymaps,
   { desc = "[telescope] List keymappings" }
 )
