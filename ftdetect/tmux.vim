@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.tmux set filetype=tex
+au BufNewFile,BufRead *.tmux filetype=tmux
