@@ -65,7 +65,7 @@ local servers = {
   -- Tex
   LanguageServer:new("texlab"),
   -- Yaml
-  LanguageServer:new("yamlls"),
+  -- LanguageServer:new("yamlls"),
   -- null-ls
   LanguageServer:new("null-ls", {
     instance = require("null-ls"),
