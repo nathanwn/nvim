@@ -3,3 +3,5 @@ vim.g.symbols_outline = {
     hover_symbol = "H",
   },
 }
+
+vim.keymap.set("n", "<Leader>vo", "<cmd>SymbolsOutline<CR>")

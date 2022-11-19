@@ -92,28 +92,10 @@ return require("packer").startup(function(use)
     -- "~/work/neovim/plugins/papercolor-theme.git/branches/???",
     as = "papercolor-theme",
     requires = { "nvim-lualine/lualine.nvim" },
-    config = lrequire("themes/papercolor-light"),
   })
-  use({
-    "joshdick/onedark.vim",
-    requires = { "nvim-lualine/lualine.nvim" },
-    -- config = lrequire("themes/onedark"),
-  })
-  use({
-    "sainnhe/gruvbox-material",
-    -- config = lrequire("themes/gruvbox-material"),
-  })
-  use({
-    "rafamadriz/neon",
-    requires = { "nvim-lualine/lualine.nvim" },
-    -- config = lrequire("themes/neon"),
-  })
-  -- use({
-  --   "sainnhe/sonokai",
-  --   config = lrequire("themes/solokai"),
-  -- })
-  -- use({ "rktjmp/lush.nvim" })
-
+  -- use({ "joshdick/onedark.vim" })
+  -- use({ "sainnhe/gruvbox-material" })
+  -- use({ "rafamadriz/neon" })
   -- FUZZY-FINDING
   use({
     "nvim-telescope/telescope.nvim",
@@ -128,10 +110,7 @@ return require("packer").startup(function(use)
 
   -- LSP
   -- LspConfig
-  use({
-    "neovim/nvim-lspconfig",
-    config = lrequire("lsp"),
-  })
+  use({ "neovim/nvim-lspconfig" })
   -- Installer
   use({
     "williamboman/mason.nvim",
@@ -149,10 +128,7 @@ return require("packer").startup(function(use)
       { "folke/lsp-colors.nvim" },
     },
   })
-  use({
-    "folke/lsp-colors.nvim",
-    -- config = lrequire("plugins/lsp-colors"),
-  })
+  use({ "folke/lsp-colors.nvim" })
   -- Java
   use({
     "mfussenegger/nvim-jdtls",
@@ -172,7 +148,6 @@ return require("packer").startup(function(use)
   use({
     "rcarriga/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" },
-    config = lrequire("dap/ui"),
   })
   use({
     "nvim-telescope/telescope-dap.nvim",
@@ -181,17 +156,12 @@ return require("packer").startup(function(use)
   use({
     "mfussenegger/nvim-dap-python",
     requires = { "mfussenegger/nvim-dap" },
-    config = lrequire("dap/python"),
   })
   use({
     "theHamsta/nvim-dap-virtual-text",
     requires = { "mfussenegger/nvim-dap" },
-    config = lrequire("dap/virtual-text"),
   })
-  use({
-    "leoluz/nvim-dap-go",
-    config = lrequire("dap/go"),
-  })
+  use({ "leoluz/nvim-dap-go" })
 
   -- AUTOCOMPLETE
   use({

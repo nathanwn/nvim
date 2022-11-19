@@ -1,3 +1,1 @@
-return function()
-  require("dap-go").setup()
-end
+return function() end

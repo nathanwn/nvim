@@ -1,17 +1,13 @@
 local which_key = require("which-key")
 
-local neogen_factory = function(type)
-  return function()
-    require("neogen").generate({ type = type })
-  end
-end
-
 which_key.register({
-  d = {
-    name = "neogen docstring",
-    f = { neogen_factory("func"), "func" },
-    m = { neogen_factory("file"), "file" },
-    t = { neogen_factory("type"), "type" },
-    c = { neogen_factory("class"), "class" },
+  ["?"] = {
+    name = "print helper",
+    p = {
+      function()
+        print("Current working directory: " .. vim.fn.getcwd())
+      end,
+      "current working directory",
+    },
   },
-}, { prefix = "<leader>k" })
+}, { prefix = "," })
