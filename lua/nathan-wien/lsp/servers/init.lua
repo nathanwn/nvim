@@ -63,7 +63,9 @@ return {
   -- Prisma
   LanguageServer:new("prismals"),
   -- Python
-  LanguageServer:new("pyright"),
+  LanguageServer:new("pyright", {
+    has_custom_config = true,
+  }),
   -- Terraform
   LanguageServer:new("terraformls"),
   -- Tex

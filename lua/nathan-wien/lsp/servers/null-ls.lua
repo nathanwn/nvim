@@ -1,3 +1,4 @@
+local nvim_lsp_util = require("lspconfig.util")
 local builtins = require("null-ls").builtins
 local default = require("nathan-wien.lsp.default")
 
@@ -40,6 +41,7 @@ return {
   },
   diagnostics_format = "[#{c}|#{s}] #{m}",
   should_attach = should_attach, -- check if null-ls should attach or not
+  root_dir = nvim_lsp_util.root_pattern(".null-ls-root", ".git"),
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
     default.on_attach(client, bufnr)
