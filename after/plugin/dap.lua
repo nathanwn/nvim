@@ -21,8 +21,12 @@ require("dap-go").setup()
 
 -- Python
 local dap_python = require("dap-python")
+local dap_python_exec = (
+  require("mason.settings").current.install_root_dir
+  .. "/packages/debugpy/venv/bin/python"
+)
 dap_python.test_runner = "pytest"
-dap_python.setup(require("nathan-wien.utils").python_venv .. "/bin/python")
+dap_python.setup(dap_python_exec)
 
 -- Keybinding
 require("nathan-wien.dap.keybinder").setup()
