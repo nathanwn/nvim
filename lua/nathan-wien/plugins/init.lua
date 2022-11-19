@@ -158,8 +158,6 @@ return require("packer").startup(function(use)
   -- TS, React
   use({ "leafgarland/typescript-vim" })
   use({ "peitalin/vim-jsx-typescript" })
-  -- Souffle
-  use({ "souffle-lang/souffle.vim" })
   -- Tex
   use({
     "lervag/vimtex",

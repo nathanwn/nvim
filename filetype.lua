@@ -1,12 +1,14 @@
 vim.filetype.add({
   extension = {
+    facts = "soufflefacts",
+    dl = "souffle",
+    souffle = "souffle",
     tex = "tex",
     tf = "terraform",
     tfvar = "terraform",
     tmux = "tmux",
     tsx = "typescriptreact",
     ts = "typescript",
-    facts = "soufflefacts",
   },
   filename = {
     [".flake8"] = "cfg",
