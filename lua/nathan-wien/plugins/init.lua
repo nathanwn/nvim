@@ -169,13 +169,14 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-cmdline" },
       { "hrsh7th/cmp-omni" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
       { "saadparwaiz1/cmp_luasnip" },
       -- Appearance
       { "onsails/lspkind.nvim" },
     },
   })
   -- Snippets
-  use({ "L3MON4D3/LuaSnip" })
+  use({ "L3MON4D3/LuaSnip", tag = "v1.0.0" })
 
   -- LANGUAGE-SPECIFIC
   -- TS, React

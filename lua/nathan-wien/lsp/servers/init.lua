@@ -73,9 +73,9 @@ local servers = {
   -- Terraform
   LanguageServer:new("terraformls"),
   -- Tex
-  -- LanguageServer:new("texlab", {
-  --   has_custom_config = true,
-  -- }),
+  LanguageServer:new("texlab", {
+    has_custom_config = true,
+  }),
   -- Yaml
   LanguageServer:new("yamlls", {
     has_custom_config = true,

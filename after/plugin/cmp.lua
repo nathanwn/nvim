@@ -47,6 +47,7 @@ cmp.setup({
     -- prioritise according to order
     { name = "nvim_lua" }, -- this source can detect whether it should turn on
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     { name = "omni" },
     { name = "path" },
     { name = "luasnip" },
