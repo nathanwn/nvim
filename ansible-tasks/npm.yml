@@ -1,0 +1,11 @@
+- name: npm - create directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/share/nvim/extra-npm-dependencies"
+    state: directory
+- name: npm - copy package.json
+  ansible.builtin.copy:
+    src: package.json
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/extra-npm-dependencies/package.json"
+- name: npm - install npm packages
+  npm:
+    path: "{{ lookup('env', 'HOME') }}/.local/share/nvim/extra-npm-dependencies"

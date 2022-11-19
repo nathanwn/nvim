@@ -1,0 +1,10 @@
+{
+  "name": "nvim",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "dependencies": {
+    "@fsouza/prettierd": "^0.21.1",
+    "eslint_d": "^12.2.0"
+  }
+}

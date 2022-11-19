@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+    - name: npm - install npm dependencies
+      import_tasks: ansible-tasks/npm.yml
+      tags:
+        - npm
+    - name: pip - install pip dependencies
+      import_tasks: ansible-tasks/pip.yml
+      tags:
+        - pip

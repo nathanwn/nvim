@@ -8,3 +8,5 @@ end
 
 vim.g.mapleader = t("<Space>")
 vim.g.maplocalleader = t("<Space>")
+
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath('data') .. "/extra-npm-dependencies/node_modules/.bin"

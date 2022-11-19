@@ -12,8 +12,7 @@ M.local_require = function(path)
   return require("nathan-wien." .. path)
 end
 
-M.local_dir_path = vim.fn.getenv("HOME") .. "/.local/share/nvim"
-M.python_venv = vim.fn.getenv("HOME") .. "/.local/share/nvim/venv"
+M.python_venv = vim.fn.stdpath("data") .. "/py-venv"
 
 M.deep_copy = function(original)
   local copy = {}

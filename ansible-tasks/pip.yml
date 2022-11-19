@@ -1,0 +1,13 @@
+- name: python - create directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/share/nvim/py-venv"
+    state: directory
+- name: python - copy requirements.txt
+  ansible.builtin.copy:
+    src: requirements.txt
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/py-venv/requirements.txt"
+- name: python - install python environment
+  pip:
+    requirements: "{{ lookup('env', 'HOME') }}/.local/share/nvim/py-venv/requirements.txt"
+    virtualenv_command: "python3 -m venv"
+    virtualenv: "{{ lookup('env', 'HOME') }}/.local/share/nvim/py-venv"
