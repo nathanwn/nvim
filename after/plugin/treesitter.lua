@@ -9,6 +9,7 @@ require("nvim-treesitter.configs").setup({
     "hcl",
     "lua",
     "python",
+    "rst",
     "rust",
     "scala",
     "tsx",
