@@ -89,6 +89,9 @@ local config = {
     -- Remove the option if you do not want that.
     require("jdtls").setup_dap({ hotcodereplace = "auto" })
     require("jdtls.dap").setup_dap_main_class_configs()
+    -- Disable formatting
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
     -- Apply default config
     require("nathan-wien.lsp.default").on_attach(client, bufnr)
   end,
