@@ -4,11 +4,12 @@ local default = require("nathan-wien.lsp.default")
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
-    virtual_text = {
-      spacing = 8,
-      -- severity_limit = 'Error',
-    },
-    signs = false,
+    -- virtual_text = {
+    --   spacing = 8,
+    --   -- severity_limit = 'Error',
+    -- },
+    virtual_text = false,
+    signs = true,
     update_in_insert = false,
   })
 
@@ -23,6 +24,19 @@ end
 -- Virtual text coloring
 -- Read: https://neovim.io/doc/user/lsp.html
 vim.cmd([[ hi LspDiagnosticsDefaultHint guifg='#A0A0A0' ]])
+
+-- Signs
+-- Read: https://neovim.io/doc/user/diagnostic.html
+for kind, icon in pairs({
+  ["Error"] = "",
+  ["Info"] = "",
+  ["Hint"] = "",
+  ["Warn"] = "",
+}) do
+  local name = "DiagnosticSign" .. kind
+  local texthl_group = "DiagnosticSign" .. kind
+  vim.fn.sign_define(name, { text = icon, texthl = texthl_group })
+end
 
 -- LSP-related plugins
 require("lsp-colors").setup()

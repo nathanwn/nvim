@@ -66,7 +66,7 @@ M.on_attach = function(client, bufnr)
 
   vim.keymap.set(
     "n",
-    "<Leader>gl",
+    "<Leader>g?",
     vim.diagnostic.open_float,
     { buffer = 0, desc = "[lsp] Open float" }
   )
