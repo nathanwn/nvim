@@ -168,7 +168,11 @@ return require("packer").startup(function(use)
   -- Emmet
   -- use({ "mattn/emmet-vim" })
   -- Markdown
-  -- use({ "preservim/vim-markdown", ft = { "markdown" } })
+  use({ "preservim/vim-markdown", ft = { "markdown" } })
+  use({
+    "iamcco/markdown-preview.nvim",
+    tag = "v0.0.10",
+  })
   -- Pandoc
   -- use({
   --   "vim-pandoc/vim-pandoc",
