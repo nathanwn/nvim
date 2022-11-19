@@ -1,6 +1,7 @@
 -- UI
 local dap = require("dap")
 local dap_ui = require("dapui")
+
 dap_ui.setup(require("nathan-wien.dap.ui").config)
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -30,3 +31,6 @@ dap_python.setup(dap_python_exec)
 
 -- Keybinding
 require("nathan-wien.dap.keymap").setup()
+
+-- Read .vscode/launch.json
+require("dap.ext.vscode").load_launchjs()

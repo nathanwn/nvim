@@ -95,8 +95,10 @@ local config = {
     -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
     -- you make during a debug session immediately.
     -- Remove the option if you do not want that.
-    require("jdtls").setup_dap({ hotcodereplace = "auto" })
-    require("jdtls.dap").setup_dap_main_class_configs()
+    require("jdtls").setup_dap({
+      hotcodereplace = "auto",
+    })
+    -- require("jdtls.dap").setup_dap_main_class_configs()
     -- Disable formatting
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
