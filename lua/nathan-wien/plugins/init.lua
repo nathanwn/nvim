@@ -217,16 +217,12 @@ return require("packer").startup(function(use)
   use({ "mattn/emmet-vim" })
   -- Markdown
   use({ "plasticboy/vim-markdown", ft = { "markdown" } })
-  -- Nix
-  -- use({ "LnL7/vim-nix", ft = { "nix" } })
   -- Pandoc
   -- use({
   --   "vim-pandoc/vim-pandoc",
   --   requires = { "vim-pandoc/vim-pandoc-syntax" },
   --   ft = { "pandoc" },
   -- })
-  -- Prisma
-  use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
   -- Tex
   use({ "lervag/vimtex", ft = { "tex" } })
 
