@@ -72,6 +72,11 @@ return require("packer").startup(function(use)
     "kkoomen/vim-doge",
     run = ":call doge#install()",
   })
+  use({
+    "danymat/neogen",
+    requires = "nvim-treesitter/nvim-treesitter",
+    tag = "2.8.0",
+  })
   -- Grammar checker
   use({ "rhysd/vim-grammarous" })
 
