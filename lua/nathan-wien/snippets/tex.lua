@@ -48,4 +48,5 @@ return {
     )
   ),
   s("lstinline", fmt("\\lstinline{{{}}}", { i(1) })),
+  s("cmd", fmt("\\{}{{{}}}", { i(1), i(2) })),
 }

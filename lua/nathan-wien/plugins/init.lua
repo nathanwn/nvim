@@ -39,6 +39,8 @@ return require("packer").startup(function(use)
     "christoomey/vim-tmux-navigator",
     -- event = 'VimEnter *',
   })
+  -- Harpoon
+  use({ "ThePrimeagen/harpoon" })
   -- Undo
   use({
     "mbbill/undotree",
@@ -126,6 +128,10 @@ return require("packer").startup(function(use)
     },
   })
   use({ "folke/lsp-colors.nvim" })
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+  })
   use({ "j-hui/fidget.nvim" })
   -- Java
   use({ "mfussenegger/nvim-jdtls" })
@@ -193,7 +199,7 @@ return require("packer").startup(function(use)
   --   ft = { "pandoc" },
   -- })
   -- Tex
-  use({ "lervag/vimtex", ft = { "tex" } })
+  use({ "lervag/vimtex" })
   -- Lark
   use({ "lark-parser/vim-lark-syntax" })
 
