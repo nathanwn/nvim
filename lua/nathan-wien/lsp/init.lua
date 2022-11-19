@@ -41,6 +41,8 @@ return function()
     pyright = {},
     -- Terraform
     terraformls = {},
+    -- Tex
+    texlab = {},
     -- Yaml
     yamlls = {},
     -- Formatting
