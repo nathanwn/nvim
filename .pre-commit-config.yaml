@@ -6,8 +6,12 @@ repos:
     hooks:
       - id: check-yaml
 
+  - repo: https://github.com/lunarmodules/luacheck
+    rev: v1.0.0
+    hooks:
+      - id: luacheck
+
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v0.14.0
     hooks:
       - id: stylua
-        # args: [-f, stylua.toml]

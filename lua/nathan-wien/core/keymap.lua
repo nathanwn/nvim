@@ -23,6 +23,8 @@ vim.keymap.set("n", "<C-s>k", "<C-w>t<C-w>H")
 -- Remap for word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "0", "v:count == 0 ? 'g0' : '0'", { expr = true, silent = true })
+vim.keymap.set("n", "$", "v:count == 0 ? 'g$' : '$'", { expr = true, silent = true })
 
 -- Quickfix list
 vim.keymap.set("n", "[q", "<cmd>cprevious<CR>")

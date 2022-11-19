@@ -41,19 +41,19 @@ local components = {
   },
 }
 
-local winbar_config = {
-  lualine_a = {},
-  lualine_b = {},
-  lualine_c = {
-    {
-      "filename",
-      path = 1, -- relative path
-    },
-  },
-  lualine_x = {},
-  lualine_y = {},
-  lualine_z = {},
-}
+-- local winbar_config = {
+--   lualine_a = {},
+--   lualine_b = {},
+--   lualine_c = {
+--     {
+--       "filename",
+--       path = 1, -- relative path
+--     },
+--   },
+--   lualine_x = {},
+--   lualine_y = {},
+--   lualine_z = {},
+-- }
 
 local config = {
   options = {

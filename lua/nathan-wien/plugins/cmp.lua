@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 -- credit: https://github.com/lukas-reineke/cmp-under-comparator
 M.disprioritise_underscore = function(entry1, entry2)

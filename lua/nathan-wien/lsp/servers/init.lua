@@ -1,21 +1,20 @@
 local nvim_lsp = require("lspconfig")
 
 -- http://lua-users.org/wiki/SimpleLuaClasses
-LanguageServer = {
+local LanguageServer = {
   name = nil,
   config = nil,
 }
-LanguageServer.__index = LanguageServer
 
 function LanguageServer:new(name, opt)
   opt = opt or {}
   local server = {}
-  setmetatable(server, LanguageServer)
 
   server.name = name
 
-  if opt.has_custom_config then
-    server.config = require("nathan-wien.lsp.servers." .. name)
+  local has_config, config = pcall(require, "nathan-wien.lsp.servers." .. name)
+  if has_config then
+    server.config = config
   else
     server.config = {}
   end
@@ -32,58 +31,43 @@ function LanguageServer:new(name, opt)
     server.instance = nvim_lsp[server.name]
   end
 
+  setmetatable(server, self)
+  self.__index = self
+
   return server
 end
 
 local servers = {
   -- Bash
-  LanguageServer:new("bashls", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("bashls"),
   -- Clangd
   LanguageServer:new("clangd"),
   -- Cmake
-  LanguageServer:new("cmake", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("cmake"),
   -- Dockerfile
   LanguageServer:new("dockerls"),
   -- Go
-  LanguageServer:new("gopls", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("gopls"),
   -- Groovy
   LanguageServer:new("groovyls"),
   LanguageServer:new("golangci_lint_ls"),
   -- JS/TS
-  LanguageServer:new("tsserver", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("tsserver"),
   -- Lua
-  LanguageServer:new("sumneko_lua", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("sumneko_lua"),
   -- JSON: jsonls
   -- Prisma
   LanguageServer:new("prismals"),
   -- Python
-  LanguageServer:new("pyright", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("pyright"),
   -- Terraform
   LanguageServer:new("terraformls"),
   -- Tex
-  LanguageServer:new("texlab", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("texlab"),
   -- Yaml
-  LanguageServer:new("yamlls", {
-    has_custom_config = true,
-  }),
+  LanguageServer:new("yamlls"),
   -- null-ls
   LanguageServer:new("null-ls", {
-    has_custom_config = true,
-    noninstallable = true,
     instance = require("null-ls"),
   }),
 }

@@ -47,4 +47,5 @@ return {
       }
     )
   ),
+  s("lstinline", fmt("\\lstinline{{{}}}", { i(1) })),
 }

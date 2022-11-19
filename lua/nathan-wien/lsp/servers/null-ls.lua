@@ -27,6 +27,7 @@ return {
     null_ls_builtins.diagnostics.eslint_d,
     null_ls_builtins.formatting.prettierd,
     -- Lua
+    null_ls_builtins.diagnostics.luacheck,
     null_ls_builtins.formatting.stylua,
     -- Python
     null_ls_builtins.formatting.black,
