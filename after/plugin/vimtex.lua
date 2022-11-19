@@ -1,5 +1,9 @@
 vim.g.tex_flavor = "latex"
-vim.g.vimtex_view_method = "zathura"
+if vim.loop.os_uname().sysname == "Linux" then
+  vim.g.vimtex_view_method = "zathura"
+elseif vim.loop.os_uname().sysname == "Darwin" then
+  vim.g.vimtex_view_method = "sioyek"
+end
 vim.g.vimtex_quickfix_mode = false
 vim.g.vimtex_mappings_enabled = false
 vim.g.vimtex_log_ignore = {
