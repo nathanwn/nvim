@@ -95,10 +95,6 @@ return require("packer").startup(function(use)
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
   -- UI
   use({ "folke/lsp-colors.nvim" })
-  use({
-    "nvim-treesitter/nvim-treesitter-context",
-    requires = { "nvim-treesitter/nvim-treesitter" },
-  })
   use({ "j-hui/fidget.nvim" })
   -- Java
   use({ "mfussenegger/nvim-jdtls" })
