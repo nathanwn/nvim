@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  vars:
+    nvim_stdpath_data: "{{ lookup('env', 'HOME') }}/.local/share/nvim"
+  tasks:
+    - name: pip - install pip dependencies
+      import_tasks: pip.yml
+      tags:
+        - pip
