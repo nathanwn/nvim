@@ -21,7 +21,7 @@ return {
     -- Java
     null_ls_builtins.formatting.google_java_format.with({
       command = "java",
-      args = { "-jar", "$HOME/bin/google-java-format.jar", "-" },
+      args = { "-jar", "$HOME/bin/google-java-format-1-9.jar", "-" },
     }),
     -- JS/TS
     null_ls_builtins.diagnostics.eslint_d,
