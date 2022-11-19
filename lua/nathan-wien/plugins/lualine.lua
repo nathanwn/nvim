@@ -6,9 +6,9 @@ return function(theme)
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch" },
-      -- lualine_c = { "filename" },
-      lualine_x = { "diff", "diagnostics" },
-      lualine_y = { "encoding", "fileformat", "filetype" },
+      lualine_c = { "diff", "diagnostics" },
+      lualine_x = { "filetype" },
+      lualine_y = { "encoding", "fileformat" },
       lualine_z = { "location" },
     },
   })
