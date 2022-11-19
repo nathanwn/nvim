@@ -88,6 +88,7 @@ return require("packer").startup(function(use)
     as = "papercolor-theme",
     requires = { "nvim-lualine/lualine.nvim" },
   })
+  use({ "catppuccin/nvim", as = "catppuccin" })
   -- use({ "joshdick/onedark.vim" })
   -- use({ "sainnhe/gruvbox-material" })
   -- use({ "rafamadriz/neon" })
