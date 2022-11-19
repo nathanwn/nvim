@@ -14,7 +14,7 @@ function LanguageServer:new(name, opt)
   setmetatable(server, LanguageServer)
   server.name = name
   if opt.has_custom_config then
-    server.config = lrequire("lsp.servers." .. name)
+    server.config = lrequire("lsp.config." .. name)
   else
     server.config = {}
   end
@@ -31,7 +31,7 @@ function LanguageServer:new(name, opt)
   return server
 end
 
-return {
+local servers = {
   -- Bash
   LanguageServer:new("bashls", {
     has_custom_config = true,
@@ -81,3 +81,5 @@ return {
     instance = require("null-ls"),
   }),
 }
+
+return servers

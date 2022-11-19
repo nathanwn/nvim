@@ -125,9 +125,7 @@ return require("packer").startup(function(use)
   })
   use({ "folke/lsp-colors.nvim" })
   -- Java
-  use({
-    "mfussenegger/nvim-jdtls",
-  })
+  use({ "mfussenegger/nvim-jdtls" })
   -- Rust
   use({
     "simrat39/rust-tools.nvim",
