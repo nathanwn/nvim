@@ -14,13 +14,6 @@ local should_attach = function(bufnr)
   return true
 end
 
--- local python_settings = {
---   prefer_local = ".venv/bin",
---   --cwd = function(params)
---   -- return vim.fn.fnamemodify(params.bufname, ":h")
---   -- end,
--- }
-
 return {
   sources = {
     -- Go
