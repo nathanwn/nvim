@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    tag = "release",
+    tag = "v0.5",
   })
   use({
     "ThePrimeagen/git-worktree.nvim",
@@ -126,6 +126,7 @@ return require("packer").startup(function(use)
     },
   })
   use({ "folke/lsp-colors.nvim" })
+  use({ "j-hui/fidget.nvim" })
   -- Java
   use({ "mfussenegger/nvim-jdtls" })
   -- Rust

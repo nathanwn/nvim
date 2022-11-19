@@ -1,6 +1,6 @@
 local nvim_lsp_util = require("lspconfig.util")
 local null_ls_builtins = require("null-ls").builtins
-local lsp_default = require("nathan-wien.lsp.default")
+local default_on_attach = require("nathan-wien.lsp.default.on_attach")
 
 local should_attach = function(bufnr)
   local disabled_filetypes = { "cpp", "yaml" }
@@ -20,7 +20,6 @@ return {
     null_ls_builtins.diagnostics.golangci_lint,
     -- Java
     null_ls_builtins.formatting.google_java_format.with({
-      -- command = "java-format",
       command = "java",
       args = { "-jar", "$HOME/bin/google-java-format.jar", "-" },
     }),
@@ -46,6 +45,6 @@ return {
   root_dir = nvim_lsp_util.root_pattern(".null-ls-root", ".git"),
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
-    lsp_default.on_attach_run_always(client, bufnr)
+    default_on_attach(client, bufnr)
   end,
 }

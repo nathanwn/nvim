@@ -25,5 +25,12 @@ vim.g.vimtex_compiler_latexmk = {
   },
 }
 vim.g.vimtex_compiler_progname = require("nathan-wien.utils").python_venv .. "/bin/nvr"
-vim.api.nvim_set_keymap("n", "<F9>", "<Cmd>VimtexCompile<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<F10>", "<Cmd>VimtexView<CR>", { noremap = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tex" },
+  callback = function()
+    vim.keymap.set("n", "<F9>", "<Cmd>VimtexCompile<CR>")
+    vim.keymap.set("n", "<F10>", "<Cmd>VimtexView<CR>")
+  end,
+  group = vim.api.nvim_create_augroup("vimtex", { clear = true }),
+})

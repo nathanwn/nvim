@@ -1,4 +1,4 @@
-local lsp_default = require("nathan-wien.lsp.default")
+local default_on_attach = require("nathan-wien.lsp.default.on_attach")
 
 return {
   flags = {
@@ -7,5 +7,5 @@ return {
   capabilities = require("cmp_nvim_lsp").update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   ),
-  on_attach = lsp_default.on_attach_run_always,
+  on_attach = default_on_attach,
 }

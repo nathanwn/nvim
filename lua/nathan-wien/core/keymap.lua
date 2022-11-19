@@ -1,5 +1,5 @@
 -- Reload init.lua
-vim.keymap.set("n", "<F12>", ":luafile ~/.config/nvim/init.lua<CR>")
+-- vim.keymap.set("n", "<F12>", ":luafile ~/.config/nvim/init.lua<CR>")
 
 -- Indentation
 vim.keymap.set("v", "<", "<gv")
@@ -25,5 +25,5 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Quickfix list
-vim.keymap.set("n", "<Leader>[q", "<cmd>cprevious<CR>")
-vim.keymap.set("n", "<Leader>]q", "<cmd>cnext<CR>")
+vim.keymap.set("n", "[q", "<cmd>cprevious<CR>")
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>")

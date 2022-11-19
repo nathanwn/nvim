@@ -1,5 +1,3 @@
-local M = {}
-
 local glyphs = {
   inactive = "鈴",
   loading = "",
@@ -43,13 +41,38 @@ local components = {
   },
 }
 
-M.sections = {
-  lualine_a = { "mode" },
-  lualine_b = { "branch" },
-  lualine_c = { "diff", "diagnostics" },
-  lualine_x = { components.lsp },
-  lualine_y = { "filetype" },
-  lualine_z = { "location" },
+local winbar_config = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = {
+    {
+      "filename",
+      path = 1, -- relative path
+    },
+  },
+  lualine_x = {},
+  lualine_y = {},
+  lualine_z = {},
 }
 
-return M
+local config = {
+  options = {
+    theme = nil,
+    disabled_filetypes = {
+      statusline = {},
+      winbar = { "NvimTree", "Outline", "undotree" },
+    },
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
+    lualine_c = { "diff", "diagnostics" },
+    lualine_x = { components.lsp },
+    lualine_y = { "filetype" },
+    lualine_z = { "location" },
+  },
+  -- winbar = winbar_config,
+  -- inactive_winbar = winbar_config,
+}
+
+return config

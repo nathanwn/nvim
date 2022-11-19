@@ -76,6 +76,7 @@ for ft, test_method in pairs(debug_test_file_methods) do
         },
       }, { prefix = ",", buffer = 0 })
     end),
+    group = vim.api.nvim_create_augroup("dap-" .. ft, { clear = true }),
   })
 end
 

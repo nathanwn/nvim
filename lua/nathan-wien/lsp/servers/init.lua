@@ -1,5 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local lrequire = require("nathan-wien.utils").local_require
 
 -- http://lua-users.org/wiki/SimpleLuaClasses
 LanguageServer = {
@@ -12,22 +11,27 @@ function LanguageServer:new(name, opt)
   opt = opt or {}
   local server = {}
   setmetatable(server, LanguageServer)
+
   server.name = name
+
   if opt.has_custom_config then
-    server.config = lrequire("lsp.config." .. name)
+    server.config = require("nathan-wien.lsp.servers." .. name)
   else
     server.config = {}
   end
+
   if opt.noninstallable then
     server.installable = false
   else
     server.installable = true
   end
+
   if opt.instance then
     server.instance = opt.instance
   else
     server.instance = nvim_lsp[server.name]
   end
+
   return server
 end
 
@@ -69,7 +73,9 @@ local servers = {
   -- Terraform
   LanguageServer:new("terraformls"),
   -- Tex
-  LanguageServer:new("texlab"),
+  -- LanguageServer:new("texlab", {
+  --   has_custom_config = true,
+  -- }),
   -- Yaml
   LanguageServer:new("yamlls", {
     has_custom_config = true,

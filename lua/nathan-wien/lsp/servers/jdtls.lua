@@ -93,7 +93,7 @@ local config = {
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
     -- Apply default config
-    require("nathan-wien.lsp.default").on_attach_run_always(client, bufnr)
+    require("nathan-wien.lsp.default.on_attach")(client, bufnr)
   end,
 }
 

@@ -18,6 +18,10 @@ require("lualine").setup({
   sections = require("nathan-wien.lualine").sections,
 })
 
+local lualine_config = require("nathan-wien.lualine")
+lualine_config.options.theme = custom_lualine_theme
+require("lualine").setup(lualine_config)
+
 vim.cmd([[ hi WinSeparator guibg=None ]])
 vim.cmd([[ hi NvimTreeWinSeparator guibg=None ]])
 

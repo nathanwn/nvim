@@ -2,7 +2,7 @@ if not pcall(require, "jdtls") then
   return
 end
 
-local config = require("nathan-wien.lsp.config.jdtls")
+local config = require("nathan-wien.lsp.servers.jdtls")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "java" },

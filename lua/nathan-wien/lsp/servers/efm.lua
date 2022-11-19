@@ -1,5 +1,3 @@
-local lsp_default = require("nathan-wien.lsp.default")
-
 local formatters = {}
 local linters = {}
 
@@ -81,7 +79,5 @@ return {
     lintDebounce = 500,
     languages = languages,
   },
-  on_attach = function(client, bufnr)
-    lsp_default.on_attach_run_always(client, bufnr)
-  end,
+  on_attach = require("nathan-wien.lsp.default.on_attach"),
 }

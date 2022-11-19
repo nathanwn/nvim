@@ -1,5 +1,3 @@
-local default_config = require("nathan-wien.lsp.config")
-
 -- Make diagnostics less aggressive
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -13,9 +11,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     update_in_insert = false,
   })
 
-vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
 local lsp_servers = require("nathan-wien.lsp.servers")
+local default_config = require("nathan-wien.lsp.default.config")
+
 for _, server in ipairs(lsp_servers) do
   -- config overrides default_lsp_config
   server.instance.setup(vim.tbl_deep_extend("force", default_config, server.config))
@@ -40,3 +38,16 @@ end
 
 -- LSP-related plugins
 require("lsp-colors").setup()
+
+-- Fidget - lsp progress
+require("fidget").setup({
+  text = {
+    spinner = "moon",
+  },
+  align = {
+    bottom = true,
+  },
+  window = {
+    relative = "editor",
+  },
+})
