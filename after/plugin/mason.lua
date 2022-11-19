@@ -7,7 +7,7 @@ for _, server in ipairs(lsp_servers) do
 end
 
 ensure_installed = vim.tbl_filter(function(server_name)
-  return server_name == "null-ls"
+  return server_name ~= "null-ls"
 end, ensure_installed)
 
 table.insert(ensure_installed, "jdtls")
