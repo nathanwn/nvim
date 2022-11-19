@@ -38,6 +38,8 @@ function LanguageServer:new(name, opt)
 end
 
 local servers = {
+  -- Ansible
+  LanguageServer:new("ansiblels"),
   -- Bash
   LanguageServer:new("bashls"),
   -- Clangd
