@@ -53,8 +53,7 @@ return require("packer").startup(function(use)
   -- Explorer Tree
   use({
     "kyazdani42/nvim-tree.lua",
-    commit = "3e49d9b7484e21f0b24ebdf21b8b7af227ea97a6",
-    -- cmd = { "NvimTreeToggle" },
+    commit = "875d38e52cc4367bad10e648a906a6bd73b3691c",
   })
   -- Keybindings
   use({ "folke/which-key.nvim" })
@@ -73,10 +72,12 @@ return require("packer").startup(function(use)
   use({
     "danymat/neogen",
     requires = "nvim-treesitter/nvim-treesitter",
-    tag = "2.8.0",
+    tag = "2.8.1",
   })
   -- Grammar checker
   use({ "rhysd/vim-grammarous" })
+  -- Startup time
+  use({ "lewis6991/impatient.nvim" })
 
   -- THEMES
   use({
@@ -106,7 +107,7 @@ return require("packer").startup(function(use)
 
   -- LSP
   -- LspConfig
-  use({ "neovim/nvim-lspconfig", tag = "v0.1.3" })
+  use({ "neovim/nvim-lspconfig" })
   -- Installer
   use({
     "williamboman/mason.nvim",
@@ -172,7 +173,7 @@ return require("packer").startup(function(use)
     },
   })
   -- Snippets
-  use({ "L3MON4D3/LuaSnip", tag = "v1.0.0" })
+  use({ "L3MON4D3/LuaSnip", tag = "v1.1.0" })
 
   -- LANGUAGE-SPECIFIC
   -- TS, React
