@@ -6,9 +6,9 @@ else
   platform = "linux"
 end
 
-local jdtls_install_dir = require("mason.settings").current.install_root_dir
-  .. "/packages/jdtls"
-local jdtls_data_dir = vim.fn.stdpath("data") .. "/jdtls"
+local mason_dir = require("mason.settings").current.install_root_dir
+
+local jdtls_install_dir = mason_dir .. "/packages/jdtls"
 local platform_config_path = jdtls_install_dir .. "/config_" .. platform
 local equinox_jar_path =
   vim.fn.glob(jdtls_install_dir .. "/plugins/org.eclipse.equinox.launcher_**.jar")
@@ -16,22 +16,22 @@ local lombok_jar_path = jdtls_install_dir .. "/lombok.jar"
 
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = jdtls_data_dir .. "/workspaces/" .. project_name
+local workspace_dir = vim.fn.stdpath("data") .. "/jdtls/workspaces/" .. project_name
 
 -- jar files for debugging
 -- from java-debug
 local bundles = {
   vim.fn.glob(
-    jdtls_data_dir
-      .. "/plugins/java-debug"
-      .. "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+    mason_dir
+      .. "/packages/java-debug-adapter/extension/server"
+      .. "/com.microsoft.java.debug.plugin-*.jar"
   ),
 }
 -- from vscode-java-text
 vim.list_extend(
   bundles,
   vim.split(
-    vim.fn.glob(jdtls_data_dir .. "/plugins/vscode-java-test" .. "/server/*.jar"),
+    vim.fn.glob(mason_dir .. "/packages/java-test/extension/server/*.jar"),
     "\n"
   )
 )
