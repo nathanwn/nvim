@@ -4,14 +4,15 @@ vim.cmd.colorscheme("PaperColor")
 vim.api.nvim_set_hl(0, "Conceal", {
   fg = "#0000ff",
 })
+vim.api.nvim_set_hl(0, "Visual", {
+  bg = "#cccccc",
+})
 vim.api.nvim_set_hl(0, "WinSeparator", {
   bg = nil,
 })
+
 vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", {
   bg = nil,
-})
-vim.api.nvim_set_hl(0, "TelescopeSelection", {
-  bg = "#bbbbbb",
 })
 
 -- lualine
