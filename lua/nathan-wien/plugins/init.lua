@@ -72,7 +72,7 @@ return require("packer").startup(function(use)
   -- FUZZY-FINDING
   use({
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.0",
+    tag = "4bd4205028d6588cf2e0a1346687a6039b0f0a7c",
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
