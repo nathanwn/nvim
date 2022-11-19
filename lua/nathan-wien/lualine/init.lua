@@ -47,8 +47,8 @@ M.sections = {
   lualine_a = { "mode" },
   lualine_b = { "branch" },
   lualine_c = { "diff", "diagnostics" },
-  lualine_x = { "filetype" },
-  lualine_y = { components.lsp },
+  lualine_x = { components.lsp },
+  lualine_y = { "filetype" },
   lualine_z = { "location" },
 }
 

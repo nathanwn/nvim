@@ -19,9 +19,11 @@ return {
     -- Go
     builtins.diagnostics.golangci_lint,
     -- Java
-    -- builtins.formatting.google_java_format.with({
-    --   command = "java-format",
-    -- }),
+    builtins.formatting.google_java_format.with({
+      -- command = "java-format",
+      command = "java",
+      args = { "-jar", "$HOME/bin/google-java-format.jar", "-" },
+    }),
     -- JS/TS
     builtins.diagnostics.eslint_d,
     builtins.formatting.prettierd,
@@ -35,7 +37,7 @@ return {
     builtins.diagnostics.pylint,
     -- builtins.diagnostics.pylint.with(python_settings),
     -- XML
-    builtins.formatting.xmllint,
+    -- builtins.formatting.xmllint,
     -- Spelling?
     -- builtins.completion.spell,
   },
