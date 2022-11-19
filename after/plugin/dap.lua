@@ -18,12 +18,22 @@ end
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dap_ui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dap_ui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dap_ui.close()
-end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dap_ui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dap_ui.close()
+-- end
+
+local debug_test_methods = {
+  go = dap_go.debug_test,
+  java = require("jdtls").test_nearest_method,
+  python = dap_python.test_method,
+}
+
+local debug_test_file_methods = {
+  java = require("jdtls").test_class,
+}
 
 -- Key bindings
 which_key.register({
@@ -41,17 +51,28 @@ which_key.register({
   },
 }, { prefix = "," })
 
-for ft, debug_test_fn in pairs({
-  python = dap_python.test_method,
-  go = dap_go.debug_test,
-}) do
+for ft, test_method in pairs(debug_test_methods) do
   vim.api.nvim_create_autocmd("FileType", {
     pattern = ft,
     callback = vim.schedule_wrap(function()
       which_key.register({
         d = {
           name = "dap",
-          t = { debug_test_fn, "debug test" },
+          t = { test_method, "debug test" },
+        },
+      }, { prefix = ",", buffer = 0 })
+    end),
+  })
+end
+
+for ft, test_method in pairs(debug_test_file_methods) do
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = ft,
+    callback = vim.schedule_wrap(function()
+      which_key.register({
+        d = {
+          name = "dap",
+          f = { test_method, "debug test file" },
         },
       }, { prefix = ",", buffer = 0 })
     end),
@@ -69,17 +90,17 @@ dap_ui.setup({
         "breakpoints",
         "stacks",
         "watches",
-        "repl",
       },
       size = 40, -- columns
       position = "left",
     },
     {
       elements = {
+        "repl",
         "console",
       },
-      size = 80, -- columns
-      position = "right",
+      size = 0.36, -- percentage
+      position = "bottom",
     },
   },
 })

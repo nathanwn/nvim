@@ -1,6 +1,5 @@
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap = nil
-local lrequire = require("nathan-wien.utils").local_require
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   packer_bootstrap = vim.fn.system({
@@ -71,10 +70,6 @@ return require("packer").startup(function(use)
   })
   -- Docstring
   use({
-    "kkoomen/vim-doge",
-    run = ":call doge#install()",
-  })
-  use({
     "danymat/neogen",
     requires = "nvim-treesitter/nvim-treesitter",
     tag = "2.8.0",
@@ -132,8 +127,6 @@ return require("packer").startup(function(use)
   -- Java
   use({
     "mfussenegger/nvim-jdtls",
-    -- config = lrequire("lsp.servers.jdtls"),
-    -- ft = { "java" },
   })
   -- Rust
   use({

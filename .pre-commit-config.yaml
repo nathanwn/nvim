@@ -10,3 +10,4 @@ repos:
     rev: v0.13.1
     hooks:
       - id: stylua
+        args: [-f, stylua.toml]

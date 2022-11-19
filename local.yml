@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
+  vars:
+    nvim_stdpath_data: "{{ lookup('env', 'HOME') }}/.local/share/nvim"
   tasks:
     - name: npm - install npm dependencies
       import_tasks: ansible-tasks/npm.yml
@@ -9,3 +11,7 @@
       import_tasks: ansible-tasks/pip.yml
       tags:
         - pip
+    - name: pip - install jdtls plugins for java
+      import_tasks: ansible-tasks/java.yml
+      tags:
+        - java
