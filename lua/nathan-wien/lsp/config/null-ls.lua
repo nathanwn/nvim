@@ -19,12 +19,11 @@ return {
     -- Go
     builtins.diagnostics.golangci_lint,
     -- Java
-    builtins.formatting.google_java_format.with({
-      command = "java-format",
-    }),
+    -- builtins.formatting.google_java_format.with({
+    --   command = "java-format",
+    -- }),
     -- JS/TS
     builtins.diagnostics.eslint_d,
-    builtins.completion.spell,
     builtins.formatting.prettierd,
     -- Lua
     builtins.formatting.stylua,
@@ -37,6 +36,8 @@ return {
     -- builtins.diagnostics.pylint.with(python_settings),
     -- XML
     builtins.formatting.xmllint,
+    -- Spelling?
+    -- builtins.completion.spell,
   },
   diagnostics_format = "[#{c}|#{s}] #{m}",
   should_attach = should_attach, -- check if null-ls should attach or not

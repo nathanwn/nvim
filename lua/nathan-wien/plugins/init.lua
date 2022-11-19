@@ -53,6 +53,7 @@ return require("packer").startup(function(use)
   use({
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    commit = "3e49d9b7484e21f0b24ebdf21b8b7af227ea97a6",
     -- cmd = { "NvimTreeToggle" },
   })
   -- Keybindings
@@ -106,7 +107,7 @@ return require("packer").startup(function(use)
 
   -- LSP
   -- LspConfig
-  use({ "neovim/nvim-lspconfig" })
+  use({ "neovim/nvim-lspconfig", tag = "v0.1.3" })
   -- Installer
   use({
     "williamboman/mason.nvim",
@@ -151,6 +152,7 @@ return require("packer").startup(function(use)
   })
   use({
     "theHamsta/nvim-dap-virtual-text",
+    commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4",
     requires = { "mfussenegger/nvim-dap" },
   })
   use({ "leoluz/nvim-dap-go" })
@@ -158,6 +160,7 @@ return require("packer").startup(function(use)
   -- AUTOCOMPLETE
   use({
     "hrsh7th/nvim-cmp",
+    tag = "v0.0.1",
     requires = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },

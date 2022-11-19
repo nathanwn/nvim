@@ -1,3 +1,10 @@
+if not pcall(require, "cmp") then
+  return
+end
+if not pcall(require, "lspkind") then
+  return
+end
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
