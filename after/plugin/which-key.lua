@@ -11,3 +11,7 @@ which_key.register({
     },
   },
 }, { prefix = "," })
+
+-- disable some operators
+local presets = require("which-key.plugins.presets")
+presets.operators["v"] = nil
