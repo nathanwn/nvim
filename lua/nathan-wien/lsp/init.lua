@@ -29,6 +29,8 @@ return function()
     -- Go
     gopls = lrequire("lsp.servers.gopls"),
     golangci_lint_ls = {},
+    -- Java
+    jdtls = {},
     -- JS, TS
     tsserver = lrequire("lsp.servers.tsserver"),
     -- Lua
