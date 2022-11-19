@@ -8,9 +8,8 @@ return function()
   end
 
   local jdtls_dir = vim.fn.stdpath("data") .. "/lsp_servers/jdtls"
-  local equinox_jar_path = vim.fn.glob(
-    jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_**.jar"
-  )
+  local equinox_jar_path =
+    vim.fn.glob(jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_**.jar")
   local platform_config_path = jdtls_dir .. "/config_" .. platform
   -- -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")

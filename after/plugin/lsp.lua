@@ -1,9 +1,8 @@
 local default = require("nathan-wien.lsp.default")
 
 -- Make diagnostics less aggressive
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     virtual_text = {
       spacing = 8,
@@ -11,8 +10,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     },
     signs = false,
     update_in_insert = false,
-  }
-)
+  })
 
 vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
