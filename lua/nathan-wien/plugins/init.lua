@@ -130,7 +130,7 @@ return require("packer").startup(function(use)
     "williamboman/mason.nvim",
     requires = {
       { "williamboman/mason-lspconfig.nvim" },
-    }
+    },
   })
   -- Formatting & Linting
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })

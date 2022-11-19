@@ -3,16 +3,18 @@ return function()
   local default = lrequire("lsp.default")
 
   -- Make diagnostics less aggressive
-  vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 8,
-      -- severity_limit = 'Error',
-    },
-    signs = false,
-    update_in_insert = false,
-  })
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+      underline = true,
+      virtual_text = {
+        spacing = 8,
+        -- severity_limit = 'Error',
+      },
+      signs = false,
+      update_in_insert = false,
+    }
+  )
 
   vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
