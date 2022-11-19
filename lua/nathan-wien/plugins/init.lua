@@ -20,7 +20,6 @@ return require("packer").startup(function(use)
   -- Core plugins
   use({ "nvim-lua/popup.nvim" })
   use({ "nvim-lua/plenary.nvim" })
-  use({ "kyazdani42/nvim-web-devicons" })
   -- Git
   use({
     "tpope/vim-fugitive",
@@ -54,7 +53,6 @@ return require("packer").startup(function(use)
   -- Explorer Tree
   use({
     "kyazdani42/nvim-tree.lua",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
     commit = "3e49d9b7484e21f0b24ebdf21b8b7af227ea97a6",
     -- cmd = { "NvimTreeToggle" },
   })
@@ -83,7 +81,6 @@ return require("packer").startup(function(use)
   -- THEMES
   use({
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
   use({
     "NLKNguyen/papercolor-theme",
@@ -120,13 +117,6 @@ return require("packer").startup(function(use)
   -- Formatting & Linting
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
   -- UI
-  use({
-    "folke/trouble.nvim",
-    requires = {
-      { "kyazdani42/nvim-web-devicons" },
-      { "folke/lsp-colors.nvim" },
-    },
-  })
   use({ "folke/lsp-colors.nvim" })
   use({
     "nvim-treesitter/nvim-treesitter-context",

@@ -1,6 +1,6 @@
 local glyphs = {
-  inactive = "鈴",
-  loading = "",
+  inactive = ".", -- "鈴"
+  loading = "..", -- ""
 }
 
 local components = {
@@ -29,7 +29,7 @@ local components = {
 
       local unique_client_names = vim.fn.uniq(buf_client_names)
       if vim.tbl_count(unique_client_names) > 0 then
-        return table.concat(unique_client_names, "|")
+        return table.concat(unique_client_names, " ")
       else
         return glyphs.loading
       end
@@ -57,6 +57,9 @@ local components = {
 
 local config = {
   options = {
+    component_separators = "",
+    section_separators = "",
+    icons_enabled = false,
     theme = nil,
     disabled_filetypes = {
       statusline = {},

@@ -22,7 +22,7 @@ local original_lualine_theme = require("lualine.themes.papercolor_light")
 local custom_lualine_theme = vim.deepcopy(original_lualine_theme)
 custom_lualine_theme.normal.c = original_lualine_theme.normal.a
 custom_lualine_theme.normal.a = original_lualine_theme.normal.c
-custom_lualine_theme.normal.b = original_lualine_theme.normal.a
+-- custom_lualine_theme.normal.b = original_lualine_theme.normal.a
 
 require("lualine").setup({
   options = {

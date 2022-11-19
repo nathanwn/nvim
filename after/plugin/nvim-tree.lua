@@ -1,4 +1,7 @@
 require("nvim-tree").setup({
+  view = {
+    adaptive_size = true,
+  },
   filters = {
     custom = {
       ".git",
@@ -21,6 +24,19 @@ require("nvim-tree").setup({
       "*.lot",
       "*.synctex.gz",
       "*.toc",
+      ".null-ls*",
+    },
+  },
+  renderer = {
+    add_trailing = true,
+    group_empty = true,
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+        git = false,
+      },
     },
   },
 })

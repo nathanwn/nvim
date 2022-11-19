@@ -15,14 +15,15 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
--- Signs
+-- Diagnostic Signs
 -- Read: https://neovim.io/doc/user/diagnostic.html
-for kind, icon in pairs({
-  ["Error"] = "",
-  ["Info"] = "",
-  ["Hint"] = "",
-  ["Warn"] = "",
-}) do
+local signs = {
+  ["Error"] = "E", -- "",
+  ["Info"] = "I", -- "",
+  ["Hint"] = "H", --"",
+  ["Warn"] = "W", --"",
+}
+for kind, icon in pairs(signs) do
   local name = "DiagnosticSign" .. kind
   local texthl_group = "DiagnosticSign" .. kind
   vim.fn.sign_define(name, { text = icon, texthl = texthl_group })
