@@ -42,8 +42,8 @@ return {
     builtins.diagnostics.mypy,
     builtins.diagnostics.pylint,
     -- builtins.diagnostics.pylint.with(python_settings),
-    -- Go
-    builtins.diagnostics.golangci_lint,
+    -- XML
+    builtins.formatting.xmllint,
   },
   diagnostics_format = "[#{c}|#{s}] #{m}",
   should_attach = should_attach, -- check if null-ls should attach or not
