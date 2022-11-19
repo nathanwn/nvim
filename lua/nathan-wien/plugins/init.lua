@@ -67,16 +67,8 @@ return require("packer").startup(function(use)
 
   -- THEMES
   use({ "nvim-lualine/lualine.nvim" })
-  use({
-    "NLKNguyen/papercolor-theme",
-    -- "~/work/neovim/plugins/papercolor-theme.git/branches/???",
-    as = "papercolor-theme",
-    requires = { "nvim-lualine/lualine.nvim" },
-  })
   use({ "catppuccin/nvim", as = "catppuccin" })
-  -- use({ "joshdick/onedark.vim" })
-  -- use({ "sainnhe/gruvbox-material" })
-  -- use({ "rafamadriz/neon" })
+  use({ "NLKNguyen/papercolor-theme" })
   -- FUZZY-FINDING
   use({
     "nvim-telescope/telescope.nvim",
