@@ -6,6 +6,7 @@ vim.filetype.add({
     tmux = "tmux",
     tsx = "typescriptreact",
     ts = "typescript",
+    facts = "soufflefacts",
   },
   filename = {
     [".flake8"] = "cfg",
@@ -23,5 +24,6 @@ vim.filetype.add({
     ["*.clang-format"] = "yaml",
     [".*/.*playbook.*/.*.yaml"] = "yaml.ansible",
     [".*/.*playbook.*/.*.yml"] = "yaml.ansible",
+    [".github/workflows/.*.yml"] = "yaml",
   },
 })
