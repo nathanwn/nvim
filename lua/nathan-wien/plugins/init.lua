@@ -189,9 +189,9 @@ return require("packer").startup(function(use)
   use({ "leafgarland/typescript-vim" })
   use({ "peitalin/vim-jsx-typescript" })
   -- Emmet
-  use({ "mattn/emmet-vim" })
+  -- use({ "mattn/emmet-vim" })
   -- Markdown
-  use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+  -- use({ "preservim/vim-markdown", ft = { "markdown" } })
   -- Pandoc
   -- use({
   --   "vim-pandoc/vim-pandoc",
@@ -199,7 +199,10 @@ return require("packer").startup(function(use)
   --   ft = { "pandoc" },
   -- })
   -- Tex
-  use({ "lervag/vimtex" })
+  use({
+    "lervag/vimtex",
+    tag = "v2.11",
+  })
   -- Lark
   use({ "lark-parser/vim-lark-syntax" })
 
