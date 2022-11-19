@@ -50,3 +50,5 @@ vim.opt.hidden = true
 vim.g.tex_flavor = "latex"
 -- Syntax-highlight lua in vimscript
 vim.g.vimsyn_embed = "l"
+-- Getting error messages for nvim-metals
+vim.opt_global.shortmess:remove("F")

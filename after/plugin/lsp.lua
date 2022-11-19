@@ -1,4 +1,4 @@
-local default = require("nathan-wien.lsp.default")
+local default_config = require("nathan-wien.lsp.config")
 
 -- Make diagnostics less aggressive
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -18,7 +18,7 @@ vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 local lsp_servers = require("nathan-wien.lsp.servers")
 for _, server in ipairs(lsp_servers) do
   -- config overrides default_lsp_config
-  server.instance.setup(vim.tbl_deep_extend("force", default.config, server.config))
+  server.instance.setup(vim.tbl_deep_extend("force", default_config, server.config))
 end
 
 -- Virtual text coloring

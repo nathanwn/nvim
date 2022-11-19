@@ -1,4 +1,4 @@
-local default = require("nathan-wien.lsp.default")
+local lsp_default = require("nathan-wien.lsp.default")
 
 local formatters = {}
 local linters = {}
@@ -82,6 +82,6 @@ return {
     languages = languages,
   },
   on_attach = function(client, bufnr)
-    default.on_attach(client, bufnr)
+    lsp_default.on_attach_run_always(client, bufnr)
   end,
 }

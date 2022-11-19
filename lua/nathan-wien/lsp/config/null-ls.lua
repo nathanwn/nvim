@@ -1,6 +1,6 @@
 local nvim_lsp_util = require("lspconfig.util")
-local builtins = require("null-ls").builtins
-local default = require("nathan-wien.lsp.default")
+local null_ls_builtins = require("null-ls").builtins
+local lsp_default = require("nathan-wien.lsp.default")
 
 local should_attach = function(bufnr)
   local disabled_filetypes = { "cpp", "yaml" }
@@ -17,24 +17,24 @@ end
 return {
   sources = {
     -- Go
-    builtins.diagnostics.golangci_lint,
+    null_ls_builtins.diagnostics.golangci_lint,
     -- Java
-    builtins.formatting.google_java_format.with({
+    null_ls_builtins.formatting.google_java_format.with({
       -- command = "java-format",
       command = "java",
       args = { "-jar", "$HOME/bin/google-java-format.jar", "-" },
     }),
     -- JS/TS
-    builtins.diagnostics.eslint_d,
-    builtins.formatting.prettierd,
+    null_ls_builtins.diagnostics.eslint_d,
+    null_ls_builtins.formatting.prettierd,
     -- Lua
-    builtins.formatting.stylua,
+    null_ls_builtins.formatting.stylua,
     -- Python
-    builtins.formatting.black,
-    builtins.formatting.isort,
-    builtins.diagnostics.flake8,
-    builtins.diagnostics.mypy,
-    builtins.diagnostics.pylint,
+    null_ls_builtins.formatting.black,
+    null_ls_builtins.formatting.isort,
+    null_ls_builtins.diagnostics.flake8,
+    null_ls_builtins.diagnostics.mypy,
+    null_ls_builtins.diagnostics.pylint,
     -- builtins.diagnostics.pylint.with(python_settings),
     -- XML
     -- builtins.formatting.xmllint,
@@ -46,6 +46,6 @@ return {
   root_dir = nvim_lsp_util.root_pattern(".null-ls-root", ".git"),
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
-    default.on_attach(client, bufnr)
+    lsp_default.on_attach_run_always(client, bufnr)
   end,
 }
