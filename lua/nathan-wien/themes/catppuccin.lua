@@ -2,6 +2,8 @@ if not pcall(require, "catppuccin") then
   return
 end
 
+local M = {}
+
 vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 
 local palette = {
@@ -35,65 +37,74 @@ local palette = {
   crust = "#cccccc",
 }
 
-require("catppuccin").setup({
-  integrations = {
-    cmp = true,
-    dap = {
-      enabled = true,
-      enable_ui = true, -- nvim-dap-ui
+local setup = function()
+  require("catppuccin").setup({
+    integrations = {
+      cmp = true,
+      dap = {
+        enabled = true,
+        enable_ui = true, -- nvim-dap-ui
+      },
+      gitsigns = true,
+      lsp_trouble = true,
+      nvimtree = true,
+      symbols_outline = true,
+      treesitter = true,
+      which_key = true,
     },
-    gitsigns = true,
-    lsp_trouble = true,
-    nvimtree = true,
-    symbols_outline = true,
-    treesitter = true,
-    which_key = true,
-  },
-  color_overrides = {
-    latte = palette,
-  },
-  highlight_overrides = {
-    latte = {
-      Comment = {
-        fg = "#878787",
-      },
-      Conceal = {
-        fg = palette.red,
-      },
-      NvimTreeNormal = {
-        bg = "#e8e8e8",
-      },
-      NvimTreeExecFile = {
-        fg = palette.pink,
-      },
-      DapUIPlayPause = {
-        fg = palette.green,
-      },
-      DapUIRestart = {
-        fg = palette.green,
-      },
-      DapUIStepOut = {
-        fg = palette.blue,
-      },
-      DapUIStepBack = {
-        fg = palette.blue,
-      },
-      DapUIStepInto = {
-        fg = palette.blue,
-      },
-      DapUIStepOver = {
-        fg = palette.blue,
+    color_overrides = {
+      latte = palette,
+    },
+    highlight_overrides = {
+      latte = {
+        Comment = {
+          fg = "#878787",
+        },
+        Conceal = {
+          fg = palette.red,
+        },
+        NvimTreeNormal = {
+          bg = "#e8e8e8",
+        },
+        NvimTreeExecFile = {
+          fg = palette.pink,
+        },
+        DapUIPlayPause = {
+          fg = palette.green,
+        },
+        DapUIRestart = {
+          fg = palette.green,
+        },
+        DapUIStepOut = {
+          fg = palette.blue,
+        },
+        DapUIStepBack = {
+          fg = palette.blue,
+        },
+        DapUIStepInto = {
+          fg = palette.blue,
+        },
+        DapUIStepOver = {
+          fg = palette.blue,
+        },
       },
     },
-  },
-})
+  })
 
--- activate
-vim.cmd.colorscheme("catppuccin")
+  -- activate
+  vim.cmd.colorscheme("catppuccin")
 
--- lualine
-require("lualine").setup(vim.tbl_deep_extend("force", require("nathan-wien.lualine"), {
-  options = {
-    theme = "catppuccin",
-  },
-}))
+  -- lualine
+  require("lualine").setup(
+    vim.tbl_deep_extend("force", require("nathan-wien.lualine"), {
+      options = {
+        theme = "catppuccin",
+      },
+    })
+  )
+end
+
+M.palette = palette
+M.setup = setup
+
+return M

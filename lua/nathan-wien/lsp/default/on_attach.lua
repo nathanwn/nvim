@@ -18,4 +18,7 @@ return function(client, bufnr)
       augroup END
     ]])
   end
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 end

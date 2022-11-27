@@ -1,5 +1,5 @@
 -- require("nathan-wien.themes.papercolor-light")
-require("nathan-wien.themes.catppuccin")
+require("nathan-wien.themes.catppuccin").setup()
 
 -- Increases signcolumn width for gitsigns and diagnostics
 vim.opt.signcolumn = "auto:2"

@@ -70,6 +70,7 @@ return require("packer").startup(function(use)
   use({ "rhysd/vim-grammarous" })
   -- Startup time
   use({ "lewis6991/impatient.nvim" })
+  use({ "dstein64/vim-startuptime" })
 
   -- THEMES
   use({ "nvim-lualine/lualine.nvim" })
@@ -85,10 +86,11 @@ return require("packer").startup(function(use)
       { "nvim-telescope/telescope-ui-select.nvim" },
     },
   })
-  use({ "nvim-telescope/telescope-fzf-native.nvim",
-    run = "'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release " ..
-        "&& cmake --build build --config Release " ..
-        "&& cmake --install build --prefix build'",
+  use({
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run = "'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release "
+      .. "&& cmake --build build --config Release "
+      .. "&& cmake --install build --prefix build'",
   })
 
   -- LSP
@@ -106,6 +108,7 @@ return require("packer").startup(function(use)
   -- UI
   use({ "folke/lsp-colors.nvim" })
   use({ "j-hui/fidget.nvim" })
+  use({ "SmiteshP/nvim-navic" })
   -- Java
   use({ "mfussenegger/nvim-jdtls" })
   -- Rust
