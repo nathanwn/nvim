@@ -23,6 +23,7 @@ vim.filetype.add({
     [".pre-commit-config.yml"] = "yaml",
   },
   pattern = {
+    ["*.g4"] = "antlr4",
     ["*.clang-format"] = "yaml",
     [".*/.*playbook.*/.*.yaml"] = "yaml.ansible",
     [".*/.*playbook.*/.*.yml"] = "yaml.ansible",

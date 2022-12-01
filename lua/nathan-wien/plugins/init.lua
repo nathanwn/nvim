@@ -170,6 +170,8 @@ return require("packer").startup(function(use)
     "lervag/vimtex",
     tag = "v2.11",
   })
+  -- ANTLR4
+  use({ "dylon/vim-antlr" })
   -- Lark
   use({ "lark-parser/vim-lark-syntax" })
   -- Emmet
