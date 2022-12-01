@@ -52,7 +52,6 @@ local servers = {
   LanguageServer:new("gopls"),
   -- Groovy
   LanguageServer:new("groovyls"),
-  LanguageServer:new("golangci_lint_ls"),
   -- JS/TS
   LanguageServer:new("tsserver"),
   -- Lua
