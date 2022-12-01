@@ -50,7 +50,7 @@ components.filetype = {
   "filetype",
   color = {
     gui = "bold",
-    bg = palette.red,
+    bg = palette.lavender,
     fg = "#FFFFFF",
   },
 }
