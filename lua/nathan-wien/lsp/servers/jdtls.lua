@@ -6,13 +6,17 @@ else
   platform = "linux"
 end
 
-local mason_dir = require("mason.settings").current.install_root_dir
+local Path = require("plenary.path")
 
-local jdtls_install_dir = mason_dir .. "/packages/jdtls"
-local platform_config_path = jdtls_install_dir .. "/config_" .. platform
-local equinox_jar_path =
-  vim.fn.glob(jdtls_install_dir .. "/plugins/org.eclipse.equinox.launcher_**.jar")
-local lombok_jar_path = jdtls_install_dir .. "/lombok.jar"
+local mason_path = Path.new(require("mason.settings").current.install_root_dir)
+-- local mason_dir = require("mason.settings").current.install_root_dir
+
+local jdtls_install_path = mason_path:joinpath("packages", "jdtls")
+local platform_config_path = jdtls_install_path:joinpath("/config_" .. platform)
+local equinox_jar = vim.fn.glob(
+  tostring(jdtls_install_path) .. "/plugins/org.eclipse.equinox.launcher_**.jar"
+)
+local lombok_jar_path = jdtls_install_path:joinpath("lombok.jar")
 
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
 local project_name = function()
@@ -21,22 +25,26 @@ local project_name = function()
   local parent_dir_name = vim.fn.fnamemodify(cwd, ":p:h:h:t")
   return parent_dir_name .. "_" .. current_dir_name
 end
-local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-ws/" .. project_name()
+local workspace_dir =
+  tostring(Path.new(vim.fn.stdpath("data")):joinpath("jdtls-ws", project_name()))
 
 -- jar files for debugging
 -- from java-debug
 local bundles = {
   vim.fn.glob(
-    mason_dir
-      .. "/packages/java-debug-adapter/extension/server"
-      .. "/com.microsoft.java.debug.plugin-*.jar"
+    tostring(
+      mason_path:joinpath("packages", "java-debug-adapter", "extension", "server")
+    ) .. "/com.microsoft.java.debug.plugin-*.jar"
   ),
 }
 -- from vscode-java-text
 vim.list_extend(
   bundles,
   vim.split(
-    vim.fn.glob(mason_dir .. "/packages/java-test/extension/server/*.jar"),
+    vim.fn.glob(
+      tostring(mason_path:joinpath("packages", "java-test", "extension", "server"))
+        .. "/*.jar"
+    ),
     "\n"
   )
 )
@@ -54,7 +62,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. lombok_jar_path,
+    "-javaagent:" .. tostring(lombok_jar_path),
     "-Xms1g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",
@@ -62,9 +70,9 @@ local config = {
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
     "-jar",
-    equinox_jar_path,
+    equinox_jar,
     "-configuration",
-    platform_config_path,
+    tostring(platform_config_path),
     "-data",
     workspace_dir,
   },
@@ -89,6 +97,9 @@ local config = {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = bundles,
+    -- extendedClientCapabilities = {
+    --   progressReportProvider = false,
+    -- },
   },
 
   on_attach = function(client, bufnr)
