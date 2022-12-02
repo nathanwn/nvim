@@ -79,12 +79,12 @@ return require("packer").startup(function(use)
   -- FUZZY-FINDING
   use({
     "nvim-telescope/telescope.nvim",
-    tag = "4bd4205028d6588cf2e0a1346687a6039b0f0a7c",
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
     },
+    branch = "0.1.x",
   })
   use({
     "nvim-telescope/telescope-fzf-native.nvim",
@@ -124,7 +124,7 @@ return require("packer").startup(function(use)
   use({
     "rcarriga/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" },
-    tag = "v2.5.0",
+    tag = "v2.6.0",
   })
   use({
     "nvim-telescope/telescope-dap.nvim",
