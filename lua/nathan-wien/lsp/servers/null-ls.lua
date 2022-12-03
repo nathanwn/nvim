@@ -56,7 +56,12 @@ return {
     null_ls.builtins.diagnostics.pylint,
     -- XML
     -- builtins.formatting.xmllint,
-    null_ls.builtins.diagnostics.yamllint,
+    null_ls.builtins.diagnostics.yamllint.with({
+      condition = function(utils)
+        -- https://yamllint.readthedocs.io/en/stable/configuration.html
+        return utils.root_has_file({ ".yamllint", ".yamllint.yaml", ".yamllint.yml" })
+      end,
+    }),
     -- Spelling?
     -- builtins.completion.spell,
   },
