@@ -7,6 +7,7 @@ std = {
     "print",
     "require",
     "setmetatable",
+    "string",
     "table",
     "tostring",
     "type",
