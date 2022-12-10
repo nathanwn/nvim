@@ -97,9 +97,9 @@ local config = {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = bundles,
-    -- extendedClientCapabilities = {
-    --   progressReportProvider = false,
-    -- },
+    extendedClientCapabilities = {
+      progressReportProvider = false,
+    },
   },
 
   on_attach = function(client, bufnr)
