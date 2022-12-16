@@ -19,7 +19,7 @@ local palette = {
   peach = "#008700",
   rosewater = "#d04a00",
   flamingo = "#d04a00",
-  sapphire = "#209F95", -- default
+  sapphire = "#09735c", -- default
   lavender = "#5566C0", -- default
 
   text = "#444444",
