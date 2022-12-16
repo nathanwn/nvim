@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    tag = "v0.5",
+    tag = "v0.6",
   })
   use({ "ThePrimeagen/git-worktree.nvim" })
   -- Tmux
@@ -64,7 +64,7 @@ return require("packer").startup(function(use)
   use({
     "danymat/neogen",
     requires = "nvim-treesitter/nvim-treesitter",
-    tag = "2.8.1",
+    tag = "2.10.3",
   })
   -- Grammar checker
   use({ "rhysd/vim-grammarous" })
