@@ -24,10 +24,6 @@ vim.keymap.set("n", "<C-s>k", "<C-w>t<C-w>H")
 vim.keymap.set("n", "[q", "<cmd>cprevious<CR>")
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>")
 
--- Center the cursor vertically when using C-u/d
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 -- Smart dd. Credit: https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y
 vim.keymap.set("n", "dd", function()
   if vim.api.nvim_get_current_line():match("^%s*$") then
@@ -36,3 +32,22 @@ vim.keymap.set("n", "dd", function()
     return "dd"
   end
 end, { noremap = true, expr = true })
+
+-- Some magic from: https://github.com/ThePrimeagen/init.lua
+-- Move
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Keep cursor in the same position while doing line-appending
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Center the cursor vertically when using C-u/d
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Center the cursor vertically when navigating through search results
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Paste over a selection without losing the paste register
+vim.keymap.set("x", "<leader>p", [["_dP]])
