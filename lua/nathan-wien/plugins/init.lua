@@ -189,6 +189,12 @@ return require("packer").startup(function(use)
   --   ft = { "pandoc" },
   -- })
 
+  -- Tools
+  use({
+    "narutoxy/silicon.lua",
+    requires = { "nvim-lua/plenary.nvim" },
+  })
+
   -- Auto-install
   if packer_bootstrap then
     require("packer").sync()
