@@ -12,13 +12,19 @@ end
 -- vim.cmd([[ hi LspDiagnosticsDefaultHint guifg='#A0A0A0' ]])
 -- disable
 vim.diagnostic.config({
-  virtual_text = false,
-  -- signs = {
-  --   severity = {
-  --     min = vim.diagnostic.severity.INFO,
-  --   },
-  --   severity_sort = true,
-  -- },
+  virtual_text = {
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+    },
+    severity_sort = true,
+  },
+
+  signs = {
+    severity = {
+      min = vim.diagnostic.severity.INFO,
+    },
+    severity_sort = true,
+  },
 })
 
 -- Diagnostic Signs
