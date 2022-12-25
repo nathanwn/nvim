@@ -4,7 +4,11 @@
 
 This repository is a copy of my `~/.config/nvim/` directory.
 
-Over time, my neovim configuration has grown to a point where it makes sense to separate it into a separated repository from my dotfiles repository.
+Over time, my neovim configuration has grown to a point where it makes sense to separate it into a separated repository from my dotfiles repository. To set up, I can just run:
+
+```bash
+ln -s $PWD ~/.config/nvim
+```
 
 ## Structure
 
