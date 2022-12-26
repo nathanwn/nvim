@@ -1,7 +1,7 @@
 return function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   require("nathan-wien.lsp.keymap").setup(bufnr)
-  if client.server_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.cmd([[
       augroup lsp_buf_format
           autocmd! * <buffer>
@@ -9,7 +9,7 @@ return function(client, bufnr)
       augroup END
     ]])
   end
-  if client.server_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.cmd([[
       augroup lsp_document_highlight
         autocmd! * <buffer>

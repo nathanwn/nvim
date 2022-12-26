@@ -82,7 +82,7 @@ return {
   should_attach = should_attach, -- check if null-ls should attach or not
   root_dir = nvim_lsp_util.root_pattern(".null-ls-root", ".git"),
   on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = true
+    client.server_capabilities.documentFormattingProvider = true
     default_on_attach(client, bufnr)
   end,
 }

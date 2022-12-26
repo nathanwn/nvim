@@ -111,8 +111,8 @@ local config = {
     })
     -- require("jdtls.dap").setup_dap_main_class_configs()
     -- Disable formatting
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     -- Apply default config
     require("nathan-wien.lsp.default.on_attach")(client, bufnr)
   end,
