@@ -1,151 +1,141 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({
-      "git",
-      "clone",
-      "--depth",
-      "1",
-      "https://github.com/wbthomason/packer.nvim",
-      install_path,
-    })
-    vim.cmd([[packadd packer.nvim]])
-    return true
-  end
-  return false
+-- Bootstrap.
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require("packer").startup(function(use)
+require("lazy").setup({
   -- Packer manages itself
-  use({ "wbthomason/packer.nvim" })
+  { "wbthomason/packer.nvim" },
 
   -- UTILITIES
   -- Core plugins
-  use({ "nvim-lua/popup.nvim" })
-  use({ "nvim-lua/plenary.nvim" })
+  { "nvim-lua/popup.nvim" },
+  { "nvim-lua/plenary.nvim" },
   -- Git
-  use({ "tpope/vim-fugitive" })
-  use({
+  { "tpope/vim-fugitive" },
+  {
     "lewis6991/gitsigns.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    tag = "v0.6",
-  })
-  use({ "ThePrimeagen/git-worktree.nvim" })
+    dependencies = { "nvim-lua/plenary.nvim" },
+    version = "v0.6",
+  },
+  { "ThePrimeagen/git-worktree.nvim" },
   -- Tmux
-  use({ "christoomey/vim-tmux-navigator" })
+  { "christoomey/vim-tmux-navigator" },
   -- Harpoon
-  use({ "ThePrimeagen/harpoon" })
+  { "ThePrimeagen/harpoon" },
   -- Undo
-  use({ "mbbill/undotree" })
+  { "mbbill/undotree" },
   -- Outline
-  use({ "simrat39/symbols-outline.nvim" })
+  { "simrat39/symbols-outline.nvim" },
   -- Explorer Tree
-  use({
+  {
     "kyazdani42/nvim-tree.lua",
-    tag = "nightly",
-  })
+    version = "nightly",
+  },
   -- Keybindings
-  use({ "folke/which-key.nvim" })
+  { "folke/which-key.nvim" },
   -- Colorizer
-  use({ "chrisbra/Colorizer" })
+  { "chrisbra/Colorizer" },
   -- Treesitter
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
-  use({
+    build = ":TSUpdate",
+  },
+  {
     "nvim-treesitter/playground",
-    requires = { "nvim-treesitter/nvim-treesitter" },
-  })
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
   -- Docstring
-  use({
+  {
     "danymat/neogen",
-    requires = "nvim-treesitter/nvim-treesitter",
-    tag = "2.10.3",
-  })
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    version = "2.10.3",
+  },
   -- Grammar checker
-  use({ "rhysd/vim-grammarous" })
+  { "rhysd/vim-grammarous" },
   -- Startup time
-  use({ "lewis6991/impatient.nvim" })
-  use({ "dstein64/vim-startuptime" })
+  { "dstein64/vim-startuptime" },
 
   -- THEMES
-  use({ "rebelot/heirline.nvim" })
-  use({ "catppuccin/nvim", as = "catppuccin" })
-  use({ "NLKNguyen/papercolor-theme" })
+  { "rebelot/heirline.nvim", dependencies = "catppuccin" },
+  { "catppuccin/nvim", name = "catppuccin" },
+  { "NLKNguyen/papercolor-theme" },
   -- FUZZY-FINDING
-  use({
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
     },
     branch = "0.1.x",
-  })
-  use({
+  },
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release "
-      .. "&& cmake --build build --config Release "
-      .. "&& cmake --install build --prefix build'",
-  })
-
+    build = "make",
+  },
   -- LSP
   -- LspConfig
-  use({ "neovim/nvim-lspconfig" })
+  { "neovim/nvim-lspconfig" },
   -- Installer
-  use({
+  {
     "williamboman/mason.nvim",
-    requires = {
+    dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
     },
-  })
+  },
   -- Formatting & Linting
-  use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   -- UI
-  use({ "folke/lsp-colors.nvim" })
-  use({ "j-hui/fidget.nvim" })
-  use({ "SmiteshP/nvim-navic" })
+  { "folke/lsp-colors.nvim" },
+  { "j-hui/fidget.nvim" },
+  { "SmiteshP/nvim-navic" },
   -- Java
-  use({ "mfussenegger/nvim-jdtls" })
+  { "mfussenegger/nvim-jdtls" },
   -- Rust
-  use({
+  {
     "simrat39/rust-tools.nvim",
-    requires = { "neovim/nvim-lspconfig" },
-  })
+    dependencies = { "neovim/nvim-lspconfig" },
+  },
   -- Scala
-  use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
+  { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
 
   -- DAP
-  use({ "mfussenegger/nvim-dap" })
-  use({
+  { "mfussenegger/nvim-dap" },
+  {
     "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
-    tag = "v2.6.0",
-  })
-  use({
+    dependencies = { "mfussenegger/nvim-dap" },
+    version = "v2.6.0",
+  },
+  {
     "nvim-telescope/telescope-dap.nvim",
-    requires = { "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
-  })
-  use({
+    dependencies = { "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
+  },
+  {
     "mfussenegger/nvim-dap-python",
-    requires = { "mfussenegger/nvim-dap" },
-  })
-  use({
+    dependencies = { "mfussenegger/nvim-dap" },
+  },
+  {
     "theHamsta/nvim-dap-virtual-text",
     commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4",
-    requires = { "mfussenegger/nvim-dap" },
-  })
-  use({ "leoluz/nvim-dap-go" })
+    dependencies = { "mfussenegger/nvim-dap" },
+  },
+  { "leoluz/nvim-dap-go" },
 
   -- AUTOCOMPLETE
-  use({
+  {
     "hrsh7th/nvim-cmp",
-    tag = "v0.0.1",
-    requires = {
+    version = "v0.0.1",
+    dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
       { "hrsh7th/cmp-buffer" },
@@ -157,46 +147,41 @@ return require("packer").startup(function(use)
       -- Appearance
       { "onsails/lspkind.nvim" },
     },
-  })
+  },
   -- Snippets
-  use({ "L3MON4D3/LuaSnip", tag = "v1.1.0" })
+  { "L3MON4D3/LuaSnip", version = "v1.1.0" },
 
   -- LANGUAGE-SPECIFIC
   -- TS, React
-  use({ "leafgarland/typescript-vim" })
-  use({ "peitalin/vim-jsx-typescript" })
+  { "leafgarland/typescript-vim" },
+  { "peitalin/vim-jsx-typescript" },
   -- Tex
-  use({
+  {
     "lervag/vimtex",
-    tag = "v2.11",
-  })
+    version = "v2.11",
+  },
   -- ANTLR4
-  use({ "dylon/vim-antlr" })
+  { "dylon/vim-antlr" },
   -- Lark
-  use({ "lark-parser/vim-lark-syntax" })
+  { "lark-parser/vim-lark-syntax" },
   -- Emmet
-  -- use({ "mattn/emmet-vim" })
+  -- { "mattn/emmet-vim" }
   -- Markdown
-  use({ "preservim/vim-markdown", ft = { "markdown" } })
-  use({
+  { "preservim/vim-markdown", ft = { "markdown" } },
+  {
     "iamcco/markdown-preview.nvim",
-    tag = "v0.0.10",
-  })
+    version = "v0.0.10",
+  },
   -- Pandoc
-  -- use({
+  -- {
   --   "vim-pandoc/vim-pandoc",
-  --   requires = { "vim-pandoc/vim-pandoc-syntax" },
+  --   dependencies = { "vim-pandoc/vim-pandoc-syntax" },
   --   ft = { "pandoc" },
-  -- })
+  -- }
 
   -- Tools
-  use({
+  {
     "narutoxy/silicon.lua",
-    requires = { "nvim-lua/plenary.nvim" },
-  })
-
-  -- Auto-install
-  if packer_bootstrap then
-    require("packer").sync()
-  end
-end)
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+})
