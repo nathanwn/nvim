@@ -9,16 +9,16 @@ vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 local palette = {
   red = "#af0000",
   maroon = "#d70000",
-  green = "#507700",
+  green = "#008700",
   pink = "#d70087",
   mauve = "#8700af",
   blue = "#005faf",
-  yellow = "#008700",
+  yellow = "#808000",
   sky = "#0087af",
   teal = "#005f87",
-  peach = "#008700",
+  peach = "#883322",
   rosewater = "#d04a00",
-  flamingo = "#d04a00",
+  flamingo = "#8700d7",
   sapphire = "#09735c", -- default
   lavender = "#5566C0", -- default
 
@@ -58,10 +58,19 @@ local setup = function()
     highlight_overrides = {
       latte = {
         Comment = {
-          fg = "#878787",
+          fg = palette.overlay1,
         },
         Conceal = {
           fg = palette.red,
+        },
+        DiagnosticInfo = {
+          fg = palette.sapphire,
+        },
+        DiagnosticHint = {
+          fg = palette.sapphire,
+        },
+        StatusLine = {
+          bg = "#dfdfdf",
         },
         NvimTreeNormal = {
           bg = "#e8e8e8",
@@ -93,15 +102,6 @@ local setup = function()
 
   -- activate
   vim.cmd.colorscheme("catppuccin")
-
-  -- lualine
-  require("lualine").setup(
-    vim.tbl_deep_extend("force", require("nathan-wien.lualine"), {
-      options = {
-        theme = "catppuccin",
-      },
-    })
-  )
 end
 
 M.palette = palette

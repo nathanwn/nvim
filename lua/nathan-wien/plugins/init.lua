@@ -73,7 +73,7 @@ return require("packer").startup(function(use)
   use({ "dstein64/vim-startuptime" })
 
   -- THEMES
-  use({ "nvim-lualine/lualine.nvim" })
+  use({ "rebelot/heirline.nvim" })
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "NLKNguyen/papercolor-theme" })
   -- FUZZY-FINDING

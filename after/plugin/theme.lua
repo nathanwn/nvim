@@ -5,5 +5,3 @@ require("nathan-wien.themes.catppuccin").setup()
 vim.opt.signcolumn = "auto:2"
 -- Global status bar
 vim.opt.laststatus = 3
--- Winbar
-vim.opt.winbar = " %f %m"

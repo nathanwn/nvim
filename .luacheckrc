@@ -1,5 +1,6 @@
 std = {
   globals = {
+    "assert",
     "ipairs",
     "next",
     "pairs",
