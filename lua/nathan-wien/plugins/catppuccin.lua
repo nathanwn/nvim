@@ -1,7 +1,3 @@
-if not pcall(require, "catppuccin") then
-  return
-end
-
 local M = {}
 
 vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
@@ -37,7 +33,7 @@ local palette = {
   crust = "#cccccc",
 }
 
-local setup = function()
+local config = function()
   require("catppuccin").setup({
     integrations = {
       cmp = true,
@@ -105,6 +101,6 @@ local setup = function()
 end
 
 M.palette = palette
-M.setup = setup
+M.config = config
 
 return M

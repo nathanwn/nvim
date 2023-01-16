@@ -50,3 +50,7 @@ vim.opt.hidden = true
 vim.g.tex_flavor = "latex"
 -- Syntax-highlight lua in vimscript
 vim.g.vimsyn_embed = "l"
+-- Increases signcolumn width for gitsigns and diagnostics
+vim.opt.signcolumn = "auto:2"
+-- Global status bar
+vim.opt.laststatus = 3

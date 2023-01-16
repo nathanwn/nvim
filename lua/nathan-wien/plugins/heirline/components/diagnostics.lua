@@ -1,6 +1,28 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local palette = require("nathan-wien.themes.catppuccin").palette
+
+local padding = {
+  provider = function(self)
+    local empty = true
+    if self.errors and self.errors > 0 then
+      empty = false
+    end
+    if self.warnings and self.warnings > 0 then
+      empty = false
+    end
+    if self.hints and self.hints > 0 then
+      empty = false
+    end
+    if self.info and self.info > 0 then
+      empty = false
+    end
+    if empty then
+      return ""
+    else
+      return " "
+    end
+  end,
+}
 
 local diagnostics = {
   condition = conditions.has_diagnostics,
@@ -11,7 +33,7 @@ local diagnostics = {
     hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
   },
   hl = {
-    bg = palette.mantle,
+    bg = utils.get_highlight("StatusLine").bg,
   },
   init = function(self)
     self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
@@ -53,6 +75,7 @@ local diagnostics = {
       fg = utils.get_highlight("DiagnosticHint").fg,
     },
   },
+  padding,
 }
 
 return diagnostics

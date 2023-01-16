@@ -1,4 +1,4 @@
-local palette = require("nathan-wien.themes.catppuccin").palette
+local palette = require("nathan-wien.plugins.catppuccin").palette
 local conditions = require("heirline.conditions")
 
 local branch = {

@@ -1,5 +1,5 @@
 local conditions = require("heirline.conditions")
-local filename = require("nathan-wien.statusline.components.filename")
+local filename = require("nathan-wien.plugins.heirline.components.filename")
 
 return {
   -- The evaluation will stop at the first child that has no condition, or which condition evaluates to true

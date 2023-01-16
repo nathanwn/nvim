@@ -1,6 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local palette = require("nathan-wien.themes.catppuccin").palette
+local palette = require("nathan-wien.plugins.catppuccin").palette
 
 -- Hierarchy:
 -- filename_container

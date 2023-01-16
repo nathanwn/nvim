@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- Packer manages itself
-  { "wbthomason/packer.nvim" },
-
   -- UTILITIES
   -- Core plugins
   { "nvim-lua/popup.nvim" },
@@ -66,8 +63,16 @@ require("lazy").setup({
   { "dstein64/vim-startuptime" },
 
   -- THEMES
-  { "rebelot/heirline.nvim", dependencies = "catppuccin" },
-  { "catppuccin/nvim", name = "catppuccin" },
+  {
+    "rebelot/heirline.nvim",
+    dependencies = "catppuccin",
+    config = require("nathan-wien.plugins.heirline").config,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = require("nathan-wien.plugins.catppuccin").config,
+  },
   { "NLKNguyen/papercolor-theme" },
   -- FUZZY-FINDING
   {

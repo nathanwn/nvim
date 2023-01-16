@@ -1,5 +1,5 @@
 local silicon = require("silicon")
-local palette = require("nathan-wien.themes.catppuccin").palette
+local palette = require("nathan-wien.plugins.catppuccin").palette
 
 require("silicon").setup({
   bgColor = palette.base, -- can also use "#FCFBFA" for slides at work

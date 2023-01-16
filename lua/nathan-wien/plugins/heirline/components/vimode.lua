@@ -1,4 +1,4 @@
-local palette = require("nathan-wien.themes.catppuccin").palette
+local palette = require("nathan-wien.plugins.catppuccin").palette
 
 local mode_container = {
   -- get vim current mode, this information will be required by the provider

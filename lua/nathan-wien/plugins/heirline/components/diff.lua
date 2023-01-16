@@ -1,5 +1,6 @@
 local conditions = require("heirline.conditions")
-local palette = require("nathan-wien.themes.catppuccin").palette
+local utils = require("heirline.utils")
+local palette = require("nathan-wien.plugins.catppuccin").palette
 
 local padding = {
   provider = function(self)
@@ -29,7 +30,7 @@ return {
     self.changed = vim.b.gitsigns_status_dict.changed
   end,
   hl = {
-    bg = palette.mantle,
+    bg = utils.get_highlight("StatusLine").bg,
   },
   padding,
   {
