@@ -20,6 +20,7 @@ require("nvim-treesitter.configs").setup({
     -- "souffle", -- this has to be installed via :TSInstallFromGrammar due to outdated ABI version
     "tsx",
     "typescript",
+    "vim",
   },
   highlight = { enable = true },
   indent = { enable = false },
