@@ -17,7 +17,7 @@ local filename_container = {
 local filename_active = {
   condition = conditions.is_active,
   hl = {
-    fg = palette.text,
+    fg = palette.blue,
     bg = palette.surface0,
   },
 }
