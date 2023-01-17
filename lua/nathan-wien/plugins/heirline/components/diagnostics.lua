@@ -1,6 +1,10 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
+local get_sign = function(name)
+  return string.gsub(vim.fn.sign_getdefined(name)[1].text, "%s+", "")
+end
+
 local padding = {
   provider = function(self)
     local empty = true
@@ -27,10 +31,10 @@ local padding = {
 local diagnostics = {
   condition = conditions.has_diagnostics,
   static = {
-    error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-    warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-    info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-    hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+    error_icon = get_sign("DiagnosticSignError"),
+    warn_icon = get_sign("DiagnosticSignWarn"),
+    info_icon = get_sign("DiagnosticSignInfo"),
+    hint_icon = get_sign("DiagnosticSignHint"),
   },
   hl = {
     bg = utils.get_highlight("StatusLine").bg,
