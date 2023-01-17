@@ -78,6 +78,10 @@ local mode_container = {
         fg = "#FFFFFF",
         bg = palette.yellow,
       },
+      ["terminal"] = {
+        fg = "#FFFFFF",
+        bg = palette.yellow,
+      },
       ["inactive"] = {
         fg = "#FFFFFF",
         bg = palette.subtext0,
