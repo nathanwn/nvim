@@ -28,7 +28,10 @@ require("lazy").setup({
   -- Tmux
   { "christoomey/vim-tmux-navigator" },
   -- Harpoon
-  { "ThePrimeagen/harpoon" },
+  {
+    "ThePrimeagen/harpoon",
+    config = require("nathan-wien.plugins.harpoon").config,
+  },
   -- Undo
   { "mbbill/undotree" },
   -- Outline
