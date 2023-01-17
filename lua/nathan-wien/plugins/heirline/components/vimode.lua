@@ -1,3 +1,4 @@
+local conditions = require("nathan-wien.plugins.heirline.conditions")
 local palette = require("nathan-wien.plugins.catppuccin").palette
 
 local mode_container = {
@@ -96,7 +97,13 @@ local mode_container = {
   -- control the padding and make sure our string is always at least 2
   -- characters long. Plus a nice Icon.
   provider = function(self)
-    return " " .. self.modes[self.mode].name .. " "
+    local mode
+    if conditions.view_is_full() then
+      mode = self.modes[self.mode].name
+    else
+      mode = string.upper(string.sub(self.modes[self.mode].hlgroup, 1, 1))
+    end
+    return string.format(" %s ", mode)
   end,
   -- Same goes for the highlight. Now the foreground will change according to the current mode.
   hl = function(self)

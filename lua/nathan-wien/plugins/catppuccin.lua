@@ -1,7 +1,5 @@
 local M = {}
 
-vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
-
 local palette = {
   red = "#af0000",
   maroon = "#d70000",
@@ -34,6 +32,7 @@ local palette = {
 }
 
 local config = function()
+  vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
   require("catppuccin").setup({
     integrations = {
       cmp = true,
@@ -59,21 +58,6 @@ local config = function()
         Conceal = {
           fg = palette.red,
         },
-        DiagnosticInfo = {
-          fg = palette.sapphire,
-        },
-        DiagnosticHint = {
-          fg = palette.sapphire,
-        },
-        StatusLine = {
-          bg = "#dfdfdf",
-        },
-        NvimTreeNormal = {
-          bg = "#e8e8e8",
-        },
-        NvimTreeExecFile = {
-          fg = palette.pink,
-        },
         DapUIPlayPause = {
           fg = palette.green,
         },
@@ -91,6 +75,12 @@ local config = function()
         },
         DapUIStepOver = {
           fg = palette.blue,
+        },
+        NvimTreeNormal = {
+          bg = "#e8e8e8",
+        },
+        NvimTreeExecFile = {
+          fg = palette.pink,
         },
       },
     },

@@ -30,6 +30,7 @@ require("lazy").setup({
   -- Harpoon
   {
     "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = require("nathan-wien.plugins.harpoon").config,
   },
   -- Undo
@@ -68,7 +69,10 @@ require("lazy").setup({
   -- THEMES
   {
     "rebelot/heirline.nvim",
-    dependencies = "catppuccin",
+    dependencies = {
+      "catppuccin",
+      "SmiteshP/nvim-navic",
+    },
     config = require("nathan-wien.plugins.heirline").config,
   },
   {
@@ -106,7 +110,10 @@ require("lazy").setup({
   -- UI
   { "folke/lsp-colors.nvim" },
   { "j-hui/fidget.nvim" },
-  { "SmiteshP/nvim-navic" },
+  {
+    "SmiteshP/nvim-navic",
+    config = require("nathan-wien.plugins.navic").config,
+  },
   -- Java
   { "mfussenegger/nvim-jdtls" },
   -- Rust

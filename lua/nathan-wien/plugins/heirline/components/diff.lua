@@ -1,4 +1,8 @@
-local conditions = require("heirline.conditions")
+local conditions = vim.tbl_extend(
+  "force",
+  require("heirline.conditions"),
+  require("nathan-wien.plugins.heirline.conditions")
+)
 local utils = require("heirline.utils")
 local palette = require("nathan-wien.plugins.catppuccin").palette
 
@@ -23,7 +27,9 @@ local padding = {
 }
 
 return {
-  condition = conditions.is_git_repo,
+  condition = function()
+    return conditions.view_is_full() and conditions.is_git_repo()
+  end,
   init = function(self)
     self.added = vim.b.gitsigns_status_dict.added
     self.removed = vim.b.gitsigns_status_dict.removed

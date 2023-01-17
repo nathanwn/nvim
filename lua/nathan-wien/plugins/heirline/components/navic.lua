@@ -1,9 +1,13 @@
+local navic = require("nvim-navic")
+local conditions = require("nathan-wien.plugins.heirline.conditions")
 local utils = require("heirline.utils")
 
 return {
-  condition = require("nvim-navic").is_available,
+  condition = function()
+    return conditions.view_is_full() and navic.is_available()
+  end,
   provider = function()
-    local status = require("nvim-navic").get_location({ highlight = true })
+    local status = navic.get_location({ highlight = true })
     if string.len(status) > 0 then
       return string.format(" %s ", status)
     else
