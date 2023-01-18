@@ -11,6 +11,7 @@ require("nvim-treesitter.configs").setup({
     "hcl",
     "help",
     "lua",
+    "markdown",
     "nix",
     "python",
     "query", -- this is required for query in TSPlayground to work
