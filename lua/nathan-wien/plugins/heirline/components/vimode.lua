@@ -1,5 +1,5 @@
 local conditions = require("nathan-wien.plugins.heirline.conditions")
-local palette = require("nathan-wien.plugins.catppuccin").palette
+local utils = require("heirline.utils")
 
 local mode_container = {
   -- get vim current mode, this information will be required by the provider
@@ -23,70 +23,40 @@ local mode_container = {
   -- them at initialisation time.
   static = {
     modes = {
-      ["n"] = { name = "NORMAL", hlgroup = "normal" },
-      ["no"] = { name = "OP", hlgroup = "normal" },
-      ["nov"] = { name = "OP", hlgroup = "normal" },
-      ["noV"] = { name = "OP", hlgroup = "normal" },
-      ["no"] = { name = "OP", hlgroup = "normal" },
-      ["niI"] = { name = "NORMAL", hlgroup = "normal" },
-      ["niR"] = { name = "NORMAL", hlgroup = "normal" },
-      ["niV"] = { name = "NORMAL", hlgroup = "normal" },
-      ["i"] = { name = "INSERT", hlgroup = "insert" },
-      ["ic"] = { name = "INSERT", hlgroup = "insert" },
-      ["ix"] = { name = "INSERT", hlgroup = "insert" },
-      ["t"] = { name = "TERM", hlgroup = "terminal" },
-      ["nt"] = { name = "TERM", hlgroup = "terminal" },
-      ["v"] = { name = "VISUAL", hlgroup = "visual" },
-      ["vs"] = { name = "VISUAL", hlgroup = "visual" },
-      ["V"] = { name = "V-LINE", hlgroup = "visual" },
-      ["Vs"] = { name = "V-LINE", hlgroup = "visual" },
-      ["\22"] = { name = "V-BLOCK", hlgroup = "visual" },
-      ["\22s"] = { name = "V-BLOCK", hlgroup = "visual" },
-      ["R"] = { name = "REPLACE", hlgroup = "replace" },
-      ["Rc"] = { name = "REPLACE", hlgroup = "replace" },
-      ["Rx"] = { name = "REPLACE", hlgroup = "replace" },
-      ["Rv"] = { name = "V-REPLACE", hlgroup = "replace" },
-      ["s"] = { name = "SELECT", hlgroup = "visual" },
-      ["S"] = { name = "SELECT", hlgroup = "visual" },
-      [""] = { name = "BLOCK", hlgroup = "visual" },
-      ["c"] = { name = "COMMAND", hlgroup = "command" },
-      ["cv"] = { name = "COMMAND", hlgroup = "command" },
-      ["ce"] = { name = "COMMAND", hlgroup = "command" },
-      ["r"] = { name = "PROMPT", hlgroup = "inactive" },
-      ["rm"] = { name = "MORE", hlgroup = "inactive" },
-      ["r?"] = { name = "CONFIRM", hlgroup = "inactive" },
-      ["!"] = { name = "SHELL", hlgroup = "inactive" },
-      ["null"] = { name = "null", hlgroup = "inactive" },
-    },
-    colors = {
-      ["normal"] = {
-        fg = "#FFFFFF",
-        bg = palette.blue,
-      },
-      ["insert"] = {
-        fg = palette.blue,
-        bg = "#FFFFFF",
-      },
-      ["visual"] = {
-        fg = "#FFFFFF",
-        bg = palette.sapphire,
-      },
-      ["replace"] = {
-        fg = "#FFFFFF",
-        bg = palette.sky,
-      },
-      ["command"] = {
-        fg = "#FFFFFF",
-        bg = palette.yellow,
-      },
-      ["terminal"] = {
-        fg = "#FFFFFF",
-        bg = palette.yellow,
-      },
-      ["inactive"] = {
-        fg = "#FFFFFF",
-        bg = palette.subtext0,
-      },
+      ["n"] = { name = "NORMAL", hlgroup = "HeirlineViModeNormal" },
+      ["no"] = { name = "OP", hlgroup = "HeirlineViModeNormal" },
+      ["nov"] = { name = "OP", hlgroup = "HeirlineViModeNormal" },
+      ["noV"] = { name = "OP", hlgroup = "HeirlineViModeNormal" },
+      ["no"] = { name = "OP", hlgroup = "HeirlineViModeNormal" },
+      ["niI"] = { name = "NORMAL", hlgroup = "HeirlineViModeNormal" },
+      ["niR"] = { name = "NORMAL", hlgroup = "HeirlineViModeNormal" },
+      ["niV"] = { name = "NORMAL", hlgroup = "HeirlineViModeNormal" },
+      ["i"] = { name = "INSERT", hlgroup = "HeirlineViModeInsert" },
+      ["ic"] = { name = "INSERT", hlgroup = "HeirlineViModeInsert" },
+      ["ix"] = { name = "INSERT", hlgroup = "HeirlineViModeInsert" },
+      ["t"] = { name = "TERM", hlgroup = "HeirlineViModeTerminal" },
+      ["nt"] = { name = "TERM", hlgroup = "HeirlineViModeTerminal" },
+      ["v"] = { name = "VISUAL", hlgroup = "HeirlineViModeVisual" },
+      ["vs"] = { name = "VISUAL", hlgroup = "HeirlineViModeVisual" },
+      ["V"] = { name = "V-LINE", hlgroup = "HeirlineViModeVisual" },
+      ["Vs"] = { name = "V-LINE", hlgroup = "HeirlineViModeVisual" },
+      ["\22"] = { name = "V-BLOCK", hlgroup = "HeirlineViModeVisual" },
+      ["\22s"] = { name = "V-BLOCK", hlgroup = "HeirlineViModeVisual" },
+      ["R"] = { name = "REPLACE", hlgroup = "HeirlineViModeReplace" },
+      ["Rc"] = { name = "REPLACE", hlgroup = "HeirlineViModeReplace" },
+      ["Rx"] = { name = "REPLACE", hlgroup = "HeirlineViModeReplace" },
+      ["Rv"] = { name = "V-REPLACE", hlgroup = "HeirlineViModeReplace" },
+      ["s"] = { name = "SELECT", hlgroup = "HeirlineViModeVisual" },
+      ["S"] = { name = "SELECT", hlgroup = "HeirlineViModeVisual" },
+      [""] = { name = "BLOCK", hlgroup = "HeirlineViModeVisual" },
+      ["c"] = { name = "COMMAND", hlgroup = "HeirlineViModeCommand" },
+      ["cv"] = { name = "COMMAND", hlgroup = "HeirlineViModeCommand" },
+      ["ce"] = { name = "COMMAND", hlgroup = "HeirlineViModeCommand" },
+      ["r"] = { name = "PROMPT", hlgroup = "HeirlineViModeInactive" },
+      ["rm"] = { name = "MORE", hlgroup = "HeirlineViModeInactive" },
+      ["r?"] = { name = "CONFIRM", hlgroup = "HeirlineViModeInactive" },
+      ["!"] = { name = "SHELL", hlgroup = "HeirlineViModeInactive" },
+      ["null"] = { name = "null", hlgroup = "HeirlineViModeInactive" },
     },
   },
   -- We can now access the value of mode() that, by now, would have been
@@ -107,9 +77,10 @@ local mode_container = {
   end,
   -- Same goes for the highlight. Now the foreground will change according to the current mode.
   hl = function(self)
+    local hlgroup = self.modes[self.mode].hlgroup
     return {
-      fg = self.colors[self.modes[self.mode].hlgroup].fg,
-      bg = self.colors[self.modes[self.mode].hlgroup].bg,
+      fg = utils.get_highlight(hlgroup).fg,
+      bg = utils.get_highlight(hlgroup).bg,
       bold = true,
     }
   end,

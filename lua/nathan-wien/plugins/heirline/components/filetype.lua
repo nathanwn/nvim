@@ -1,4 +1,4 @@
-local palette = require("nathan-wien.plugins.catppuccin").palette
+local utils = require("heirline.utils")
 
 return {
   provider = function()
@@ -9,8 +9,8 @@ return {
     end
   end,
   hl = {
-    fg = "#FFFFFF",
-    bg = palette.mauve,
+    fg = utils.get_highlight("HeirlineFiletype").fg,
+    bg = utils.get_highlight("HeirlineFiletype").bg,
     bold = true,
   },
 }

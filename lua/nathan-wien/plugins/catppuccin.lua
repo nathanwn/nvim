@@ -76,8 +76,60 @@ local config = function()
         DapUIStepOver = {
           fg = palette.blue,
         },
+        HeirlineBranch = {
+          fg = palette.base,
+          bg = palette.mauve,
+        },
+        HeirlineFilenameActive = {
+          fg = palette.blue,
+          bg = palette.surface0,
+        },
+        HeirlineFilenameInactive = {
+          fg = palette.overlay2,
+          bg = palette.surface0,
+        },
+        HeirlineFiletype = {
+          fg = palette.base,
+          bg = palette.mauve,
+        },
+        HeirlineLocation = {
+          fg = palette.base,
+          bg = palette.blue,
+        },
+        HeirlineLsp = {
+          fg = palette.base,
+          bg = palette.lavender,
+        },
+        HeirlineViModeNormal = {
+          fg = palette.base,
+          bg = palette.blue,
+        },
+        HeirlineViModeInsert = {
+          fg = palette.blue,
+          bg = palette.base,
+        },
+        HeirlineViModeVisual = {
+          fg = palette.base,
+          bg = palette.sapphire,
+        },
+        HeirlineViModeReplace = {
+          fg = palette.base,
+          bg = palette.sky,
+        },
+        HeirlineViModeCommand = {
+          fg = palette.base,
+          bg = palette.yellow,
+        },
+        HeirlineViModeTerminal = {
+          fg = palette.base,
+          bg = palette.yellow,
+        },
+        HeirlineViModeInactive = {
+          fg = palette.base,
+          bg = palette.subtext0,
+        },
         NvimTreeNormal = {
-          bg = "#e8e8e8",
+          bg = palette.mantle,
         },
         NvimTreeExecFile = {
           fg = palette.pink,

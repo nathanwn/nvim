@@ -1,6 +1,5 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local palette = require("nathan-wien.plugins.catppuccin").palette
 
 -- Hierarchy:
 -- filename_container
@@ -17,16 +16,16 @@ local filename_container = {
 local filename_active = {
   condition = conditions.is_active,
   hl = {
-    fg = palette.blue,
-    bg = palette.surface0,
+    fg = utils.get_highlight("HeirlineFilenameActive").fg,
+    bg = utils.get_highlight("HeirlineFilenameActive").bg,
   },
 }
 
 local filename_inactive = {
   condition = conditions.is_not_active,
   hl = {
-    fg = palette.overlay2,
-    bg = palette.surface0,
+    fg = utils.get_highlight("HeirlineFilenameInactive").fg,
+    bg = utils.get_highlight("HeirlineFilenameInactive").bg,
   },
 }
 

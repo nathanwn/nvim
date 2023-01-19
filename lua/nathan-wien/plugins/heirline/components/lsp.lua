@@ -1,5 +1,5 @@
-local palette = require("nathan-wien.plugins.catppuccin").palette
 local conditions = require("heirline.conditions")
+local utils = require("heirline.utils")
 
 local lsp_container = {
   condition = conditions.lsp_attached,
@@ -19,8 +19,8 @@ local lsp_container = {
     return string.format(" %s ", table.concat(client_names, " "))
   end,
   hl = {
-    fg = "#FFFFFF",
-    bg = palette.lavender,
+    fg = utils.get_highlight("HeirlineLsp").fg,
+    bg = utils.get_highlight("HeirlineLsp").bg,
   },
 }
 

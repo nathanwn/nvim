@@ -4,7 +4,6 @@ local conditions = vim.tbl_extend(
   require("nathan-wien.plugins.heirline.conditions")
 )
 local utils = require("heirline.utils")
-local palette = require("nathan-wien.plugins.catppuccin").palette
 
 local padding = {
   provider = function(self)
@@ -45,7 +44,7 @@ return {
       return count > 0 and (string.format("+%d", count))
     end,
     hl = {
-      fg = palette.green,
+      fg = utils.get_highlight("GitSignsAdd").fg,
     },
   },
   {
@@ -53,14 +52,18 @@ return {
       local count = self.removed or 0
       return count > 0 and (string.format("-%d", count))
     end,
-    hl = { fg = palette.red },
+    hl = {
+      fg = utils.get_highlight("GitSignsDelete").fg,
+    },
   },
   {
     provider = function(self)
       local count = self.changed or 0
       return count > 0 and (string.format("~%d", count))
     end,
-    hl = { fg = palette.yellow },
+    hl = {
+      fg = utils.get_highlight("GitSignsChange").fg,
+    },
   },
   padding,
 }

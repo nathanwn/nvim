@@ -1,9 +1,9 @@
-local palette = require("nathan-wien.plugins.catppuccin").palette
+local utils = require("heirline.utils")
 
 return {
   provider = " %l:%c ",
   hl = {
-    fg = "#FFFFFF",
-    bg = palette.blue,
+    fg = utils.get_highlight("HeirlineLocation").fg,
+    bg = utils.get_highlight("HeirlineLocation").bg,
   },
 }

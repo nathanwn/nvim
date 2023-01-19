@@ -1,4 +1,4 @@
-local palette = require("nathan-wien.plugins.catppuccin").palette
+local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
 
 local branch = {
@@ -9,7 +9,11 @@ local branch = {
   provider = function(self)
     return string.format(" %s ", self.branch)
   end,
-  hl = { fg = "#FFFFFF", bg = palette.mauve, bold = true },
+  hl = {
+    fg = utils.get_highlight("HeirlineBranch").fg,
+    bg = utils.get_highlight("HeirlineBranch").bg,
+    bold = true,
+  },
 }
 
 return branch
