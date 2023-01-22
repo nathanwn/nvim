@@ -67,11 +67,9 @@ local mode_container = {
   -- control the padding and make sure our string is always at least 2
   -- characters long. Plus a nice Icon.
   provider = function(self)
-    local mode
-    if conditions.view_is_full() then
-      mode = self.modes[self.mode].name
-    else
-      mode = string.upper(string.sub(self.modes[self.mode].hlgroup, 1, 1))
+    local mode = self.modes[self.mode].name
+    if not conditions.view_is_full() then
+      mode = string.upper(string.sub(mode, 1, 1))
     end
     return string.format(" %s ", mode)
   end,
