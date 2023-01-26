@@ -128,6 +128,10 @@ local config = function()
           fg = palette.base,
           bg = palette.subtext0,
         },
+        LspInlayHint = {
+          fg = "#a0a0a0",
+          bg = "#e8e8e8",
+        },
         NvimTreeNormal = {
           bg = palette.mantle,
         },

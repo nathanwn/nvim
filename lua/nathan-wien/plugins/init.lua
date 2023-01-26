@@ -114,6 +114,10 @@ require("lazy").setup({
     "SmiteshP/nvim-navic",
     config = require("nathan-wien.plugins.navic").config,
   },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    config = require("nathan-wien.plugins.lsp-inlayhints").config,
+  },
   -- Java
   { "mfussenegger/nvim-jdtls" },
   -- Rust
