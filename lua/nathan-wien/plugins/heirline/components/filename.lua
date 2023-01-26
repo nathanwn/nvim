@@ -33,20 +33,23 @@ local filename = {
   provider = function(self)
     -- Trim the pattern relative to the current directory.
     -- See :h filename-modifiers for more options.
-    local filename = vim.fn.fnamemodify(self.filename, ":.")
+    local filename = self.filename
+
     if filename == "" then
       return "[No Name]"
     end
 
-    -- If the filename occupies more than 40% of the available
+    filename = vim.fn.fnamemodify(filename, ":~:.")
+
+    -- If the filename occupies more than 70% of the available
     -- space, we trim the file path to its initials.
     -- See "Flexible Components" dynamic truncation.
-    if not conditions.width_percent_below(#filename, 0.4) then
+    if not conditions.width_percent_below(#filename, 0.7) then
       filename = vim.fn.pathshorten(filename)
     end
 
     -- A bit of padding.
-    filename = " " .. filename .. " "
+    filename = string.format(" %s ", filename)
 
     return filename
   end,
