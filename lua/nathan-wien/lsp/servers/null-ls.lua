@@ -70,10 +70,7 @@ return {
 
     -- YAML
     null_ls.builtins.diagnostics.yamllint.with({
-      condition = function(utils)
-        -- https://yamllint.readthedocs.io/en/stable/configuration.html
-        return utils.root_has_file({ ".yamllint", ".yamllint.yaml", ".yamllint.yml" })
-      end,
+      filetypes = { "yaml.ansible" },
     }),
     -- Spelling?
     -- builtins.completion.spell,

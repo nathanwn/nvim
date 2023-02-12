@@ -2,6 +2,7 @@ std = {
   globals = {
     "assert",
     "ipairs",
+    "io",
     "next",
     "pairs",
     "pcall",
