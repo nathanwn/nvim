@@ -79,6 +79,7 @@ require("lazy").setup({
     "catppuccin/nvim",
     name = "catppuccin",
     config = require("nathan-wien.plugins.catppuccin").config,
+    version = "v1.0.0",
   },
   { "NLKNguyen/papercolor-theme" },
   -- FUZZY-FINDING
