@@ -1,6 +1,4 @@
-local M = {}
-
-M.config = function()
+local config = function()
   require("nvim-navic").setup({
     -- Disable all icons because I don't like them
     icons = {
@@ -34,4 +32,7 @@ M.config = function()
   })
 end
 
-return M
+return {
+  "SmiteshP/nvim-navic",
+  config = config,
+}

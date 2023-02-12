@@ -1,0 +1,28 @@
+return {
+  red = "#af0000",
+  maroon = "#d70000",
+  green = "#008700",
+  pink = "#d70087",
+  mauve = "#8700af",
+  blue = "#005faf",
+  yellow = "#806000",
+  sky = "#0087af",
+  teal = "#005f87",
+  peach = "#772C29",
+  rosewater = "#d04a00",
+  flamingo = "#8700d7",
+  sapphire = "#09735c", -- default
+  lavender = "#5566C0", -- default
+  text = "#444444",
+  subtext1 = "#555555",
+  subtext0 = "#666666",
+  overlay2 = "#777777",
+  overlay1 = "#888888",
+  overlay0 = "#999999",
+  surface2 = "#aaaaaa",
+  surface1 = "#bbbbbb",
+  surface0 = "#cccccc",
+  base = "#eeeeee",
+  mantle = "#dddddd",
+  crust = "#cccccc",
+}

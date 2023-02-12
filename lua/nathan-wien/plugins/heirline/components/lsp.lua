@@ -13,7 +13,7 @@ local lsp_container = {
     end
     vim.list_extend(
       client_names,
-      require("nathan-wien.lsp.data.null-ls").active_sources(vim.bo.filetype)
+      require("nathan-wien.plugins.lsp.data.null-ls").active_sources(vim.bo.filetype)
     )
     client_names = vim.fn.uniq(client_names)
     return string.format(" %s ", table.concat(client_names, " "))

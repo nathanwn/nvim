@@ -1,6 +1,4 @@
-local M = {}
-
-M.config = function()
+local config = function()
   vim.api.nvim_create_autocmd("User", {
     pattern = "HeirlineInitWinbar",
     callback = function(args)
@@ -23,4 +21,11 @@ M.config = function()
   })
 end
 
-return M
+return {
+  "rebelot/heirline.nvim",
+  dependencies = {
+    "catppuccin",
+    "SmiteshP/nvim-navic",
+  },
+  config = config,
+}
