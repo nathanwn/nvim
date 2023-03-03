@@ -1,6 +1,6 @@
 local files_util = require("nathan-wien.utils.files")
 
-local handle_yaml = function(_path, bufnr)
+local handle_yaml = function(_, bufnr)
   if files_util.file_exists("inventory") then
     local file_contents = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
     for _, line in ipairs(file_contents) do
@@ -16,6 +16,7 @@ vim.filetype.add({
   extension = {
     facts = "soufflefacts",
     dl = "souffle",
+    i3config = "i3config",
     souffle = "souffle",
     tex = "tex",
     tf = "terraform",
