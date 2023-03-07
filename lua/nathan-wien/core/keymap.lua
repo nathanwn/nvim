@@ -51,3 +51,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste over a selection without losing the paste register
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- Toggle relative line number
+vim.keymap.set("n", "<leader><leader>r", function()
+  if vim.opt.relativenumber._value == true then
+    vim.opt.relativenumber = false
+  else
+    vim.opt.relativenumber = true
+  end
+end)
