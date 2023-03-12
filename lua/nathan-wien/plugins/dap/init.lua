@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    version = "0.5.0",
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -11,7 +12,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    version = "v2.6.0",
+    version = "v3.8.0",
   },
   {
     "nvim-telescope/telescope-dap.nvim",
@@ -59,7 +60,7 @@ return {
     config = function()
       require("dap-go").setup()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = "python",
+        pattern = "go",
         callback = vim.schedule_wrap(function()
           vim.keymap.set("n", "<Leader>dt", function()
             require("dap-go").debug_test()

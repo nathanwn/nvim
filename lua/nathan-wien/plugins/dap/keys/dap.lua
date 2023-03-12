@@ -7,7 +7,7 @@ return {
     desc = "toggle breakpoint",
   },
   {
-    "<Leader>dc",
+    "<Leader>dB",
     function()
       vim.ui.input({ prompt = "Breakpoint condition: " }, function(condition)
         require("dap").set_breakpoint(condition)
@@ -16,32 +16,39 @@ return {
     desc = "toggle conditional breakpoint",
   },
   {
-    "<Leader>dg",
+    "<Leader>dc",
     function()
       require("dap").continue()
     end,
     desc = "continue",
   },
   {
-    "<Leader>dj",
+    "<Leader>df",
+    function()
+      require("dap").step_back()
+    end,
+    desc = "step back (reverse step)",
+  },
+  {
+    "<Leader>dd",
     function()
       require("dap").step_into()
     end,
-    desc = "step into",
+    desc = "step into (down)",
   },
   {
-    "<Leader>dk",
+    "<Leader>du",
     function()
       require("dap").step_out()
     end,
-    desc = "step out",
+    desc = "step out (up)",
   },
   {
-    "<Leader>dl",
+    "<Leader>ds",
     function()
-      require("dap").step_into()
+      require("dap").step_over()
     end,
-    desc = "step over",
+    desc = "step over (step)",
   },
   {
     "<Leader>dr",
@@ -58,10 +65,10 @@ return {
     desc = "ui eval",
   },
   {
-    "<Leader>dq",
+    "<Leader>dv",
     function()
-      require("dapui").close()
+      require("dapui").toggle()
     end,
-    desc = "ui close",
+    desc = "ui toggle",
   },
 }

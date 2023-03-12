@@ -3,6 +3,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "folke/neodev.nvim",
       "nvim-telescope/telescope.nvim",
     },
     config = require("nathan-wien.plugins.lsp.config"),

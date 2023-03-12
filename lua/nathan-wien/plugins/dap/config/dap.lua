@@ -5,10 +5,46 @@ return function()
   require("dap.ext.vscode").load_launchjs()
 
   -- Set-up dap-ui
-  local dap_ui = require("dapui")
+  require("dapui").setup({
+    layouts = {
+      {
+        elements = {
+          -- { id = "scopes", },
+          {
+            id = "breakpoints",
+            size = 0.20,
+          },
+          {
+            id = "stacks",
+            size = 0.40,
+          },
+          {
+            id = "watches",
+            size = 0.40,
+          },
+        },
+        position = "right",
+        size = 0.32,
+      },
+      {
+        elements = {
+          {
+            id = "repl",
+            size = 0.5,
+          },
+          {
+            id = "console",
+            size = 0.5,
+          },
+        },
+        position = "bottom",
+        size = 12,
+      },
+    },
+  })
 
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    dap_ui.open({})
+    require("dapui").open()
   end
   -- dap.listeners.before.event_terminated["dapui_config"] = function()
   --   dap_ui.close()
@@ -16,27 +52,4 @@ return function()
   -- dap.listeners.before.event_exited["dapui_config"] = function()
   --   dap_ui.close()
   -- end
-
-  require("dapui").setup({
-    {
-      elements = {
-        "watches",
-        "console",
-        "repl",
-      },
-      size = 0.5,
-      position = "right",
-    },
-    {
-      elements = {
-        -- Elements can be strings or table with id and size keys.
-        -- { id = "scopes", size = 0.25 },
-        "scopes",
-        "breakpoints",
-        "stacks",
-      },
-      size = 10, -- 0.0..1.0 for percentage, 1..100 for num rows/columns
-      position = "bottom",
-    },
-  })
 end
