@@ -58,7 +58,26 @@ return {
     dependencies = { "mfussenegger/nvim-dap" },
     ft = "go",
     config = function()
-      require("dap-go").setup()
+      require("dap-go").setup({
+        dap_configurations = {
+          {
+            type = "go",
+            name = "Remote (port 2345)",
+            mode = "remote",
+            request = "attach",
+          },
+        },
+        delve = {
+          -- time to wait for delve to initialize the debug session.
+          -- default to 20 seconds
+          initialize_timeout_sec = 20,
+          -- a string that defines the port to start delve debugger.
+          -- default to string "${port}" which instructs nvim-dap
+          -- to start the process in a random available port
+          -- port = "${port}"
+          port = "2345",
+        },
+      })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "go",
         callback = vim.schedule_wrap(function()
