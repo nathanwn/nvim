@@ -22,7 +22,7 @@ return function()
       -- "souffle", -- this has to be installed via :TSInstallFromGrammar due to outdated ABI version
       "tsx",
       "typescript",
-      "vim",
+      "vimdoc",
     },
     highlight = { enable = true },
     indent = { enable = false },
