@@ -16,7 +16,7 @@ local should_attach = function(bufnr)
 
   local disabled = {
     filetypes = {
-      -- "cpp",
+      -- Example: "cpp"
     },
     filenames = {
       "grammar.js", -- treesitter
@@ -35,9 +35,6 @@ end
 
 return {
   sources = {
-    -- Cpp
-    null_ls.builtins.formatting.clang_format,
-
     -- Go
     -- null_ls.builtins.diagnostics.golangci_lint,
 
@@ -63,6 +60,10 @@ return {
     null_ls.builtins.formatting.isort,
     null_ls.builtins.diagnostics.flake8,
     null_ls.builtins.diagnostics.mypy,
+    -- null_ls.builtins.diagnostics.mypy.with({
+    --   command = "pipenv",
+    --   args = { "run", "mypy" },
+    -- }),
     null_ls.builtins.diagnostics.pylint,
 
     -- XML
