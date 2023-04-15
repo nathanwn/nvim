@@ -89,6 +89,11 @@ return {
         require("nathan-wien.plugins.telescope.handlers").resume,
         "Resume",
       },
+      {
+        "<Leader>fa",
+        require("nathan-wien.plugins.telescope.handlers").builtin,
+        "Resume",
+      },
     },
   },
   {

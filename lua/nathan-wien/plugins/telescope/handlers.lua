@@ -23,4 +23,7 @@ return {
   end,
   -- worktrees = telescope.extensions.git_worktree.git_worktrees,
   resume = telescope_builtin.resume,
+  builtin = function()
+    telescope_builtin.builtin()
+  end,
 }
