@@ -4,6 +4,7 @@ std = {
     "ipairs",
     "io",
     "next",
+    "os",
     "pairs",
     "pcall",
     "print",

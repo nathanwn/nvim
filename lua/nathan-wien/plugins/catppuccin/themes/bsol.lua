@@ -1,37 +1,44 @@
 local M = {}
 
 M.palette = {
-  red = "#FF0000",
-  maroon = "#FF0000",
-  green = "#FFAA00",
-  pink = "#FFAACC",
-  mauve = "#00CC00",
-  blue = "#55FFFF",
-  yellow = "#FFFFFF",
-  sky = "#FFFF55",
-  teal = "#00CC00",
-  peach = "#FFFFFF",
-  rosewater = "#FFFF55",
-  flamingo = "#FF99FF",
+  red = "#FF0000", -- don't change
+  maroon = "#CC0000", -- don't change
+  green = "#00CC00", -- don't change
+  pink = "#FFAAFF",
+  mauve = "#00FFFF",
+  blue = "#FFFF55", -- don't change
+  yellow = "#FFFF55",
+  sky = "#FFFFFF",
+  teal = "#00A0A0",
+  peach = "#FFAA00",
+  rosewater = "#FFFFFF",
+  flamingo = "#FFFFFF",
   sapphire = "#FFAA00",
-  lavender = "#FF99FF",
+  lavender = "#FFAAFF",
   text = "#FFFFFF",
   subtext1 = "#DDDDDD",
   subtext0 = "#BBBBBB",
-  overlay2 = "#00D0D0",
-  overlay1 = "#00C0C0",
-  overlay0 = "#00B0B0",
+  overlay2 = "#CCCCCC",
+  overlay1 = "#BBBBBB",
+  overlay0 = "#AAAAAA",
   surface2 = "#00A0A0",
   surface1 = "#009090",
   surface0 = "#008080",
-  base = "#000078",
-  mantle = "#004080",
-  crust = "#0060A0",
+  -- overlay2 = "#CCCCCC",
+  -- overlay1 = "#BBBBBB",
+  -- overlay0 = "#AAAAAA",
+  -- surface2 = "#999999",
+  -- surface1 = "#888888",
+  -- surface0 = "#777777",
+  base = "#000080",
+  mantle = "#007080",
+  crust = "#0080A0",
 }
+
 M.override = {
-  Comment = {
-    fg = M.palette.overlay1,
-  },
+  -- Comment = {
+  --   fg = M.palette.overlay1,
+  -- },
   Conceal = {
     fg = M.palette.red,
   },
@@ -53,12 +60,6 @@ M.override = {
   DapUIStepOver = {
     fg = M.palette.blue,
   },
-  GitSignsAdd = {
-    fg = M.palette.teal,
-  },
-  GitSignsChange = {
-    fg = M.palette.sky,
-  },
   HeirlineBranch = {
     fg = M.palette.base,
     bg = M.palette.overlay2,
@@ -68,7 +69,7 @@ M.override = {
     bg = M.palette.surface0,
   },
   HeirlineFilenameInactive = {
-    fg = M.palette.overlay2,
+    fg = M.palette.overlay1,
     bg = M.palette.surface0,
   },
   HeirlineFiletype = {
@@ -77,7 +78,7 @@ M.override = {
   },
   HeirlineLocation = {
     fg = M.palette.base,
-    bg = M.palette.blue,
+    bg = M.palette.overlay0,
   },
   HeirlineLsp = {
     fg = M.palette.base,
@@ -85,10 +86,10 @@ M.override = {
   },
   HeirlineViModeNormal = {
     fg = M.palette.base,
-    bg = M.palette.blue,
+    bg = M.palette.overlay0,
   },
   HeirlineViModeInsert = {
-    fg = M.palette.blue,
+    fg = M.palette.overlay0,
     bg = M.palette.base,
   },
   HeirlineViModeVisual = {
@@ -110,6 +111,9 @@ M.override = {
   HeirlineViModeInactive = {
     fg = M.palette.base,
     bg = M.palette.subtext0,
+  },
+  FidgetTitle = {
+    fg = M.palette.surface2,
   },
   LspInlayHint = {
     fg = "#e8e8e8",

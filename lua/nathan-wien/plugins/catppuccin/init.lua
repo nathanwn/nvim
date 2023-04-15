@@ -1,4 +1,7 @@
-local theme = require("nathan-wien.plugins.catppuccin.themes.bsol")
+local theme_name = os.getenv("GLOBAL_THEME") or "bsol"
+
+local theme =
+  require(string.format("nathan-wien.plugins.catppuccin.themes.%s", theme_name))
 
 local config = function()
   vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
