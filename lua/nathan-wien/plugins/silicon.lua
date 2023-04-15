@@ -5,7 +5,7 @@ return {
     "catppuccin/nvim",
   },
   config = function()
-    local palette = require("nathan-wien.plugins.catppuccin.palette")
+    local palette = require("nathan-wien.plugins.catppuccin.palette.bsol")
 
     require("silicon").setup({
       bgColor = palette.base, -- can also use "#FCFBFA" for slides at work
