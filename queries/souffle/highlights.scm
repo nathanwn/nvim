@@ -1,81 +1,93 @@
-; relation name
+; relation
 (relation_decl
-  (relation_list
-    (IDENT) @function
+  (identifier) @function
+  (attribute
+    (attribute_name) @parameter
+    (type_name) @type
   )
 )
 
 ; rules
-(rule_def
-  (head
-    (atom
-      (identifier
-        (IDENT) @macro
-      )
-    )
+(rule
+  (atom
+    (qualified_name) @function
+    (argument) @parameter
   )
-)
-(conjunction
-  (term
-    (atom
-      (identifier
-        (IDENT) @function
+  (disjunction
+    (conjunction
+      (atom
+        (qualified_name) @function.call
       )
     )
   )
 )
 
 ; directives
-(io_directive_list
-  (io_relation_list
-    (identifier
-      (IDENT) @function
-    )
-  )
-)
-(io_directive_list
-  (non_empty_key_value_pairs
-    (IDENT) @variable.builtin
-  )
-)
-(io_directive_list
-  (non_empty_key_value_pairs
-    (non_empty_key_value_pairs
-      (IDENT) @variable.builtin
-    )
-  )
-)
-(io_directive_list
-  (non_empty_key_value_pairs
-    (non_empty_key_value_pairs
-      (kvp_value
-        (IDENT) @constant (#any-of? @constant "file" "stdin" "sqlite")
-      )
-    )
+; (io_directive_list
+;   (io_relation_list
+;     (identifier
+;       (IDENT) @function
+;     )
+;   )
+; )
+; (io_directive_list
+;   (non_empty_key_value_pairs
+;     (IDENT) @variable.builtin
+;   )
+; )
+; (io_directive_list
+;   (non_empty_key_value_pairs
+;     (non_empty_key_value_pairs
+;       (IDENT) @variable.builtin
+;     )
+;   )
+; )
+; (io_directive_list
+;   (non_empty_key_value_pairs
+;     (non_empty_key_value_pairs
+;       (kvp_value
+;         (IDENT) @constant (#any-of? @constant "file" "stdin" "sqlite")
+;       )
+;     )
+;   )
+; )
+;
+; ; types
+; (type
+;   (IDENT) @type
+; )
+;
+; (non_empty_attributes
+;   (identifier
+;     (IDENT) @type
+;   )
+; )
+;
+; directive qualifiers
+(directive
+  (directive_qualifier) @keyword
+  (#any-of? @keyword
+           ".input"
+           ".output"
+           ".include"
+           ".type"
   )
 )
 
-; types
-(type
-  (IDENT) @type
-)
-
-(non_empty_attributes
-  (identifier
-    (IDENT) @type
+; parameters
+(directive
+  (directive_attribute_assignment
+    (identifier) @parameter
   )
 )
-
-; keywords
-[
- (TYPE)
- (DECL)
- (INPUT_DECL)
- (OUTPUT_DECL)
-] @keyword
 
 ; strings
-(STRING) @string
+(string_literal) @string
 
 ; comments
-(COMMENT) @comment
+(block_comment) @comment
+(line_comment) @comment
+
+[
+  ".decl"
+] @keyword.function
