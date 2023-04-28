@@ -20,9 +20,9 @@ return {
   -- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {
-      -- From: https://github.com/folke/neodev.nvim
       completion = {
-        callSnippet = "Replace",
+        workspaceWord = true,
+        callSnippet = "Both",
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
