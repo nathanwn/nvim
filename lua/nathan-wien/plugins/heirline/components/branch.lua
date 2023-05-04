@@ -4,7 +4,7 @@ local conditions = require("heirline.conditions")
 local branch = {
   condition = conditions.is_git_repo,
   init = function(self)
-    self.branch = vim.b.gitsigns_status_dict.head
+    self.branch = vim.b.gitsigns_status_dict.head or "[no branch]"
   end,
   provider = function(self)
     return string.format(" %s ", self.branch)
