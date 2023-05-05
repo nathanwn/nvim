@@ -18,6 +18,7 @@ local filename_active = {
   hl = {
     fg = utils.get_highlight("HeirlineFilenameActive").fg,
     bg = utils.get_highlight("HeirlineFilenameActive").bg,
+    bold = true,
   },
 }
 

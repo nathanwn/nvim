@@ -1,6 +1,7 @@
 local M = {}
 
 M.palette = {
+  black = "#000000",
   red = "#FF0000", -- don't change
   maroon = "#CC0000", -- don't change
   green = "#00CC00", -- don't change
@@ -22,8 +23,8 @@ M.palette = {
   overlay1 = "#BBBBBB",
   overlay0 = "#AAAAAA",
   surface2 = "#00A0A0",
-  surface1 = "#009090",
-  surface0 = "#008080",
+  surface1 = "#008080",
+  surface0 = "#004040",
   -- overlay2 = "#CCCCCC",
   -- overlay1 = "#BBBBBB",
   -- overlay0 = "#AAAAAA",
@@ -31,8 +32,8 @@ M.palette = {
   -- surface1 = "#888888",
   -- surface0 = "#777777",
   base = "#000080",
-  mantle = "#007080",
-  crust = "#0080A0",
+  mantle = "#555555",
+  crust = "#005555",
 }
 
 M.override = {
@@ -65,12 +66,12 @@ M.override = {
     bg = M.palette.overlay2,
   },
   HeirlineFilenameActive = {
-    fg = M.palette.sky,
-    bg = M.palette.surface0,
+    fg = M.palette.text,
+    bg = M.palette.surface1,
   },
   HeirlineFilenameInactive = {
     fg = M.palette.overlay1,
-    bg = M.palette.surface0,
+    bg = M.palette.surface1,
   },
   HeirlineFiletype = {
     fg = M.palette.base,
@@ -102,11 +103,11 @@ M.override = {
   },
   HeirlineViModeCommand = {
     fg = M.palette.base,
-    bg = M.palette.yellow,
+    bg = M.palette.overlay2,
   },
   HeirlineViModeTerminal = {
     fg = M.palette.base,
-    bg = M.palette.yellow,
+    bg = M.palette.overlay2,
   },
   HeirlineViModeInactive = {
     fg = M.palette.base,
@@ -124,6 +125,9 @@ M.override = {
   },
   NvimTreeExecFile = {
     fg = M.palette.pink,
+  },
+  ["@parameter"] = {
+    fg = M.palette.text,
   },
 }
 
