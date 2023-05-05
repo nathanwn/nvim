@@ -2,44 +2,44 @@ local M = {}
 
 M.palette = {
   black = "#000000",
-  red = "#FF0000", -- don't change
-  maroon = "#CC0000", -- don't change
-  green = "#00CC00", -- don't change
-  pink = "#FFAAFF",
-  mauve = "#00FFFF",
-  blue = "#FFFF55", -- don't change
+  red = "#FF8080", -- don't change
+  maroon = "#FF5250", -- don't change
+  green = "#50CC50", -- don't change
+  pink = "#FF00AA",
+  mauve = "#D492FF",
+  blue = "#00F0FF", -- don't change
   yellow = "#FFFF55",
   sky = "#FFFFFF",
-  teal = "#00A0A0",
-  peach = "#FFAA00",
+  teal = "#20C020",
+  peach = "#00A0F0",
   rosewater = "#FFFFFF",
   flamingo = "#FFFFFF",
-  sapphire = "#FFAA00",
-  lavender = "#FFAAFF",
+  sapphire = "#8080FF",
+  lavender = "#FFAA00",
   text = "#FFFFFF",
-  subtext1 = "#DDDDDD",
-  subtext0 = "#BBBBBB",
-  overlay2 = "#CCCCCC",
-  overlay1 = "#BBBBBB",
-  overlay0 = "#AAAAAA",
-  surface2 = "#00A0A0",
-  surface1 = "#008080",
-  surface0 = "#004040",
+  subtext1 = "#00CCCC",
+  subtext0 = "#00BBBB",
+  overlay2 = "#00CCCC",
+  overlay1 = "#00BBBB",
+  overlay0 = "#00AAAA",
+  -- surface2 = "#007777",
+  -- surface1 = "#006666",
+  -- surface0 = "#005555",
   -- overlay2 = "#CCCCCC",
   -- overlay1 = "#BBBBBB",
   -- overlay0 = "#AAAAAA",
-  -- surface2 = "#999999",
-  -- surface1 = "#888888",
-  -- surface0 = "#777777",
+  surface2 = "#009999",
+  surface1 = "#008888",
+  surface0 = "#007777",
   base = "#000080",
   mantle = "#555555",
   crust = "#005555",
 }
 
 M.override = {
-  -- Comment = {
-  --   fg = M.palette.overlay1,
-  -- },
+  Comment = {
+    fg = M.palette.overlay0,
+  },
   Conceal = {
     fg = M.palette.red,
   },
@@ -67,11 +67,11 @@ M.override = {
   },
   HeirlineFilenameActive = {
     fg = M.palette.text,
-    bg = M.palette.surface1,
+    bg = M.palette.mantle,
   },
   HeirlineFilenameInactive = {
     fg = M.palette.overlay1,
-    bg = M.palette.surface1,
+    bg = M.palette.mantle,
   },
   HeirlineFiletype = {
     fg = M.palette.base,
@@ -117,11 +117,14 @@ M.override = {
     fg = M.palette.surface2,
   },
   LspInlayHint = {
-    fg = "#e8e8e8",
-    bg = "#9999cc",
+    fg = M.palette.overlay2,
+    bg = M.palette.surface0,
   },
   NvimTreeNormal = {
-    bg = M.palette.mantle,
+    -- bg = M.palette.mantle,
+  },
+  NvimTreeCursorLine = {
+    bg = M.palette.surface2,
   },
   NvimTreeExecFile = {
     fg = M.palette.pink,

@@ -17,7 +17,7 @@ local new_language_server = function(name, has_config)
 end
 
 local servers = {
-  new_language_server("ansiblels"),
+  -- new_language_server("ansiblels"),
   new_language_server("bashls", true),
   new_language_server("clangd"),
   new_language_server("cmake", true),
