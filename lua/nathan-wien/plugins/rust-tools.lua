@@ -3,6 +3,8 @@ return {
   dependencies = { "neovim/nvim-lspconfig" },
   ft = "rust",
   config = function()
-    require("rust-tools").setup({})
+    require("rust-tools").setup({
+      server = require("nathan-wien.plugins.lsp.servers.rust-analyzer"),
+    })
   end,
 }
