@@ -5,7 +5,7 @@ M.palette = {
   red = "#FF8080", -- don't change
   maroon = "#FF5250", -- don't change
   green = "#50CC50", -- don't change
-  pink = "#FF00AA",
+  pink = "#AAFF00",
   mauve = "#D492FF",
   blue = "#00F0FF", -- don't change
   yellow = "#FFFF55",
@@ -32,8 +32,8 @@ M.palette = {
   surface1 = "#008888",
   surface0 = "#007777",
   base = "#000080",
-  mantle = "#555555",
-  crust = "#005555",
+  mantle = "#005555",
+  crust = "#003535",
 }
 
 M.override = {
