@@ -16,6 +16,7 @@ vim.opt.listchars = {
   precedes = "◀",
   -- eol = "⏎",
 }
+vim.opt.fillchars = { eob = " " } -- Remove the tilde symbols at the end of buffers
 -- Error bells
 vim.opt.errorbells = false
 -- Split
