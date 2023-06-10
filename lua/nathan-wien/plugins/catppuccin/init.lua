@@ -25,6 +25,7 @@ local config = function()
     highlight_overrides = {
       latte = theme.override,
     },
+    no_italic = true,
   })
 
   -- activate
@@ -35,5 +36,5 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   config = config,
-  version = "v1.1.1",
+  version = "v1.2.0",
 }
