@@ -15,3 +15,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("nathan-wien.plugins")
+require("nathan-wien.myplugins")
