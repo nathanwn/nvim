@@ -43,6 +43,8 @@ vim.filetype.add({
     ["*.g4"] = "antlr4",
     ["*.clang-format"] = "yaml",
     ["gitconfig"] = "gitconfig",
+    [".*/workflows/.*.yaml"] = "yaml.workflow",
+    [".*/workflows/.*.yml"] = "yaml.workflow",
     -- [".*/tasks/.*.yaml"] = "yaml.ansible",
     -- [".*/roles/.*.yml"] = "yaml.ansible",
   },
