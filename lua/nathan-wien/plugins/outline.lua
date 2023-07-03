@@ -1,12 +1,14 @@
 return {
   "simrat39/symbols-outline.nvim",
   config = function()
-    vim.g.symbols_outline = {
+    require("symbols-outline").setup({
       keymaps = {
         hover_symbol = "H",
       },
-    }
-    require("symbols-outline").setup()
+      symbol_blacklist = {
+        "Variable",
+      },
+    })
   end,
   keys = {
     {
