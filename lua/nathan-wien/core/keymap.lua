@@ -8,7 +8,7 @@ vim.keymap.set("v", ">", ">gv")
 -- Terminal
 vim.keymap.set("n", "<Leader>vt", ":vsplit | terminal<CR>")
 vim.keymap.set("n", "<Leader>vT", ":split | terminal<CR>")
-vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
+-- vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
 -- Resize splits
 vim.keymap.set("n", "<C-s><C-k>", ":resize -1<CR>")
