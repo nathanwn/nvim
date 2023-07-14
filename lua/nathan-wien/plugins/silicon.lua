@@ -5,11 +5,11 @@ return {
     "catppuccin/nvim",
   },
   config = function()
-    local palette = require("nathan-wien.plugins.catppuccin.palette.bsol")
+    local palette = require("nathan-wien.plugins.catppuccin.themes.papercolor-light")
 
     require("silicon").setup({
       bgColor = palette.base, -- can also use "#FCFBFA" for slides at work
-      font = "JetbrainsMono Nerd Font",
+      font = "ComicShannsMono Nerd Font",
       -- lineOffset = 40, -- from where to start line number
       windowControls = false,
       lineNumber = false,
