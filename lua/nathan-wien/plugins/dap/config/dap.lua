@@ -22,6 +22,10 @@ return function()
             id = "watches",
             size = 0.40,
           },
+          {
+            id = "repl",
+            size = 0.40,
+          },
         },
         position = "right",
         size = 0.32,
@@ -29,16 +33,11 @@ return function()
       {
         elements = {
           {
-            id = "repl",
-            size = 0.5,
-          },
-          {
             id = "console",
-            size = 0.5,
           },
         },
         position = "bottom",
-        size = 12,
+        size = 15,
       },
     },
   })
