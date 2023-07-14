@@ -8,7 +8,7 @@ end
 
 local Path = require("plenary.path")
 
-local mason_path = Path.new(require("mason.settings").current.install_root_dir)
+local mason_path = Path:new(require("mason.settings").current.install_root_dir)
 -- local mason_dir = require("mason.settings").current.install_root_dir
 
 local jdtls_install_path = mason_path:joinpath("packages", "jdtls")
@@ -26,7 +26,7 @@ local project_name = function()
   return parent_dir_name .. "_" .. current_dir_name
 end
 local workspace_dir =
-  tostring(Path.new(vim.fn.stdpath("data")):joinpath("jdtls-ws", project_name()))
+  tostring(Path:new(vim.fn.stdpath("data")):joinpath("jdtls-ws", project_name()))
 
 -- jar files for debugging
 -- from java-debug
@@ -76,18 +76,15 @@ local config = {
     "-data",
     workspace_dir,
   },
-
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
   root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
-
   -- Here you can configure eclipse.jdt.ls specific settings
   -- For a list of options, see
   -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
   settings = {
     java = {},
   },
-
   -- Language server `initializationOptions`
   -- You need to extend the `bundles` with paths to jar files
   -- if you want to use additional eclipse.jdt.ls plugins.
@@ -101,7 +98,6 @@ local config = {
       progressReportProvider = false,
     },
   },
-
   on_attach = function(client, bufnr)
     -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
     -- you make during a debug session immediately.
