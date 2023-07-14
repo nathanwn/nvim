@@ -10,7 +10,6 @@ return function()
       "javascript",
       "json",
       "hcl",
-      -- "help",
       "lua",
       "markdown",
       "nix",
