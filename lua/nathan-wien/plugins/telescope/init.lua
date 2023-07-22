@@ -79,6 +79,11 @@ return {
         require("nathan-wien.plugins.telescope.handlers").dotfiles,
         "Dotfiles",
       },
+      {
+        "<Leader>f;",
+        require("nathan-wien.plugins.telescope.handlers").command_history,
+        "Command history",
+      },
       -- {
       --   "<Leader>fw",
       --   require("nathan-wien.plugins.telescope.handlers").worktrees,

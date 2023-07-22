@@ -1,5 +1,4 @@
 local telescope_builtin = require("telescope.builtin")
--- local telescope = require("telescope")
 
 return {
   files = function()
@@ -23,7 +22,6 @@ return {
   end,
   -- worktrees = telescope.extensions.git_worktree.git_worktrees,
   resume = telescope_builtin.resume,
-  builtin = function()
-    telescope_builtin.builtin()
-  end,
+  builtin = telescope_builtin.builtin,
+  command_history = telescope_builtin.command_history,
 }
