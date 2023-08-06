@@ -3,3 +3,5 @@ autoload/
 plugged/
 undodir/
 plugin/packer_compiled.lua
+
+.venv/
