@@ -58,6 +58,7 @@
   "vim-jsx-typescript": { "branch": "master", "commit": "22df470d92651426f2377e3166488672f7b4b4ef" },
   "vim-lark-syntax": { "branch": "master", "commit": "80891559f5686b5d2a897cc25628fdf5a2d0aff0" },
   "vim-markdown": { "branch": "master", "commit": "cc82d88e2a791f54d2b6e2b26e41f743351ac947" },
+  "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-startuptime": { "branch": "master", "commit": "454b3de856b7bd298700de33d79774ca9b9e3875" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "vimtex": { "branch": "master", "commit": "fa5cbe4fab0e9b7c62ee318a158297a529c6d7b5" },
