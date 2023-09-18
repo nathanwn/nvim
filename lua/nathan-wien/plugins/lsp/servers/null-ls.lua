@@ -2,13 +2,13 @@ local nvim_lsp_util = require("lspconfig.util")
 local null_ls = require("null-ls")
 local default_on_attach = require("nathan-wien.plugins.lsp.default.on_attach")
 
-local disable_filetypes = function(null_ls_source, disabled_fts)
-  return null_ls_source.with({
-    filetypes = vim.tbl_filter(function(ft)
-      return not vim.tbl_contains(disabled_fts, ft)
-    end, null_ls_source.filetypes),
-  })
-end
+-- local disable_filetypes = function(null_ls_source, disabled_fts)
+--   return null_ls_source.with({
+--     filetypes = vim.tbl_filter(function(ft)
+--       return not vim.tbl_contains(disabled_fts, ft)
+--     end, null_ls_source.filetypes),
+--   })
+-- end
 
 local should_attach = function(bufnr)
   local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
