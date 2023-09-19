@@ -45,11 +45,11 @@ return {
     -- }),
 
     -- JS/TS
-    null_ls.builtins.diagnostics.eslint_d,
-    disable_filetypes(null_ls.builtins.formatting.prettierd, {
-      "yaml",
-      "markdown",
-    }),
+    -- null_ls.builtins.diagnostics.eslint_d,
+    -- disable_filetypes(null_ls.builtins.formatting.prettierd, {
+    --   "yaml",
+    --   "markdown",
+    -- }),
 
     -- Lua
     null_ls.builtins.diagnostics.luacheck,
