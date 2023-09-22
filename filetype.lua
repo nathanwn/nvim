@@ -1,7 +1,5 @@
-local files_util = require("nathan-wien.utils.files")
-
 local handle_yaml = function(_, bufnr)
-  if files_util.file_exists("inventory") then
+  if vim.fn.filereadable("inventory") then
     local file_contents = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
     for _, line in ipairs(file_contents) do
       if vim.fn.match(line, "ansible[.]builtin") ~= -1 then
