@@ -19,7 +19,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    version = "legacy", -- See: https://github.com/j-hui/fidget.nvim/issues/131
+    tag = "legacy", -- See: https://github.com/j-hui/fidget.nvim/issues/131
     config = require("nathan-wien.plugins.lsp.config.fidget"),
   },
   {

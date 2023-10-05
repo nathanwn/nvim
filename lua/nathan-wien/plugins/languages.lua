@@ -5,7 +5,7 @@ return {
   -- Tex
   {
     "lervag/vimtex",
-    version = "v2.11",
+    version = "v2.14",
   },
   -- ANTLR4
   { "dylon/vim-antlr" },
@@ -15,10 +15,10 @@ return {
   -- { "mattn/emmet-vim" }
   -- Markdown
   { "preservim/vim-markdown", ft = { "markdown" } },
-  {
-    "iamcco/markdown-preview.nvim",
-    version = "v0.0.10",
-  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   version = "v0.0.10",
+  -- },
   -- Pandoc
   -- {
   --   "vim-pandoc/vim-pandoc",

@@ -1,7 +1,7 @@
 return {
   "danymat/neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
-  version = "2.13.2",
+  version = "2.15.2",
   config = function()
     -- for more template configurations, see the language's configuration file in configurations/{lang}.lua
     require("neogen").setup({
