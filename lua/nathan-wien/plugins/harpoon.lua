@@ -4,7 +4,8 @@ local nav_file = function(id)
   end
 end
 
-local config = function()
+-- local config = function()
+local _ = function()
   require("harpoon").setup({})
   local harpoon_mark = require("harpoon.mark")
   local harpoon_ui = require("harpoon.ui")
@@ -19,8 +20,10 @@ local config = function()
   vim.keymap.set("n", "<Leader>mf", nav_file(4))
 end
 
-return {
-  "ThePrimeagen/harpoon",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = config,
-}
+return {}
+
+-- return {
+--   "ThePrimeagen/harpoon",
+--   dependencies = { "nvim-lua/plenary.nvim" },
+--   config = config,
+-- }
