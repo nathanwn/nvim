@@ -35,7 +35,7 @@
   "nvim-metals": { "branch": "main", "commit": "d395a7865a9d4e899588e4512943033bd4dc5184" },
   "nvim-navic": { "branch": "master", "commit": "0ffa7ffe6588f3417e680439872f5049e38a24db" },
   "nvim-tree.lua": { "branch": "master", "commit": "53b0bcaadaffb505acff230578b56a86ec1ab38a" },
-  "nvim-treesitter": { "branch": "master", "commit": "7be9ebd06abe2ed836abd3e91acb0b243ddcafba" },
+  "nvim-treesitter": { "branch": "master", "commit": "63260da18bf273c76b8e2ea0db84eb901cab49ce" },
   "papercolor-theme": { "branch": "master", "commit": "9051480ad9129ff4ab4fffb38b44779b9081626f" },
   "plan9-for-vimspace": { "branch": "master", "commit": "789edc5f611788dc89c77c72342e745f2c3c1df6" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
