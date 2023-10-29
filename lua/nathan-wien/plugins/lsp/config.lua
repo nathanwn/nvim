@@ -52,9 +52,9 @@ return function()
     return true
   end
 
-  local custom_on_publish_diagnostics = function(a, params, client_id, c, config)
-    filter(params.diagnostics, filter_diagnostics)
-    vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
+  local custom_on_publish_diagnostics = function(_, result, ctx, config)
+    filter(result.diagnostics, filter_diagnostics)
+    vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
   end
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
