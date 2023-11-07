@@ -26,7 +26,7 @@ local servers = {
   new_language_server("gopls", true),
   -- new_language_server("groovyls", true),
   new_language_server("lua_ls", true),
-  new_language_server("null-ls", true),
+  -- new_language_server("null-ls", true),
   new_language_server("prismals"),
   new_language_server("pyright", true),
   new_language_server("rust_analyzer", true),
