@@ -35,7 +35,10 @@ return function()
       -- other implementations:
       -- https://github.com/julienhenry/tree-sitter-souffle -- Note: outdated ABI version (Dec. 2022).
       -- https://github.com/langston-barrett/tree-sitter-souffle
-      files = { "src/parser.c" },
+      files = {
+        "src/parser.c",
+        "src/scanner.c",
+      },
       -- optional entries:
       branch = "main", -- default branch in case of git repo if different from master
       generate_requires_npm = false, -- false if stand-alone parser without npm dependencies

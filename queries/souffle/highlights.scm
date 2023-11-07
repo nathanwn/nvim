@@ -52,27 +52,21 @@
 ;   )
 ; )
 ;
-; ; types
-; (type
-;   (IDENT) @type
-; )
-;
-; (non_empty_attributes
-;   (identifier
-;     (IDENT) @type
-;   )
-; )
-;
-; directive qualifiers
+
 (directive
-  (directive_qualifier) @keyword
-  (#any-of? @keyword
-           ".input"
-           ".output"
-           ".include"
-           ".type"
-  )
-)
+  (input_kw) @keyword)
+
+(directive
+  (output_kw) @keyword)
+
+(type_decl
+  (type_kw) @keyword)
+
+(relation_decl
+  (decl_kw) @keyword)
+
+(type_decl
+  (identifier) @type)
 
 ; parameters
 (directive
@@ -87,7 +81,3 @@
 ; comments
 (block_comment) @comment
 (line_comment) @comment
-
-[
-  ".decl"
-] @keyword.function
