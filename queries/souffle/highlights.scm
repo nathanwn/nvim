@@ -8,19 +8,19 @@
 )
 
 ; rules
-(rule
-  (atom
-    (qualified_name) @function
-    (argument) @parameter
-  )
-  (disjunction
-    (conjunction
-      (atom
-        (qualified_name) @function.call
-      )
-    )
-  )
-)
+;; (rule
+;;   (atom
+;;     (qualified_name) @function
+;;     (argument) @parameter
+;;   )
+;;   (disjunction
+;;     (conjunction
+;;       (atom
+;;         (qualified_name) @function.call
+;;       )
+;;     )
+;;   )
+;; )
 
 ; directives
 ; (io_directive_list
