@@ -4,6 +4,7 @@ return function()
       -- "bash",  -- bug with the @(..|..|..) pattern
       "c",
       "cpp",
+      "cue",
       "dockerfile",
       "go",
       "java",
