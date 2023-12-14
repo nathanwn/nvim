@@ -41,11 +41,17 @@ return {
         enable = false,
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
         -- Suppress the question "Do you need to configure your work environment as luaassert?"
         checkThirdParty = false,
-      },
+        -- Make the server aware of Neovim runtime files
+        library = {
+          vim.env.VIMRUNTIME
+          -- "${3rd}/luv/library"
+          -- "${3rd}/busted/library",
+        }
+        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+        -- library = vim.api.nvim_get_runtime_file("", true)
+      }
     },
   },
 }
