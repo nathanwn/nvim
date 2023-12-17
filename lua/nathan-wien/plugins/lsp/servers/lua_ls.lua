@@ -41,8 +41,11 @@ return {
         enable = false,
       },
       workspace = {
-        -- Suppress the question "Do you need to configure your work environment as luaassert?"
-        checkThirdParty = false,
+        -- Suppress the following questions:
+        -- - "Do you need to configure your work environment as luaassert?"
+        -- - "Do you need to configure your work environment as luv?"
+        -- https://github.com/LunarVim/LunarVim/issues/4049#issuecomment-1798767366
+        checkThirdParty = "Disable",
         -- Make the server aware of Neovim runtime files
         library = {
           vim.env.VIMRUNTIME
