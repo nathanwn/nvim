@@ -19,8 +19,8 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    tag = "legacy", -- See: https://github.com/j-hui/fidget.nvim/issues/131
-    config = require("nathan-wien.plugins.lsp.config.fidget"),
+    tag = "v1.1.0",
+    opts = {},
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
