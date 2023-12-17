@@ -24,6 +24,7 @@ end
 
 return {
   "rebelot/heirline.nvim",
+  version = "v1.0.1",
   dependencies = {
     "catppuccin",
     "SmiteshP/nvim-navic",
