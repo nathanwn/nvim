@@ -14,5 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("nathan-wien.plugins")
+local config = {
+  cond = not vim.g.vscode,
+}
+
+require("lazy").setup("nathan-wien.plugins", config)
 require("nathan-wien.myplugins")
