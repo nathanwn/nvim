@@ -6,7 +6,7 @@ return {
       "folke/neodev.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    config = require("nathan-wien.plugins.lsp.config"),
+    config = require("nathan-wien.plugins.lsp.config.lspconfig"),
   },
   -- Formatting & Linting
   -- { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
