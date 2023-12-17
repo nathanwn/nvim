@@ -29,6 +29,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     local bufnr = args.buf
-    require("nathan-wien.plugins.lsp.default.on_attach")(client, bufnr)
+    local on_attach =
+      require("nathan-wien.plugins.lsp.server_config.on_attach").create()
+    on_attach(client, bufnr)
   end,
 })

@@ -80,5 +80,5 @@ return {
     lintDebounce = 500,
     languages = languages,
   },
-  on_attach = require("nathan-wien.plugins.lsp.default.on_attach"),
+  on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach").create(),
 }
