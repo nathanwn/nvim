@@ -11,6 +11,12 @@ return {
     })
 
     which_key.register({
+      ["<leader>f"] = { name = "Find" },
+      ["<leader>g"] = { name = "LSP" },
+      ["<leader>v"] = { name = "View" },
+    })
+
+    which_key.register({
       ["?"] = {
         name = "print helper",
         p = {
