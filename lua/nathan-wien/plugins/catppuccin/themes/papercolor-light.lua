@@ -107,8 +107,8 @@ M.override = {
     bg = M.palette.subtext0,
   },
   LspInlayHint = {
-    fg = "#e8e8e8",
-    bg = "#9999cc",
+    fg = M.palette.base,
+    bg = M.palette.lavender,
   },
   NvimTreeNormal = {
     bg = M.palette.mantle,

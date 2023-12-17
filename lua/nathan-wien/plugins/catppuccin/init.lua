@@ -36,5 +36,5 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   config = config,
-  version = "v1.2.0",
+  tag = "v1.5.0",
 }

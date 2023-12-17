@@ -1,7 +1,7 @@
 {
   "Colorizer": { "branch": "master", "commit": "9a24670a9fe610ba4b6bd104e340a0d11616f8c0" },
   "LuaSnip": { "branch": "master", "commit": "563827f00bb4fe43269e3be653deabc0005f1302" },
-  "catppuccin": { "branch": "main", "commit": "8338b02e9a8ffcb999520de7f15943712618760f" },
+  "catppuccin": { "branch": "main", "commit": "18267654c665310c665d3b7c6bc43d5f5ea5e410" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "8ee981b4a91f536f52add291594e89fb6645e451" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
