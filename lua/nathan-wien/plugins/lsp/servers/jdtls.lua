@@ -1,3 +1,5 @@
+local on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach")
+
 -- platform: win, linux, mac
 local platform
 if vim.loop.os_uname().sysname == "Darwin" then
@@ -98,20 +100,17 @@ local config = {
       progressReportProvider = false,
     },
   },
-  on_attach = function(client, bufnr)
-    -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
-    -- you make during a debug session immediately.
-    -- Remove the option if you do not want that.
-    require("jdtls").setup_dap({
-      hotcodereplace = "auto",
-    })
-    -- require("jdtls.dap").setup_dap_main_class_configs()
-    -- Disable formatting
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-    -- Apply default config
-    require("nathan-wien.plugins.lsp.default.on_attach")(client, bufnr)
-  end,
+  on_attach = on_attach.create({
+    pre_attach = function(_client, _bufnr)
+      -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
+      -- you make during a debug session immediately.
+      -- Remove the option if you do not want that.
+      require("jdtls").setup_dap({
+        hotcodereplace = "auto",
+      })
+    end,
+    formatting = false,
+  }),
 }
 
 return config

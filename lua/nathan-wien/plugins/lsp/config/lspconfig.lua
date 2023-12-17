@@ -1,6 +1,6 @@
 return function()
   local lsp_servers = require("nathan-wien.plugins.lsp.servers")
-  local default_config = require("nathan-wien.plugins.lsp.default.config")
+  local default_config = require("nathan-wien.plugins.lsp.server_config.config")
 
   for _, server in ipairs(lsp_servers) do
     -- config overrides default_lsp_config
@@ -53,5 +53,5 @@ return function()
   end
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
-      vim.lsp.with(custom_on_publish_diagnostics, {})
+    vim.lsp.with(custom_on_publish_diagnostics, {})
 end

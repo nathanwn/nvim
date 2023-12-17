@@ -1,7 +1,7 @@
-local default_on_attach = require("nathan-wien.plugins.lsp.default.on_attach")
+local on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach")
 
 return {
-  on_attach = default_on_attach,
+  on_attach = on_attach.create(),
   cmd = {
     "rustup",
     "run",
