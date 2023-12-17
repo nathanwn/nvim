@@ -7,21 +7,6 @@
   )
 )
 
-; rules
-;; (rule
-;;   (atom
-;;     (qualified_name) @function
-;;     (argument) @parameter
-;;   )
-;;   (disjunction
-;;     (conjunction
-;;       (atom
-;;         (qualified_name) @function.call
-;;       )
-;;     )
-;;   )
-;; )
-
 ; directives
 ; (io_directive_list
 ;   (io_relation_list
@@ -52,6 +37,21 @@
 ;   )
 ; )
 ;
+
+(rule
+  (rule_head
+    (atom
+      (qualified_name) @function.call
+    )
+  )
+  (disjunction
+    (conjunction
+      (atom
+        (qualified_name) @function.call
+      )
+    )
+  )
+)
 
 (directive
   (input_kw) @keyword)
