@@ -30,7 +30,6 @@ local config = function()
         "*.synctex.gz",
         "*.toc",
         "*.vrb",
-        ".null-ls*",
       },
     },
     renderer = {

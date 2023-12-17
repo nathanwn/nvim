@@ -4,12 +4,7 @@ return function()
 
   for _, server in ipairs(lsp_servers) do
     -- config overrides default_lsp_config
-    local instance
-    if server.name == "null-ls" then
-      instance = require("null-ls")
-    else
-      instance = require("lspconfig")[server.name]
-    end
+    local instance = require("lspconfig")[server.name]
     instance.setup(vim.tbl_deep_extend("force", default_config, server.config))
   end
 
@@ -58,5 +53,5 @@ return function()
   end
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(custom_on_publish_diagnostics, {})
+      vim.lsp.with(custom_on_publish_diagnostics, {})
 end

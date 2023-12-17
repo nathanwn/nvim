@@ -8,8 +8,6 @@ return {
     },
     config = require("nathan-wien.plugins.lsp.config.lspconfig"),
   },
-  -- Formatting & Linting
-  -- { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   -- UI
   {
     "folke/lsp-colors.nvim",

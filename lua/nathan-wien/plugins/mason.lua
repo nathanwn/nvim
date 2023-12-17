@@ -11,7 +11,6 @@ return {
       {
         "neovim/nvim-lspconfig",
         "williamboman/mason.nvim",
-        -- "jose-elias-alvarez/null-ls.nvim",
       },
     },
     config = function()
@@ -21,10 +20,6 @@ return {
       for _, server in ipairs(lsp_servers) do
         table.insert(ensure_installed, server.name)
       end
-
-      -- ensure_installed = vim.tbl_filter(function(server_name)
-      --   return server_name ~= "null-ls"
-      -- end, ensure_installed)
 
       table.insert(ensure_installed, "jdtls")
 
