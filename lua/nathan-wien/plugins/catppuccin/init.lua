@@ -29,7 +29,7 @@ local config = function()
   })
 
   -- activate
-  vim.cmd.colorscheme("catppuccin")
+  -- vim.cmd.colorscheme("catppuccin")
 end
 
 return {
