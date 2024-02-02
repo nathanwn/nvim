@@ -42,47 +42,47 @@ return {
       {
         "<Leader>ff",
         require("nathan-wien.plugins.telescope.handlers").files,
-        "Files",
+        desc = "Files",
       },
       {
         "<Leader>fb",
         require("nathan-wien.plugins.telescope.handlers").buffers,
-        "Buffers",
+        desc = "Buffers",
       },
       {
         "<Leader>fc",
         require("nathan-wien.plugins.telescope.handlers").current_buffer,
-        "Current buffer",
+        desc = "Current buffer",
       },
       {
         "<Leader>fg",
         require("nathan-wien.plugins.telescope.handlers").grep,
-        "Grep",
+        desc = "Grep",
       },
       {
         "<Leader>fG",
         require("nathan-wien.plugins.telescope.handlers").grep_include_hidden,
-        "Grep include hidden",
+        desc = "Grep include hidden",
       },
       {
         "<Leader>fh",
         require("nathan-wien.plugins.telescope.handlers").help_tags,
-        "Help tags",
+        desc = "Help tags",
       },
       {
         "<Leader>fk",
         require("nathan-wien.plugins.telescope.handlers").keys,
-        "Keys",
+        desc = "Keys",
       },
       {
         "<Leader>f.",
         require("nathan-wien.plugins.telescope.handlers").dotfiles,
-        "Dotfiles",
+        desc = "Dotfiles",
       },
       {
         "<Leader>f;",
         require("nathan-wien.plugins.telescope.handlers").command_history,
-        "Command history",
+        desc = "Command history",
       },
       -- {
       --   "<Leader>fw",
@@ -92,12 +92,12 @@ return {
       {
         "<Leader>fo",
         require("nathan-wien.plugins.telescope.handlers").resume,
-        "Resume",
+        desc = "Resume",
       },
       {
         "<Leader>fa",
         require("nathan-wien.plugins.telescope.handlers").builtin,
-        "Resume",
+        desc = "Built-ins",
       },
     },
   },
