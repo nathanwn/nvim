@@ -1,24 +1,28 @@
 return {
-  -- TS, React
-  { "leafgarland/typescript-vim" },
-  { "peitalin/vim-jsx-typescript" },
   -- Tex
   {
     "lervag/vimtex",
     version = "v2.14",
+    ft = { "tex" },
   },
   -- ANTLR4
-  { "dylon/vim-antlr" },
+  {
+    "dylon/vim-antlr",
+    ft = { "antlr4" },
+  },
   -- Lark
-  { "lark-parser/vim-lark-syntax" },
-  -- Emmet
-  -- { "mattn/emmet-vim" }
+  {
+    "lark-parser/vim-lark-syntax",
+    ft = { "lark" },
+  },
   -- Markdown
   { "preservim/vim-markdown", ft = { "markdown" } },
   -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   version = "v0.0.10",
-  -- },
+    --   "iamcco/markdown-preview.nvim",
+    --   version = "v0.0.10",
+    -- },
+  -- Emmet
+  -- { "mattn/emmet-vim" }
   -- Pandoc
   -- {
   --   "vim-pandoc/vim-pandoc",
