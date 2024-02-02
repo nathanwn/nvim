@@ -1,3 +1,8 @@
+; preprocessor
+(preproc_include
+  (path_spec) @string
+)
+
 ; relation
 (relation_decl
   (identifier) @function
