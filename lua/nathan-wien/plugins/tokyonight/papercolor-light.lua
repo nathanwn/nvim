@@ -2,12 +2,15 @@ local M = {}
 
 M.palette = {
   red = "#af0000",
+  light_red = "#FF8080",
   maroon = "#d70000",
   green = "#008700",
+  light_green = "#80F080",
   pink = "#d70087",
   mauve = "#8700af",
   blue = "#005faf",
   yellow = "#806000",
+  light_yellow = "#F0D060",
   sky = "#0087af",
   teal = "#005f87",
   peach = "#772C29",
@@ -58,13 +61,13 @@ M.on_colors = function(colors)
   colors.dark3 = M.palette.subtext1
   colors.dark5 = M.palette.subtext0
   colors.delta = {
-    add = M.palette.green,
-    delete = M.palette.red,
+    add = M.palette.light_green,
+    delete = M.palette.light_red,
   }
   colors.diff = {
-    add = M.palette.green,
-    change = M.palette.yellow,
-    delete = M.palette.red,
+    add = M.palette.light_green,
+    change = M.palette.light_yellow,
+    delete = M.palette.light_red,
     text = M.palette.sky,
   }
   colors.error = M.palette.red
