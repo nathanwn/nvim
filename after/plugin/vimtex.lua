@@ -1,6 +1,12 @@
 vim.g.tex_flavor = "latex"
 if vim.loop.os_uname().sysname == "Linux" then
-  vim.g.vimtex_view_method = "zathura"
+  if string.find(vim.loop.os_uname().release, "WSL2") then
+    -- :h vimtex-faq-sumatrapdf-wsl
+    vim.g.vimtex_view_general_viewer = "sumatrapdf"
+    vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+  else
+    vim.g.vimtex_view_method = "zathura"
+  end
 elseif vim.loop.os_uname().sysname == "Darwin" then
   vim.g.vimtex_view_method = "sioyek"
 end
