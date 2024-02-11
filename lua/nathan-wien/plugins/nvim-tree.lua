@@ -48,8 +48,8 @@ local config = function()
 end
 
 return {
-  "kyazdani42/nvim-tree.lua",
-  version = "nightly",
+  "nvim-tree/nvim-tree.lua",
+  tag = "nvim-tree-v0.100.0",
   config = config,
   keys = {
     {
