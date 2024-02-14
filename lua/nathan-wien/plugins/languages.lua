@@ -18,9 +18,9 @@ return {
   -- Markdown
   { "preservim/vim-markdown", ft = { "markdown" } },
   -- {
-    --   "iamcco/markdown-preview.nvim",
-    --   version = "v0.0.10",
-    -- },
+  --   "iamcco/markdown-preview.nvim",
+  --   version = "v0.0.10",
+  -- },
   -- Emmet
   -- { "mattn/emmet-vim" }
   -- Pandoc
