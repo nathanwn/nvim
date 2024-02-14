@@ -16,7 +16,15 @@ vim.opt.listchars = {
   precedes = "◀",
   -- eol = "⏎",
 }
-vim.opt.fillchars = { eob = " " } -- Remove the tilde symbols at the end of buffers
+vim.opt.fillchars = {
+  -- Remove the tilde symbols at the end of buffers
+  eob = " ",
+  -- For folding
+  fold = " ",
+  foldopen = "",
+  foldsep = " ",
+  foldclose = "",
+}
 -- Error bells
 vim.opt.errorbells = false
 -- Split
