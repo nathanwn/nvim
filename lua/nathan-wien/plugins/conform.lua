@@ -1,5 +1,6 @@
 local formatters_by_ft = {
   lua = { "stylua" },
+  rust = { "rustfmt" },
   -- Conform will run multiple formatters sequentially
   -- python = { "isort", "black" },
   -- Use a sub-list to run only the first available formatter
@@ -22,7 +23,7 @@ end
 
 return {
   "stevearc/conform.nvim",
-  version = "v5.0.0",
+  version = "v5.3.0",
   config = function()
     require("conform").setup({
       formatters_by_ft = formatters_by_ft,
