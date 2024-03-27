@@ -1,5 +1,6 @@
-; preprocessor
+; preprocessor directives
 (preproc_include
+  (["#include"]) @preproc
   (path_spec) @string
 )
 
@@ -13,36 +14,30 @@
 )
 
 ; directives
-; (io_directive_list
-;   (io_relation_list
-;     (identifier
-;       (IDENT) @function
-;     )
-;   )
-; )
-; (io_directive_list
-;   (non_empty_key_value_pairs
-;     (IDENT) @variable.builtin
-;   )
-; )
-; (io_directive_list
-;   (non_empty_key_value_pairs
-;     (non_empty_key_value_pairs
-;       (IDENT) @variable.builtin
-;     )
-;   )
-; )
-; (io_directive_list
-;   (non_empty_key_value_pairs
-;     (non_empty_key_value_pairs
-;       (kvp_value
-;         (IDENT) @constant (#any-of? @constant "file" "stdin" "sqlite")
-;       )
-;     )
-;   )
-; )
-;
+(init_kw) @keyword
+(input_kw) @keyword
+(output_kw) @keyword
+(type_kw) @keyword
+(decl_kw) @keyword
+(type_decl
+  (identifier) @type)
 
+(directive
+  (qualified_name) @function
+  (directive_attribute_assignment
+    (identifier) @parameter
+  )
+)
+
+(directive
+  (input_kw)
+  (directive_attribute_assignment
+    (identifier) @parameter (#eq? @parameter "IO")
+    (directive_value) @constant (#any-of? @constant "file" "stdin" "sqlite")
+  )
+)
+
+; rules
 (rule
   (rule_head
     (atom
@@ -55,28 +50,6 @@
         (qualified_name) @function.call
       )
     )
-  )
-)
-
-(directive
-  (input_kw) @keyword)
-
-(directive
-  (output_kw) @keyword)
-
-(type_decl
-  (type_kw) @keyword)
-
-(relation_decl
-  (decl_kw) @keyword)
-
-(type_decl
-  (identifier) @type)
-
-; parameters
-(directive
-  (directive_attribute_assignment
-    (identifier) @parameter
   )
 )
 
