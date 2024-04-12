@@ -5,7 +5,7 @@ local config = function()
     },
     filters = {
       custom = {
-        ".git/",
+        "^.git$",
         -- python
         ".venv",
         "__pycache__",

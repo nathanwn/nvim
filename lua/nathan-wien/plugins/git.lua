@@ -3,7 +3,6 @@ return {
     "tpope/vim-fugitive",
     dependencies = { "tpope/vim-rhubarb" },
   },
-  -- { "ThePrimeagen/git-worktree.nvim" },
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -60,7 +59,7 @@ return {
               gs.next_hunk()
             end)
             return "<Ignore>"
-          end, { expr = true })
+          end, { expr = true, desc = "next hunk" })
 
           map("n", "[c", function()
             if vim.wo.diff then
@@ -70,18 +69,20 @@ return {
               gs.prev_hunk()
             end)
             return "<Ignore>"
-          end, { expr = true })
+          end, { expr = true, desc = "prev hunk" })
 
           -- Actions
-          map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-          map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-          map("n", "<leader>hS", gs.stage_buffer)
-          map("n", "<leader>hu", gs.undo_stage_hunk)
-          map("n", "<leader>hR", gs.reset_buffer)
-          map("n", "<leader>hp", gs.preview_hunk)
+          map({ "n", "v" }, "<leader>hs", gs.stage_hunk, { desc = "stage hunk" })
+          map({ "n", "v" }, "<leader>hr", gs.reset_hunk, { desc = "reset hunk" })
+          map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
+          map("n", "<leader>hp", gs.preview_hunk, { desc = "preview hunk" })
+          map("n", "<leader>hS", gs.stage_buffer, { desc = "stage buffer" })
+          map("n", "<leader>hR", gs.reset_buffer, { desc = "reset buffer" })
           map("n", "<leader>hb", function()
             gs.blame_line({ full = true })
-          end)
+          end, {
+            desc = "blame line",
+          })
           -- map("n", "<leader>tb", gs.toggle_current_line_blame)
           -- map("n", "<leader>hd", gs.diffthis)
           -- map("n", "<leader>hD", function()
