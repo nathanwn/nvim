@@ -1,7 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    version = "0.5.0",
+    version = "0.7.0",
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -12,7 +12,10 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    version = "v3.8.0",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+    },
+    version = "v4.0.0",
   },
   {
     "nvim-telescope/telescope-dap.nvim",
