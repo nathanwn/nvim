@@ -1,8 +1,25 @@
 ; preprocessor directives
 (preproc_include
-  (["#include"]) @preproc
-  (path_spec) @string
+  (["#include"]) @keyword
+  (path_spec) @preproc
 )
+
+(preproc_define
+  (["#define"]) @keyword
+  (preproc_macro) @preproc
+)
+
+(preproc_ifdef
+  (["#ifdef"]) @keyword
+  (identifier) @preproc
+)
+
+(preproc_ifndef
+  (["#ifndef"]) @keyword
+  (identifier) @preproc
+)
+
+(preproc_endif) @keyword
 
 ; relation
 (relation_decl
@@ -19,8 +36,6 @@
 (output_kw) @keyword
 (type_kw) @keyword
 (decl_kw) @keyword
-(type_decl
-  (identifier) @type)
 
 (directive
   (qualified_name) @function
@@ -37,6 +52,29 @@
   )
 )
 
+(directive
+  [(input_kw) (output_kw)]
+  (qualified_name) @function.call
+)
+
+; type declarations
+(type_decl
+  (eq_type_decl
+    (abstract_data_type
+      (adt_branch
+        (identifier) @type
+        (attribute
+          (attribute_name) @parameter
+          (type_name) @type
+        )
+      )
+    )
+  )
+)
+
+(type_decl
+  (identifier) @type)
+
 ; rules
 (rule
   (rule_head
@@ -52,6 +90,25 @@
     )
   )
 )
+
+; atoms
+(atom
+  (qualified_name) @function
+)
+
+(argument
+  (constant) @constant
+)
+
+(argument
+  (variable) @parameter
+)
+
+(branch_init
+  (qualified_name) @type
+)
+
+(intrinsic_functor_name) @function.builtin
 
 ; strings
 (string_literal) @string
