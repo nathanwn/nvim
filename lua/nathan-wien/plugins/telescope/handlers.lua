@@ -24,4 +24,5 @@ return {
   resume = telescope_builtin.resume,
   builtin = telescope_builtin.builtin,
   command_history = telescope_builtin.command_history,
+  commands = telescope_builtin.commands,
 }

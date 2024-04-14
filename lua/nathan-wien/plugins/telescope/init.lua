@@ -81,6 +81,11 @@ return {
       },
       {
         "<Leader>f;",
+        require("nathan-wien.plugins.telescope.handlers").commands,
+        desc = "Command history",
+      },
+      {
+        "<Leader>fp",
         require("nathan-wien.plugins.telescope.handlers").command_history,
         desc = "Command history",
       },
