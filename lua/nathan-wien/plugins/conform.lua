@@ -3,7 +3,7 @@ local formatters_by_ft = {
   rust = { "rustfmt" },
   -- Conform will run multiple formatters sequentially
   python = {
-    "autoflake",
+    -- "autoflake",
     "isort",
     "black",
   },
