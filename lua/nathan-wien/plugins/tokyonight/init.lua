@@ -1,4 +1,5 @@
 local custom_theme = require("nathan-wien.plugins.tokyonight.papercolor-light")
+-- local custom_theme = require("nathan-wien.plugins.tokyonight.bsol")
 
 return {
   "folke/tokyonight.nvim",

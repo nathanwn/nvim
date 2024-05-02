@@ -4,7 +4,6 @@ local function get_tree_sitter_souffle_repo()
 
   local tree_sitter_souffle_local_repo =
     tostring(homedir:joinpath("dev", "personal", "tree-sitter-souffle"))
-  print(vim.fn.isdirectory(tree_sitter_souffle_local_repo))
   if vim.fn.isdirectory(tree_sitter_souffle_local_repo) ~= 0 then
     return tree_sitter_souffle_local_repo
   end
