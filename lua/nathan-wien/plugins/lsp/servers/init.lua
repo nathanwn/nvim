@@ -20,7 +20,7 @@ local servers = {
   -- new_language_server("ansiblels"),
   new_language_server("bashls", true),
   new_language_server("clangd"),
-  new_language_server("cmake", true),
+  new_language_server("cmake"),
   new_language_server("dockerls", true),
   new_language_server("esbonio", true),
   new_language_server("gopls", true),

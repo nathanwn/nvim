@@ -54,4 +54,104 @@ return function()
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(custom_on_publish_diagnostics, {})
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+    callback = function(event)
+      vim.api.nvim_buf_set_option(event.buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+      local map = function(mode, keys, func, desc)
+        vim.keymap.set(
+          mode,
+          keys,
+          func,
+          { buffer = event.buf, desc = "[lsp] " .. desc }
+        )
+      end
+      local telescope_builtin = require("telescope.builtin")
+
+      map("n", "<Leader>gd", vim.lsp.buf.definition, "Definition")
+
+      map("n", "<Leader>gD", vim.lsp.buf.declaration, "Declaration")
+
+      -- map("n", "<Leader>gi", vim.lsp.buf.implementation, "Implementation")
+      map("n", "<Leader>gi", telescope_builtin.lsp_implementations, "Implementation")
+      map("n", "<Leader>gu", telescope_builtin.lsp_references, "Usages/References")
+
+      map("n", "<Leader>gt", vim.lsp.buf.type_definition, "Type Definition")
+
+      map(
+        "n",
+        "<leader>gs",
+        require("telescope.builtin").lsp_document_symbols,
+        "Document Symbols"
+      )
+
+      map(
+        "n",
+        "<leader>gw",
+        require("telescope.builtin").lsp_dynamic_workspace_symbols,
+        "Workspace Symbols"
+      )
+
+      map("n", "<leader>gr", vim.lsp.buf.rename, "Rename")
+
+      -- Execute a code action, usually your cursor needs to be on top of an error
+      -- or a suggestion from your LSP for this to activate.
+      map("n", "<leader>ga", vim.lsp.buf.code_action, "Code Action")
+
+      map("n", "<leader>gk", vim.lsp.buf.hover, "Hover Documentation")
+
+      map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+
+      map("n", "<Leader>gl", vim.diagnostic.open_float, "Line diagnostic")
+
+      map("n", "<Leader>g*", function()
+        vim.cmd("e" .. vim.lsp.get_log_path())
+      end, "Get log path")
+
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+      if
+        client
+        and client.server_capabilities.inlayHintProvider
+        and vim.lsp.inlay_hint
+      then
+        map("<leader>gn", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, "Inlay Hints")
+      end
+
+      -- The following two autocommands are used to highlight references of the
+      -- word under your cursor when your cursor rests there for a little while.
+      --    See `:help CursorHold` for information about when this is executed
+      -- When you move your cursor, the highlights will be cleared (the second autocommand).
+      if client and client.server_capabilities.documentHighlightProvider then
+        local highlight_augroup =
+          vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          buffer = event.buf,
+          group = highlight_augroup,
+          callback = vim.lsp.buf.document_highlight,
+        })
+
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+          buffer = event.buf,
+          group = highlight_augroup,
+          callback = vim.lsp.buf.clear_references,
+        })
+
+        vim.api.nvim_create_autocmd("LspDetach", {
+          group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+          callback = function(event2)
+            vim.lsp.buf.clear_references()
+            vim.api.nvim_clear_autocmds({
+              group = "kickstart-lsp-highlight",
+              buffer = event2.buf,
+            })
+          end,
+        })
+      end
+    end,
+  })
 end

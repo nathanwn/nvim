@@ -12,19 +12,9 @@ return {
   },
   -- UI
   {
-    "folke/lsp-colors.nvim",
-    config = function()
-      require("lsp-colors").setup()
-    end,
-  },
-  {
     "j-hui/fidget.nvim",
-    tag = "v1.1.0",
+    tag = "v1.4.1",
     opts = {},
-  },
-  {
-    "lvimuser/lsp-inlayhints.nvim",
-    config = require("nathan-wien.plugins.lsp.config.lsp-inlayhints"),
   },
   -- Java
   {
