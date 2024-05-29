@@ -106,6 +106,9 @@ return function()
 
       map("n", "<Leader>gl", vim.diagnostic.open_float, "Line diagnostic")
 
+      map("n", "<Leader>[d", vim.diagnostic.goto_prev, "Prev diagnostic")
+      map("n", "<Leader>]d", vim.diagnostic.goto_next, "Next diagnostic")
+
       map("n", "<Leader>g*", function()
         vim.cmd("e" .. vim.lsp.get_log_path())
       end, "Get log path")
