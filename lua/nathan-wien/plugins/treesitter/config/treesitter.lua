@@ -23,6 +23,7 @@ return function()
       "javascript",
       "json",
       "hcl",
+      "kotlin",
       "lua",
       "markdown",
       "nix",
