@@ -54,7 +54,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Toggle relative line number
 vim.keymap.set("n", "<leader><leader>r", function()
-  if vim.opt.relativenumber._value == true then
+  if vim.opt.relativenumber == true then
     vim.opt.relativenumber = false
   else
     vim.opt.relativenumber = true

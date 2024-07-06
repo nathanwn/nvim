@@ -28,7 +28,7 @@ end
 
 return {
   "stevearc/conform.nvim",
-  version = "v5.6.0",
+  version = "v6.0.0",
   config = function()
     require("conform").setup({
       notify_on_error = false,

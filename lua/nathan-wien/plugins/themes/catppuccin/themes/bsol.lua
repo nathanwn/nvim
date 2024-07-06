@@ -105,13 +105,9 @@ M.override = {
     fg = M.palette.base,
     bg = M.palette.overlay2,
   },
-  HeirlineViModeTerminal = {
+  HeirlineViModeOther = {
     fg = M.palette.base,
     bg = M.palette.overlay2,
-  },
-  HeirlineViModeInactive = {
-    fg = M.palette.base,
-    bg = M.palette.subtext0,
   },
   FidgetTitle = {
     fg = M.palette.surface2,

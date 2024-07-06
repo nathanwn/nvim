@@ -1,0 +1,13 @@
+- name: python - create directory
+  file:
+    path: "{{ nvim_stdpath_data }}/py-venv"
+    state: directory
+- name: python - copy requirements.txt
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/requirements.txt"
+    dest: "{{ nvim_stdpath_data }}/py-venv/requirements.txt"
+- name: python - install python environment
+  pip:
+    requirements: "{{ nvim_stdpath_data }}/py-venv/requirements.txt"
+    virtualenv_command: "python3 -m venv"
+    virtualenv: "{{ nvim_stdpath_data }}/py-venv"

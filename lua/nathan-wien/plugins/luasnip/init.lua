@@ -1,6 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
-  version = "v1.1.0",
+  version = "v2.3.0",
   config = function()
     local luasnip = require("luasnip")
 

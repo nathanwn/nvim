@@ -32,7 +32,7 @@ return {
         -- Make the server aware of Neovim runtime files
         library = {
           vim.env.VIMRUNTIME,
-          -- "${3rd}/luv/library"
+          "${3rd}/luv/library",
           -- "${3rd}/busted/library",
         },
         -- or pull in all of 'runtimepath'. NOTE: this is a lot slower

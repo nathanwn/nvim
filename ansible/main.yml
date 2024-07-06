@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
   vars:
-    nvim_stdpath_data: "{{ lookup('env', 'HOME') }}/.local/share/nvim"
+    nvim_stdpath_data: "{{ ansible_env.HOME }}/.local/share/nvim"
   tasks:
     - name: pip - install pip dependencies
-      import_tasks: pip.yml
+      import_tasks: tasks/pip.yml
       tags:
         - pip

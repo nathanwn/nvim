@@ -1,10 +1,18 @@
-local custom_theme = require("nathan-wien.plugins.tokyonight.papercolor-light")
--- local custom_theme = require("nathan-wien.plugins.tokyonight.bsol")
+local custom_theme_name = vim.env.GLOBAL_THEME
+local custom_theme = nil
+
+if vim.tbl_contains({
+  "bsol",
+  "papercolor-light",
+}, custom_theme_name) then
+  custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
+end
 
 return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
-  version = "v3.0.1",
+  version = "v4.1.1",
+  cond = custom_theme ~= nil,
   config = function()
     require("tokyonight").setup({
       -- your configuration comes here
@@ -40,14 +48,18 @@ return {
       --- function will be called with a ColorScheme table
       ---@param colors ColorScheme
       on_colors = function(colors)
-        custom_theme.on_colors(colors)
+        if custom_theme ~= nil then
+          custom_theme.on_colors(colors)
+        end
       end,
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
-        custom_theme.on_highlights(highlights, colors)
+        if custom_theme ~= nil then
+          custom_theme.on_highlights(highlights, colors)
+        end
       end,
     })
     -- Note: do NOT turn this on, as this also "activates" color transformation.

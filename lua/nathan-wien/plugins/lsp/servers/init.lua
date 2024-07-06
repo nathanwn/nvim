@@ -24,7 +24,6 @@ local servers = {
   new_language_server("dockerls", true),
   new_language_server("esbonio", true),
   new_language_server("gopls", true),
-  -- new_language_server("groovyls", true),
   new_language_server("lua_ls", true),
   new_language_server("prismals"),
   new_language_server("pyright", true),

@@ -2,11 +2,26 @@ return {
   {
     "tpope/vim-fugitive",
     dependencies = { "tpope/vim-rhubarb" },
+    config = function()
+      -- git diff select left/right
+      vim.keymap.set(
+        "n",
+        "<Leader>h<",
+        ":diffget //2<CR>",
+        { desc = "Get left (ours)" }
+      )
+      vim.keymap.set(
+        "n",
+        "<Leader>h>",
+        ":diffget //3<CR>",
+        { desc = "Get right (theirs)" }
+      )
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    version = "v0.6",
+    version = "v0.9.0",
     config = function()
       require("gitsigns").setup({
         signs = {

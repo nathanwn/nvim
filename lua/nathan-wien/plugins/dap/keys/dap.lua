@@ -65,7 +65,7 @@ return {
     desc = "ui eval",
   },
   {
-    "<Leader>dv",
+    "<Leader>vd",
     function()
       require("dapui").toggle()
     end,

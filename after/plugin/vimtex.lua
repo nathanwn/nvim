@@ -42,6 +42,26 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.keymap.set("n", "<F9>", "<Cmd>VimtexCompile<CR>")
     vim.keymap.set("n", "<F10>", "<Cmd>VimtexView<CR>")
+    vim.keymap.set(
+      "n",
+      "<Leader>rc",
+      "<Cmd>VimtexCompile<CR>",
+      { desc = "[run] VimtexCompile" }
+    )
+    vim.keymap.set(
+      "n",
+      "<Leader>rv",
+      "<Cmd>VimtexView<CR>",
+      { desc = "[run] VimtexView" }
+    )
   end,
   group = vim.api.nvim_create_augroup("vimtex", { clear = true }),
 })
+
+-- local symbols = {
+--   ["bigsqcap"] = "⊓",
+-- }
+--
+-- if vim.g.vimtex_syntax_conceal == nil then
+--   vim.g.vimtex_syntax_conceal = {}
+-- end

@@ -5,7 +5,11 @@ local branch = {
   condition = conditions.is_git_repo,
   init = function(self)
     if vim.b.gitsigns_status_dict then
-      self.branch = vim.b.gitsigns_status_dict.head or "[no branch]"
+      if vim.b.gitsigns_status_dict.head == "" then
+        self.branch = "[no branch]"
+      else
+        self.branch = vim.b.gitsigns_status_dict.head
+      end
     end
   end,
   provider = function(self)

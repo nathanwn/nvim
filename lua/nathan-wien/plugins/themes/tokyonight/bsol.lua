@@ -11,7 +11,7 @@ M.palette = {
   blue = "#005faf",
   yellow = "#806000",
   light_yellow = "#F0D060",
-  sky = "#88aaff",
+  sky = "#0087af",
   teal = "#005f87",
   peach = "#772C29",
   rosewater = "#d04a00",
@@ -192,16 +192,9 @@ M.on_highlights = function(hl, c)
     fg = M.palette.base,
     bg = M.palette.yellow,
   }
-  hl.HeirlineViModeTerminal = {
+  hl.HeirlineViModeOther = {
     fg = M.palette.base,
     bg = M.palette.yellow,
-  }
-  hl.HeirlineViModeInactive = {
-    fg = M.palette.base,
-    bg = M.palette.subtext0,
-  }
-  hl.TelescopeBorder = {
-    fg = M.palette.blue,
   }
   -- hl.LspInlayHint = {
   --   fg = M.palette.base,

@@ -58,8 +58,6 @@ return function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)
-      vim.api.nvim_buf_set_option(event.buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
       local map = function(mode, keys, func, desc)
         vim.keymap.set(
           mode,
@@ -120,8 +118,8 @@ return function()
         and client.server_capabilities.inlayHintProvider
         and vim.lsp.inlay_hint
       then
-        map("<leader>gn", function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        map("n", "<leader>gn", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
         end, "Inlay Hints")
       end
 

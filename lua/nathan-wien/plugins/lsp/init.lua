@@ -3,17 +3,15 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "folke/neodev.nvim",
       "nvim-telescope/telescope.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      "kevinhwang91/nvim-ufo",
     },
     config = require("nathan-wien.plugins.lsp.config.lspconfig"),
   },
   -- UI
   {
     "j-hui/fidget.nvim",
-    tag = "v1.4.1",
+    tag = "v1.4.5",
     opts = {},
   },
   -- Java

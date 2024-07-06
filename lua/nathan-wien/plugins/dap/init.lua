@@ -1,7 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    version = "0.7.0",
+    version = "0.8.0",
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
