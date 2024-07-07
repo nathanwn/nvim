@@ -7,13 +7,13 @@ return {
       vim.keymap.set(
         "n",
         "<Leader>h<",
-        ":diffget //2<CR>",
+        "<cmd>diffget //2<CR>",
         { desc = "Get left (ours)" }
       )
       vim.keymap.set(
         "n",
         "<Leader>h>",
-        ":diffget //3<CR>",
+        "<cmd>diffget //3<CR>",
         { desc = "Get right (theirs)" }
       )
     end,
