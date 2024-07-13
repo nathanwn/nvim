@@ -22,6 +22,7 @@ return function()
       "java",
       "javascript",
       "json",
+      "groovy",
       "hcl",
       "kotlin",
       "lua",

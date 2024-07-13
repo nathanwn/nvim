@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "v0.9.2",
+    commit = "c1ad655",
     build = ":TSUpdate",
     config = require("nathan-wien.plugins.treesitter.config.treesitter"),
   },

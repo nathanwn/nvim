@@ -14,6 +14,7 @@ vim.filetype.add({
   extension = {
     facts = "soufflefacts",
     dl = "souffle",
+    gradle = "groovy.gradle",
     i3config = "i3config",
     souffle = "souffle",
     tex = "tex",
