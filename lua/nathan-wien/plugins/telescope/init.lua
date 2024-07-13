@@ -1,5 +1,3 @@
--- local handlers = require("nathan-wien.plugins.telescope.handlers")
-
 local config = function()
   local telescope = require("telescope")
 
@@ -26,85 +24,86 @@ local config = function()
       },
     },
   })
+
+  -- local map = function(key, fn, desc)
+  --   vim.keymap.set("n", key, fn, { desc = desc })
+  -- end
+
+  vim.keymap.set("n", "<Leader>ff", function()
+    require("telescope.builtin").find_files({ hidden = true })
+  end, { desc = "Files" })
+  vim.keymap.set("n", "<Leader>fb", function()
+    require("telescope.builtin").buffers({ previewer = false })
+  end, { desc = "Buffers" })
+  vim.keymap.set(
+    "n",
+    "<Leader>fc",
+    require("telescope.builtin").current_buffer_fuzzy_find,
+    { desc = "Current buffer" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>fg",
+    require("telescope.builtin").live_grep,
+    { desc = "Grep" }
+  )
+  vim.keymap.set("n", "<Leader>fG", function()
+    require("telescope.builtin").live_grep({ hidden = true })
+  end, { desc = "Grep include hidden" })
+  vim.keymap.set(
+    "n",
+    "<Leader>fh",
+    require("telescope.builtin").help_tags,
+    { desc = "Help tags" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>fk",
+    require("telescope.builtin").keymaps,
+    { desc = "Keys" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>f;",
+    require("telescope.builtin").commands,
+    { desc = "Command" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>fp",
+    require("telescope.builtin").command_history,
+    { desc = "Command history" }
+  )
+  -- vim.keymap.set("n",
+  --   "<Leader>fw",
+  --   require("nathanwn.plugins.telescope.handlers").worktrees,
+  --   "Worktrees"
+  -- )
+  vim.keymap.set(
+    "n",
+    "<Leader>fo",
+    require("telescope.builtin").resume,
+    { desc = "Resume" }
+  )
+  vim.keymap.set(
+    "n",
+    "<Leader>fa",
+    require("telescope.builtin").builtin,
+    { desc = "Built-ins" }
+  )
 end
 
 return {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    event = "VimEnter",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
     },
     config = config,
-    keys = {
-      {
-        "<Leader>ff",
-        require("nathan-wien.plugins.telescope.handlers").files,
-        desc = "Files",
-      },
-      {
-        "<Leader>fb",
-        require("nathan-wien.plugins.telescope.handlers").buffers,
-        desc = "Buffers",
-      },
-      {
-        "<Leader>fc",
-        require("nathan-wien.plugins.telescope.handlers").current_buffer,
-        desc = "Current buffer",
-      },
-      {
-        "<Leader>fg",
-        require("nathan-wien.plugins.telescope.handlers").grep,
-        desc = "Grep",
-      },
-      {
-        "<Leader>fG",
-        require("nathan-wien.plugins.telescope.handlers").grep_include_hidden,
-        desc = "Grep include hidden",
-      },
-      {
-        "<Leader>fh",
-        require("nathan-wien.plugins.telescope.handlers").help_tags,
-        desc = "Help tags",
-      },
-      {
-        "<Leader>fk",
-        require("nathan-wien.plugins.telescope.handlers").keys,
-        desc = "Keys",
-      },
-      {
-        "<Leader>f.",
-        require("nathan-wien.plugins.telescope.handlers").dotfiles,
-        desc = "Dotfiles",
-      },
-      {
-        "<Leader>f;",
-        require("nathan-wien.plugins.telescope.handlers").commands,
-        desc = "Command history",
-      },
-      {
-        "<Leader>fp",
-        require("nathan-wien.plugins.telescope.handlers").command_history,
-        desc = "Command history",
-      },
-      -- {
-      --   "<Leader>fw",
-      --   require("nathan-wien.plugins.telescope.handlers").worktrees,
-      --   "Worktrees",
-      -- },
-      {
-        "<Leader>fo",
-        require("nathan-wien.plugins.telescope.handlers").resume,
-        desc = "Resume",
-      },
-      {
-        "<Leader>fa",
-        require("nathan-wien.plugins.telescope.handlers").builtin,
-        desc = "Built-ins",
-      },
-    },
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
