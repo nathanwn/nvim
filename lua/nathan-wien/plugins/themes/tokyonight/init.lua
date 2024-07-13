@@ -1,26 +1,20 @@
-local custom_theme_name = vim.env.GLOBAL_THEME
+-- local custom_theme_name = vim.env.GLOBAL_THEME
 local custom_theme = nil
 
-if vim.tbl_contains({
-  "bsol",
-  "papercolor-light",
-}, custom_theme_name) then
-  custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
-end
+-- if vim.tbl_contains({
+--   "bsol",
+--   "papercolor-light",
+-- }, custom_theme_name) then
+--   custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
+-- end
 
 return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
-  version = "v4.1.1",
-  cond = custom_theme ~= nil,
+  version = "v4.4.0",
+  -- cond = custom_theme ~= nil,
   config = function()
     require("tokyonight").setup({
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- Note: this should NOT be `day`, as the `day` colorscheme activates
-      -- "color transformation".
-      style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-      light_style = "night", -- The theme is used when the background is set to light
       transparent = false, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
       styles = {
@@ -51,19 +45,23 @@ return {
         if custom_theme ~= nil then
           custom_theme.on_colors(colors)
         end
+        -- colors.bg = "#eeeeee"
       end,
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
-        if custom_theme ~= nil then
-          custom_theme.on_highlights(highlights, colors)
-        end
+        highlights["@markup.raw.markdown_inline"] = {
+          bg = colors.bg_popup,
+        }
+        -- if custom_theme ~= nil then
+        --   custom_theme.on_highlights(highlights, colors)
+        -- end
       end,
     })
     -- Note: do NOT turn this on, as this also "activates" color transformation.
-    vim.o.background = "dark"
-    vim.cmd.colorscheme("tokyonight")
+    -- vim.o.background = "light"
+    vim.cmd.colorscheme("tokyonight-day")
   end,
 }
