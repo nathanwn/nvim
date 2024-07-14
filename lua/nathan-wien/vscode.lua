@@ -1,6 +1,6 @@
 -- To view all available actions, do
 -- Ctrl+Shift+P into 'Preferences: Open Default Keyboard Shortcuts'
-local vscode = require('vscode-neovim')
+local vscode = require("vscode-neovim")
 vim.keymap.set("n", "<Leader>ff", function()
   vscode.call("workbench.action.quickOpen")
 end)
