@@ -1,5 +1,5 @@
 -- local custom_theme_name = vim.env.GLOBAL_THEME
-local custom_theme = nil
+local custom_theme = require("nathan-wien.plugins.themes.tokyonight.tokyonight-day")
 
 -- if vim.tbl_contains({
 --   "bsol",
@@ -12,7 +12,7 @@ return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
   version = "v4.4.0",
-  -- cond = custom_theme ~= nil,
+  cond = custom_theme ~= nil,
   config = function()
     require("tokyonight").setup({
       transparent = false, -- Enable this to disable setting the background color
@@ -45,19 +45,15 @@ return {
         if custom_theme ~= nil then
           custom_theme.on_colors(colors)
         end
-        -- colors.bg = "#eeeeee"
       end,
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
-        highlights["@markup.raw.markdown_inline"] = {
-          bg = colors.bg_popup,
-        }
-        -- if custom_theme ~= nil then
-        --   custom_theme.on_highlights(highlights, colors)
-        -- end
+        if custom_theme ~= nil then
+          custom_theme.on_highlights(highlights, colors)
+        end
       end,
     })
     -- Note: do NOT turn this on, as this also "activates" color transformation.
