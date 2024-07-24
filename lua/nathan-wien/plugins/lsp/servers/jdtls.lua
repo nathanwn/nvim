@@ -8,17 +8,14 @@ else
   platform = "linux"
 end
 
-local Path = require("plenary.path")
+local mason_path = require("mason.settings").current.install_root_dir
 
-local mason_path = Path:new(require("mason.settings").current.install_root_dir)
--- local mason_dir = require("mason.settings").current.install_root_dir
-
-local jdtls_install_path = mason_path:joinpath("packages", "jdtls")
-local platform_config_path = jdtls_install_path:joinpath("/config_" .. platform)
+local jdtls_install_path = vim.fs.joinpath(mason_path, "packages", "jdtls")
+local platform_config_path = vim.fs.joinpath(jdtls_install_path, "config_" .. platform)
 local equinox_jar = vim.fn.glob(
-  tostring(jdtls_install_path) .. "/plugins/org.eclipse.equinox.launcher_**.jar"
+  vim.fs.joinpath(jdtls_install_path, "plugins", "org.eclipse.equinox.launcher_**.jar")
 )
-local lombok_jar_path = jdtls_install_path:joinpath("lombok.jar")
+local lombok_jar_path = vim.fs.joinpath(jdtls_install_path, "lombok.jar")
 
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
 local project_name = function()
@@ -28,15 +25,20 @@ local project_name = function()
   return parent_dir_name .. "_" .. current_dir_name
 end
 local workspace_dir =
-  tostring(Path:new(vim.fn.stdpath("data")):joinpath("jdtls-ws", project_name()))
+  vim.fs.joinpath(vim.fn.stdpath("data"), "jdtls-ws", project_name())
 
 -- jar files for debugging
 -- from java-debug
 local bundles = {
   vim.fn.glob(
-    tostring(
-      mason_path:joinpath("packages", "java-debug-adapter", "extension", "server")
-    ) .. "/com.microsoft.java.debug.plugin-*.jar"
+    vim.fs.joinpath(
+      mason_path,
+      "packages",
+      "java-debug-adapter",
+      "extension",
+      "server",
+      "com.microsoft.java.debug.plugin-*.jar"
+    )
   ),
 }
 -- from vscode-java-text
@@ -44,8 +46,14 @@ vim.list_extend(
   bundles,
   vim.split(
     vim.fn.glob(
-      tostring(mason_path:joinpath("packages", "java-test", "extension", "server"))
-        .. "/*.jar"
+      vim.fs.joinpath(
+        mason_path,
+        "packages",
+        "java-test",
+        "extension",
+        "server",
+        "*.jar"
+      )
     ),
     "\n"
   )
@@ -64,7 +72,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. tostring(lombok_jar_path),
+    "-javaagent:" .. lombok_jar_path,
     "-Xms1g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",
@@ -74,7 +82,7 @@ local config = {
     "-jar",
     equinox_jar,
     "-configuration",
-    tostring(platform_config_path),
+    platform_config_path,
     "-data",
     workspace_dir,
   },

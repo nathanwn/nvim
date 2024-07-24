@@ -62,5 +62,19 @@ return {
       }
     )
   ),
+  s(
+    "mintb",
+    fmt(
+      [[
+  \begin{{minted}}{{{}}}
+  {}
+  \end{{minted}}
+    ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
   s("lstinline", fmt("\\lstinline{{{}}}", { i(1) })),
 }
