@@ -1,13 +1,16 @@
-local on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach")
+local utils = require("nathan-wien.utils")
 
 -- platform: win, linux, mac
 local platform
-if vim.loop.os_uname().sysname == "Darwin" then
+if utils.is_on_mac() then
   platform = "mac"
-else
+elseif utils.is_on_linux() then
   platform = "linux"
+else
+  return
 end
 
+local on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach")
 local mason_path = require("mason.settings").current.install_root_dir
 
 local jdtls_install_path = vim.fs.joinpath(mason_path, "packages", "jdtls")

@@ -1,6 +1,8 @@
 vim.g.tex_flavor = "latex"
-if vim.loop.os_uname().sysname == "Linux" then
-  if string.find(vim.loop.os_uname().release, "WSL2") then
+
+local utils = require("nathan-wien.utils")
+if utils.is_on_linux() then
+  if utils.is_on_wsl2() then
     -- :h vimtex-faq-sumatrapdf-wsl
     vim.g.vimtex_view_general_viewer = "sumatrapdf"
     vim.g.vimtex_view_general_options =
@@ -8,7 +10,7 @@ if vim.loop.os_uname().sysname == "Linux" then
   else
     vim.g.vimtex_view_method = "zathura"
   end
-elseif vim.loop.os_uname().sysname == "Darwin" then
+elseif utils.is_on_mac() then
   vim.g.vimtex_view_method = "sioyek"
 end
 vim.g.vimtex_quickfix_mode = false
