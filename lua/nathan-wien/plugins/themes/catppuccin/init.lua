@@ -32,10 +32,12 @@ local config = function()
   -- vim.cmd.colorscheme("catppuccin")
 end
 
-return {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  cond = false,
-  config = config,
-  tag = "v1.5.0",
-}
+-- return {
+--   "catppuccin/nvim",
+--   name = "catppuccin",
+--   cond = false,
+--   config = config,
+--   tag = "v1.5.0",
+-- }
+
+return {}
