@@ -1,7 +1,6 @@
 return {
   {
     "tpope/vim-fugitive",
-    dependencies = { "tpope/vim-rhubarb" },
     config = function()
       -- git diff select left/right
       vim.keymap.set(
@@ -26,34 +25,19 @@ return {
       require("gitsigns").setup({
         signs = {
           add = {
-            hl = "GitSignsAdd",
             text = "▌", -- │
-            numhl = "GitSignsAddNr",
-            linehl = "GitSignsAddLn",
           },
           change = {
-            hl = "GitSignsChange",
             text = "▌", -- │
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
           },
           delete = {
-            hl = "GitSignsDelete",
             text = "_",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
           },
           topdelete = {
-            hl = "GitSignsDelete",
             text = "‾",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
           },
           changedelete = {
-            hl = "GitSignsChange",
             text = "~",
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
           },
         },
         on_attach = function(bufnr)
@@ -68,23 +52,19 @@ return {
           -- Navigation
           map("n", "]c", function()
             if vim.wo.diff then
-              return "]c"
+              vim.cmd.normal({ "]c", bang = true })
+            else
+              gs.nav_hunk("next")
             end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return "<Ignore>"
-          end, { expr = true, desc = "next hunk" })
+          end, { desc = "next hunk" })
 
           map("n", "[c", function()
             if vim.wo.diff then
-              return "[c"
+              vim.cmd.normal({ "[c", bang = true })
+            else
+              gs.nav_hunk("prev")
             end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return "<Ignore>"
-          end, { expr = true, desc = "prev hunk" })
+          end, { desc = "prev hunk" })
 
           -- Actions
           map({ "n", "v" }, "<leader>hs", gs.stage_hunk, { desc = "stage hunk" })
@@ -98,15 +78,6 @@ return {
           end, {
             desc = "blame line",
           })
-          -- map("n", "<leader>tb", gs.toggle_current_line_blame)
-          -- map("n", "<leader>hd", gs.diffthis)
-          -- map("n", "<leader>hD", function()
-          --   gs.diffthis("~")
-          -- end)
-          -- map("n", "<leader>td", gs.toggle_deleted)
-
-          -- -- Text object
-          -- map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
         end,
       })
     end,
