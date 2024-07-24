@@ -26,13 +26,13 @@ local servers = {
   new_language_server("gopls", true),
   new_language_server("gradle_ls", true),
   new_language_server("lua_ls", true),
-  new_language_server("prismals"),
+  -- new_language_server("prismals"),
   new_language_server("pyright", true),
   -- new_language_server("ruff_lsp"),
   new_language_server("rust_analyzer", true),
-  new_language_server("terraformls"),
+  -- new_language_server("terraformls"),
   new_language_server("texlab", true),
-  new_language_server("tsserver", true),
+  -- new_language_server("tsserver", true),
 }
 
 return servers
