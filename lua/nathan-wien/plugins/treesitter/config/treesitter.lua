@@ -34,6 +34,7 @@ return function()
       "tsx",
       "typescript",
       "vimdoc",
+      "xml",
     },
     highlight = { enable = true },
     indent = { enable = false },
