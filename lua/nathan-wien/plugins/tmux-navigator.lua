@@ -4,10 +4,10 @@ return {
     vim.g.tmux_navigator_no_mappings = 1
   end,
   keys = {
-    { "<C-w>h", ":TmuxNavigateLeft<CR>" },
-    { "<C-w>j", ":TmuxNavigateDown<CR>" },
-    { "<C-w>k", ":TmuxNavigateUp<CR>" },
-    { "<C-w>l", ":TmuxNavigateRight<CR>" },
-    { "<C-w>\\", ":TmuxNavigatePrevious<CR>" },
+    { "<C-w>h", "<Cmd>TmuxNavigateLeft<CR>" },
+    { "<C-w>j", "<Cmd>TmuxNavigateDown<CR>" },
+    { "<C-w>k", "<Cmd>TmuxNavigateUp<CR>" },
+    { "<C-w>l", "<Cmd>TmuxNavigateRight<CR>" },
+    { "<C-w>\\", "<Cmd>TmuxNavigatePrevious<CR>" },
   },
 }
