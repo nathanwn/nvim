@@ -2,8 +2,7 @@ return {
   -- Tex
   {
     "lervag/vimtex",
-    version = "v2.14",
-    ft = { "tex" },
+    tag = "v2.15",
   },
   -- ANTLR4
   {

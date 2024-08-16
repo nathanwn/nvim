@@ -37,7 +37,6 @@ vim.g.vimtex_compiler_latexmk = {
     "-interaction=nonstopmode",
   },
 }
-vim.g.vimtex_compiler_progname = require("nathan-wien.utils").python_venv .. "/bin/nvr"
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "tex" },

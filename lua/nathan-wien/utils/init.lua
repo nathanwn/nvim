@@ -62,7 +62,7 @@ end
 ---
 ---@return boolean
 M.is_on_wsl2 = function()
-  return M.is_on_linux() and string.find(os_release, "WSL2") == true
+  return M.is_on_linux() and string.find(os_release, "WSL2") ~= nil
 end
 
 return M
