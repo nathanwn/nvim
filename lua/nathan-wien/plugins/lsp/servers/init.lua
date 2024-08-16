@@ -1,38 +1,42 @@
-local get_config = function(server_name)
-  return require(string.format("nathan-wien.plugins.lsp.servers.%s", server_name))
-end
-
-local new_language_server = function(name, has_config)
-  local config
-  if has_config then
-    config = get_config(name)
-  else
-    config = {}
-  end
-
-  return {
-    name = name,
-    config = config,
-  }
-end
-
-local servers = {
-  -- new_language_server("ansiblels"),
-  new_language_server("bashls", true),
-  new_language_server("clangd"),
-  new_language_server("cmake"),
-  new_language_server("dockerls", true),
-  new_language_server("esbonio", true),
-  new_language_server("gopls", true),
-  new_language_server("gradle_ls", true),
-  new_language_server("lua_ls", true),
-  -- new_language_server("prismals"),
-  new_language_server("pyright", true),
-  -- new_language_server("ruff_lsp"),
-  new_language_server("rust_analyzer", true),
-  -- new_language_server("terraformls"),
-  new_language_server("texlab", true),
-  -- new_language_server("tsserver", true),
+local server_specs = {
+  bashls = {
+    has_config = true,
+    enabled = vim.fn.executable("npm") == 1,
+  },
+  clangd = {},
+  cmake = {},
+  dockerls = {
+    has_config = true,
+  },
+  esbonio = {
+    has_config = true,
+  },
+  gopls = {
+    has_config = true,
+    enabled = vim.fn.executable("go") == 1,
+  },
+  gradle_ls = {
+    has_config = true,
+  },
+  lua_ls = {
+    has_config = true,
+  },
+  pyright = {
+    has_config = true,
+    enabled = vim.fn.executable("npm") == 1,
+  },
+  rust_analyzer = {
+    has_config = true,
+    enabled = vim.fn.executable("cargo") == 1,
+  },
+  texlab = {
+    has_config = true,
+    enabled = vim.fn.executable("cargo") == 1,
+  },
+  tsserver = {
+    has_config = true,
+    enabled = vim.fn.executable("npm") == 1,
+  },
 }
 
-return servers
+return server_specs
