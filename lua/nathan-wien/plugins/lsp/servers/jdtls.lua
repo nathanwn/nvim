@@ -62,14 +62,15 @@ vim.list_extend(
   )
 )
 
+local java_exec = require("nathan-wien.utils").get_java_exec("17") or "java"
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
-    -- 'java' or '/path/to/java17_or_newer/bin/java',
-    -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-    "/usr/lib/jvm/java-17-openjdk-amd64/bin/java",
+    -- Note: requires java 17
+    java_exec,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
