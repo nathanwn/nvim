@@ -27,8 +27,9 @@ local project_name = function()
   local parent_dir_name = vim.fn.fnamemodify(cwd, ":p:h:h:t")
   return parent_dir_name .. "_" .. current_dir_name
 end
-local workspace_dir =
-  vim.fs.joinpath(vim.fn.stdpath("data"), "jdtls-ws", project_name())
+local std_data_path = vim.fn.stdpath("data")
+assert(type(std_data_path) == "string")
+local workspace_dir = vim.fs.joinpath(std_data_path, "jdtls-ws", project_name())
 
 -- jar files for debugging
 -- from java-debug
