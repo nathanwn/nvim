@@ -1,12 +1,12 @@
--- local custom_theme_name = vim.env.GLOBAL_THEME
-local custom_theme = require("nathan-wien.plugins.themes.tokyonight.tokyonight-day")
+local custom_theme_name = vim.env.GLOBAL_THEME or "tokyonight-day"
 
--- if vim.tbl_contains({
---   "bsol",
---   "papercolor-light",
--- }, custom_theme_name) then
---   custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
--- end
+local custom_theme = nil
+if vim.tbl_contains({
+  "bsol",
+  "papercolor-light",
+}, custom_theme_name) then
+  custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
+end
 
 return {
   "folke/tokyonight.nvim",
