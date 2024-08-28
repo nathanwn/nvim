@@ -27,7 +27,6 @@ return {
   version = "v1.0.6",
   dependencies = {
     "tokyonight",
-    "onedark",
     "SmiteshP/nvim-navic",
   },
   config = config,
