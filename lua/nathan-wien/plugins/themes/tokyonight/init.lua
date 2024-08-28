@@ -11,10 +11,12 @@ local custom_theme = require("nathan-wien.plugins.themes.tokyonight.tokyonight-d
 return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
-  version = "v4.4.0",
+  version = "v4.8.0",
   cond = custom_theme ~= nil,
   config = function()
     require("tokyonight").setup({
+      -- TODO: remove this once https://github.com/folke/tokyonight.nvim/pull/620 is closed.
+      plugins = { markdown = true },
       transparent = false, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
       styles = {

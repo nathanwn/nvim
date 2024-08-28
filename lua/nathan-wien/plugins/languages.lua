@@ -15,7 +15,6 @@ return {
     ft = { "lark" },
   },
   -- Markdown
-  { "preservim/vim-markdown", ft = { "markdown" } },
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   version = "v0.0.10",
