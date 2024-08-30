@@ -63,3 +63,9 @@ vim.g.vimsyn_embed = "l"
 vim.opt.signcolumn = "auto:2"
 -- Global status bar
 vim.opt.laststatus = 3
+
+-- Convert CRLF to LF on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  command = [[%s/\r\n/\r/e]],
+  group = vim.api.nvim_create_augroup("EnsureLinuxNewLine", { clear = true }),
+})
