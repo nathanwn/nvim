@@ -27,6 +27,7 @@ vim.filetype.add({
     yml = handle_yaml,
   },
   filename = {
+    [".ansible-lint"] = "yaml",
     [".flake8"] = "cfg",
     ["Jenkinsfile"] = "groovy",
     [".eslintrc"] = "json",
@@ -46,7 +47,7 @@ vim.filetype.add({
     [".*/workflows/.*.yaml"] = "yaml.workflow",
     [".*/workflows/.*.yml"] = "yaml.workflow",
     [".*.intoto.jsonl"] = "json.intoto",
-    -- [".*/tasks/.*.yaml"] = "yaml.ansible",
-    -- [".*/roles/.*.yml"] = "yaml.ansible",
+    [".*/tasks/.*.yaml"] = "yaml.ansible",
+    [".*/roles/.*.yml"] = "yaml.ansible",
   },
 })
