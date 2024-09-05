@@ -2,6 +2,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     version = "0.8.0",
+    cond = false,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -12,6 +13,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    cond = false,
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
@@ -19,6 +21,7 @@ return {
   },
   {
     "nvim-telescope/telescope-dap.nvim",
+    cond = false,
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       require("telescope").load_extension("dap")
@@ -26,6 +29,7 @@ return {
   },
   {
     "theHamsta/nvim-dap-virtual-text",
+    cond = false,
     config = function()
       require("nvim-dap-virtual-text").setup({})
     end,
@@ -34,6 +38,7 @@ return {
   -- Language-specific plugins
   {
     "mfussenegger/nvim-dap-python",
+    cond = false,
     dependencies = { "mfussenegger/nvim-dap" },
     ft = "python",
     config = function()
@@ -58,6 +63,7 @@ return {
   },
   {
     "leoluz/nvim-dap-go",
+    cond = false,
     dependencies = { "mfussenegger/nvim-dap" },
     ft = "go",
     config = function()

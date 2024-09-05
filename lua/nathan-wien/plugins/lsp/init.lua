@@ -2,7 +2,12 @@ return {
   -- LspConfig
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = {
+      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "j-hui/fidget.nvim",
       "nvim-telescope/telescope.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },

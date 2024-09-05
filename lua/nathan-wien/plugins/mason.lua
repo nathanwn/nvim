@@ -1,18 +1,21 @@
 return {
   {
     "williamboman/mason.nvim",
+    cmd = "Mason",
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    tag = "v1.30.0",
     dependencies = {
       {
         "neovim/nvim-lspconfig",
         "williamboman/mason.nvim",
       },
     },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
       local lsp_servers = require("nathan-wien.plugins.lsp.servers")
       local ensure_installed = {}
@@ -35,6 +38,7 @@ return {
         "williamboman/mason.nvim",
       },
     },
+    event = { "VeryLazy" },
     opts = {
       ensure_installed = {
         -- you can pin a tool to a particular version

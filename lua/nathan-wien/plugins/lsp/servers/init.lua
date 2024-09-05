@@ -7,6 +7,7 @@ local server_specs = {
   cmake = {},
   dockerls = {
     has_config = true,
+    enabled = vim.fn.executable("npm") == 1,
   },
   esbonio = {
     has_config = true,
