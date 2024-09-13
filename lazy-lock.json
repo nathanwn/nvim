@@ -9,7 +9,7 @@
   "cmp-omni": { "branch": "main", "commit": "4ef610bbd85a5ee4e97e09450c0daecbdc60de86" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "conform.nvim": { "branch": "master", "commit": "60e6fbddbdf37d7790de07dc7420beefaf650e5e" },
+  "conform.nvim": { "branch": "master", "commit": "0ebe875d9c306f5fc829db38492ffff2a70d8e9d" },
   "fidget.nvim": { "branch": "main", "commit": "ef99df04a1c53a453602421bc0f756997edc8289" },
   "gitsigns.nvim": { "branch": "main", "commit": "0b04035bb7b3c83e999b9676e2fb46fd0aa9f910" },
   "heirline.nvim": { "branch": "master", "commit": "0d797435e54645a5f98bad7ad6046aac1ef95c1e" },

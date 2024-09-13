@@ -28,26 +28,21 @@ end
 
 return {
   "stevearc/conform.nvim",
-  version = "v6.0.0",
+  version = "v8.0.0",
   config = function()
     require("conform").setup({
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, java = true, python = true }
-        return {
-          timeout_ms = 3000,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
+      -- format_on_save = function(bufnr)
+      --   -- Disable "format_on_save lsp_fallback" for languages that don't
+      --   -- have a well standardized coding style. You can add additional
+      --   -- languages here or re-enable it for the disabled ones.
+      --   local disable_filetypes = { c = true, cpp = true, java = true, python = true }
+      --   return {
+      --     timeout_ms = 3000,
+      --     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+      --   }
+      -- end,
       formatters_by_ft = formatters_by_ft,
-      formatters = {
-        autoflake = {
-          prepend_args = { "--remove-all-unused-imports" },
-        },
-      },
     })
     vim.api.nvim_create_user_command("F", format, {})
   end,
