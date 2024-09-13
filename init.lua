@@ -1,3 +1,4 @@
+-- This is the entry point.
 require("nathan-wien")
 
 if not vim.g.vscode then
