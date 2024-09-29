@@ -36,7 +36,12 @@ return function()
       "vimdoc",
       "xml",
     },
-    highlight = { enable = true },
+    highlight = {
+      enable = true,
+      -- Workaround for python indentation until the following is resolved:
+      -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
+      additional_vim_regex_highlighting = { "python" },
+    },
     indent = { enable = false },
   })
 
