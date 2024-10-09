@@ -18,6 +18,7 @@ local server_specs = {
   },
   gradle_ls = {
     has_config = true,
+    enabled = false,
   },
   lua_ls = {
     has_config = true,
