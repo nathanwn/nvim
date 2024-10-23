@@ -16,8 +16,10 @@ local filename_container = {
 local filename_active = {
   condition = conditions.is_active,
   hl = {
-    fg = utils.get_highlight("HeirlineFilenameActive").fg,
-    bg = utils.get_highlight("HeirlineFilenameActive").bg,
+    -- fg = utils.get_highlight("HeirlineFilenameActive").fg,
+    -- bg = utils.get_highlight("HeirlineFilenameActive").bg,
+    fg = utils.get_highlight("TabLineSel").fg,
+    bg = utils.get_highlight("TabLineSel").bg,
     bold = true,
   },
 }
@@ -25,8 +27,10 @@ local filename_active = {
 local filename_inactive = {
   condition = conditions.is_not_active,
   hl = {
-    fg = utils.get_highlight("HeirlineFilenameInactive").fg,
-    bg = utils.get_highlight("HeirlineFilenameInactive").bg,
+    -- fg = utils.get_highlight("HeirlineFilenameInactive").fg,
+    -- bg = utils.get_highlight("HeirlineFilenameInactive").bg,
+    fg = utils.get_highlight("TabLine").fg,
+    bg = utils.get_highlight("TabLine").bg,
   },
 }
 
