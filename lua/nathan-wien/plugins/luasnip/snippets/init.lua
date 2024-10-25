@@ -20,4 +20,6 @@ local luasnip = require("luasnip")
 
 -- luasnip.add_snippets("all", {})
 
+luasnip.add_snippets("markdown", require("nathan-wien.plugins.luasnip.snippets.markdown"))
+luasnip.add_snippets("python", require("nathan-wien.plugins.luasnip.snippets.python"))
 luasnip.add_snippets("tex", require("nathan-wien.plugins.luasnip.snippets.tex"))
