@@ -24,7 +24,7 @@ return {
         table.insert(ensure_installed, server.name)
       end
 
-      table.insert(ensure_installed, "jdtls")
+      -- table.insert(ensure_installed, "jdtls")
 
       require("mason-lspconfig").setup({
         ensure_installed = ensure_installed,
