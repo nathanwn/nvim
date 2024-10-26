@@ -1,5 +1,5 @@
 local custom_theme_name = nil
-if string.match(vim.env.GLOBAL_THEME, "base16-.*") then
+if vim.env.GLOBAL_THEME and string.match(vim.env.GLOBAL_THEME, "base16-.*") then
   custom_theme_name = vim.env.GLOBAL_THEME
 end
 
