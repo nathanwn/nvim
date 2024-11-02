@@ -1,29 +1,20 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "souffle" },
   callback = function()
-    -- Use sdkman to manage java versions
-    local java_version = "11.0.19-tem"
-    local java = vim.fs.joinpath(
-      vim.env.HOME,
-      ".sdkman",
-      "candidates",
-      "java",
-      java_version,
-      "bin",
-      "java"
-    )
-    local repo_path =
-      vim.fs.joinpath(vim.env.HOME, "dev", "personal", "souffle-lsp-plugin")
+    local homedir = Path.new(vim.fn.getenv("HOME"))
+    local project_dir = homedir:joinpath("dev", "personal", "souffle-analyzer")
     local cmd = {
-      java,
-      "-cp",
-      vim.fs.joinpath(repo_path, "build", "libs", "*"),
-      "SouffleLanguageServerLauncher",
+      tostring(project_dir:joinpath(".venv", "bin", "souffle-analyzer")),
+      "server",
+      "--verbose",
+      "--log-file",
+      -- tostring(homedir:joinpath(".local","state", "souffle-language-server", "tmp.log")),
+      tostring(project_dir:joinpath("log", "tmp.log")),
     }
     vim.lsp.start({
-      name = "souffle-ls",
+      name = "souffle-analyzer",
       cmd = cmd,
-      root_dir = vim.fs.dirname(vim.fs.find({ "main.dl" }, { upward = true })[1]),
+      root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
     })
   end,
 })
