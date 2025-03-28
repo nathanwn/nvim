@@ -6,9 +6,10 @@ end
 return {
   "RRethy/base16-nvim",
   name = "base16-nvim",
+  lazy = false,
   cond = custom_theme_name ~= nil,
   priority = 1000, -- Make sure to load this before all the other start plugins.
-  init = function()
+  config = function()
     vim.cmd.colorscheme(custom_theme_name)
   end
 }

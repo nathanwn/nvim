@@ -13,8 +13,7 @@ local lsp_container = {
     return string.format(" %s ", table.concat(client_names, " "))
   end,
   hl = {
-    fg = utils.get_highlight("HeirlineLsp").fg,
-    bg = utils.get_highlight("HeirlineLsp").bg,
+    fg = utils.get_highlight("@comment.hint").fg,
   },
 }
 

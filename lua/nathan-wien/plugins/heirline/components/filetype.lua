@@ -9,8 +9,7 @@ return {
     end
   end,
   hl = {
-    fg = utils.get_highlight("HeirlineFiletype").fg,
-    bg = utils.get_highlight("HeirlineFiletype").bg,
+    fg = utils.get_highlight("@comment.todo").fg,
     bold = true,
   },
 }

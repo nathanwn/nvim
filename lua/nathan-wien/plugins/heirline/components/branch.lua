@@ -23,8 +23,7 @@ local branch = {
     return string.format(" %s ", branch_label)
   end,
   hl = {
-    fg = utils.get_highlight("HeirlineBranch").fg,
-    bg = utils.get_highlight("HeirlineBranch").bg,
+    fg = utils.get_highlight("@comment.note").fg,
     bold = true,
   },
 }
