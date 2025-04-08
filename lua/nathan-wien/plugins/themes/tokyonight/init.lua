@@ -1,19 +1,19 @@
 local custom_theme_name = vim.env.GLOBAL_THEME
 
 local custom_theme = nil
-if vim.tbl_contains({
-  "bsol",
-  "papercolor-light",
-}, custom_theme_name) then
-  custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
-end
+-- if vim.tbl_contains({
+--   "bsol",
+--   "papercolor-light",
+-- }, custom_theme_name) then
+--   custom_theme = require("nathan-wien.plugins.themes.tokyonight." .. custom_theme_name)
+-- end
 
 return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
-  version = "v4.8.0",
+  version = "v4.11.0",
   priority = 1000, -- Make sure to load this before all the other start plugins.
-  cond = custom_theme ~= nil,
+  cond = string.match(custom_theme_name, "tokyonight-.*"),
   -- cond = false,
   config = function()
     require("tokyonight").setup({
@@ -62,6 +62,6 @@ return {
     })
     -- Note: do NOT turn this on, as this also "activates" color transformation.
     -- vim.o.background = "light"
-    vim.cmd.colorscheme("tokyonight-day")
+    vim.cmd.colorscheme("tokyonight-storm")
   end,
 }
