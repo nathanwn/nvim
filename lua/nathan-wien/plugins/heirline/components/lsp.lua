@@ -6,7 +6,7 @@ local lsp_container = {
   update = { "LspAttach", "LspDetach" },
   provider = function()
     local client_names = {}
-    for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+    for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
       table.insert(client_names, client.name)
     end
     client_names = vim.fn.uniq(client_names)

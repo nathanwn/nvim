@@ -62,8 +62,12 @@ return function()
 
       map("n", "<Leader>gl", vim.diagnostic.open_float, "Line diagnostic")
 
-      map("n", "<Leader>[d", vim.diagnostic.goto_prev, "Prev diagnostic")
-      map("n", "<Leader>]d", vim.diagnostic.goto_next, "Next diagnostic")
+      map("n", "<Leader>[d", function()
+        vim.diagnostic.jump({ count = -1, float = true })
+      end, "Prev diagnostic")
+      map("n", "<Leader>]d", function()
+        vim.diagnostic.jump({ count = 1, float = true })
+      end, "Next diagnostic")
 
       map("n", "<Leader>g*", function()
         vim.cmd("e" .. vim.lsp.get_log_path())
@@ -73,8 +77,10 @@ return function()
 
       if
         client
-        and client.server_capabilities.inlayHintProvider
-        and vim.lsp.inlay_hint
+        and client:supports_method(
+          vim.lsp.protocol.Methods.textDocument_inlayHint,
+          event.buf
+        )
       then
         map("n", "<leader>gn", function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
@@ -84,8 +90,15 @@ return function()
       -- The following two autocommands are used to highlight references of the
       -- word under your cursor when your cursor rests there for a little while.
       --    See `:help CursorHold` for information about when this is executed
+      --
       -- When you move your cursor, the highlights will be cleared (the second autocommand).
-      if client and client.server_capabilities.documentHighlightProvider then
+      if
+        client
+        and client:supports_method(
+          vim.lsp.protocol.Methods.textDocument_documentHighlight,
+          event.buf
+        )
+      then
         local highlight_augroup =
           vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
