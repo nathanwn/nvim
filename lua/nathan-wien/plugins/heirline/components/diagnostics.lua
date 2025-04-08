@@ -31,10 +31,10 @@ local padding = {
 local diagnostics = {
   condition = conditions.has_diagnostics,
   static = {
-    error_icon = get_sign("DiagnosticSignError"),
-    warn_icon = get_sign("DiagnosticSignWarn"),
-    info_icon = get_sign("DiagnosticSignInfo"),
-    hint_icon = get_sign("DiagnosticSignHint"),
+    error_icon = "E",
+    warn_icon = "W",
+    info_icon = "I",
+    hint_icon = "H",
   },
   hl = {
     bg = utils.get_highlight("StatusLine").bg,
