@@ -35,7 +35,7 @@ local server_specs = {
     has_config = true,
     enabled = vim.fn.executable("cargo") == 1,
   },
-  tsserver = {
+  ts_ls = {
     has_config = true,
     enabled = vim.fn.executable("npm") == 1,
   },
