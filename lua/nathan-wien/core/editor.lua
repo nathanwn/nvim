@@ -69,3 +69,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\r\n/\r/e]],
   group = vim.api.nvim_create_augroup("EnsureLinuxNewLine", { clear = true }),
 })
+
+-- NOTE: if the virtual environment does not exist, this will crash
+-- nvim on MacOS.
+-- TODO: figure out how to create this virtual environment automagically
+-- vim.g.python3_host_prog = require("nathan-wien.utils").python_venv .. "/bin/python3"

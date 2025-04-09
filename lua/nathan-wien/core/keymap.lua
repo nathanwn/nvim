@@ -1,3 +1,7 @@
+-- Leader keys
+vim.g.mapleader = vim.keycode("<Space>")
+vim.g.maplocalleader = vim.keycode("<Space>")
+
 -- Reload init.lua
 -- vim.keymap.set("n", "<F12>", ":luafile ~/.config/nvim/init.lua<CR>")
 

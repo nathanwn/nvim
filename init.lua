@@ -1,4 +1,4 @@
-require("nathan-wien")
+require("nathan-wien.core")
 
 if not vim.g.vscode then
   -- Bootstrap.
