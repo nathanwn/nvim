@@ -26,6 +26,7 @@ return {
   "rebelot/heirline.nvim",
   version = "v1.0.7",
   priority = 0, -- make sure this is loaded really late
+  cond = false,
   dependencies = {
     "SmiteshP/nvim-navic",
   },
