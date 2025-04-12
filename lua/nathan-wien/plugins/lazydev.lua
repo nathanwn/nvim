@@ -1,7 +1,7 @@
 return {
   {
     "folke/lazydev.nvim",
-    tag = "v1.6.0",
+    tag = "v1.9.0",
     ft = "lua", -- only load on lua files
     opts = {
       library = {
@@ -11,7 +11,6 @@ return {
       },
     },
   },
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   { -- optional completion source for require statements and module annotations
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)

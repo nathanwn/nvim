@@ -2,7 +2,7 @@
 
 `~/.config/nvim/`
 
-Neovim version: 0.10.1
+Neovim version: 0.11.0
 
 ## Structure
 

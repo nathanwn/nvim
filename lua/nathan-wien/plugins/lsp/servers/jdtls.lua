@@ -13,12 +13,19 @@ end
 local on_attach = require("nathan-wien.plugins.lsp.server_config.on_attach")
 local mason_path = require("mason.settings").current.install_root_dir
 
-local jdtls_install_path = vim.fs.joinpath(mason_path, "packages", "jdtls")
-local platform_config_path = vim.fs.joinpath(jdtls_install_path, "config_" .. platform)
-local equinox_jar = vim.fn.glob(
-  vim.fs.joinpath(jdtls_install_path, "plugins", "org.eclipse.equinox.launcher_**.jar")
+-- Platform config path
+local platform_config_path =
+  vim.fs.joinpath(mason_path, "packages", "jdtls", "config_" .. platform)
+local equinox_jar = vim.fs.joinpath(
+  mason_path,
+  "share",
+  "jdtls",
+  "plugins",
+  "org.eclipse.equinox.launcher.jar"
 )
-local lombok_jar_path = vim.fs.joinpath(jdtls_install_path, "lombok.jar")
+
+-- Lombok jar
+local lombok_jar_path = vim.fs.joinpath(mason_path, "packages", "jdtls", "lombok.jar")
 
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
 local project_name = function()
@@ -34,36 +41,23 @@ local workspace_dir = vim.fs.joinpath(std_data_path, "jdtls-ws", project_name())
 -- jar files for debugging
 -- from java-debug
 local bundles = {
-  vim.fn.glob(
-    vim.fs.joinpath(
-      mason_path,
-      "packages",
-      "java-debug-adapter",
-      "extension",
-      "server",
-      "com.microsoft.java.debug.plugin-*.jar"
-    )
+  vim.fs.joinpath(
+    mason_path,
+    "share",
+    "java-debug-adapter",
+    "com.microsoft.java.debug.plugin.jar"
   ),
 }
 -- from vscode-java-text
 vim.list_extend(
   bundles,
   vim.split(
-    vim.fn.glob(
-      vim.fs.joinpath(
-        mason_path,
-        "packages",
-        "java-test",
-        "extension",
-        "server",
-        "*.jar"
-      )
-    ),
+    vim.fn.glob(vim.fs.joinpath(mason_path, "share", "java-test", "*.jar")),
     "\n"
   )
 )
 
-local java_exec = require("nathan-wien.utils").get_java_exec("17") or "java"
+local java_exec = require("nathan-wien.utils").get_java_exec("21") or "java"
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {

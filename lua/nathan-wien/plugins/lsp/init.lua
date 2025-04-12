@@ -23,7 +23,9 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     config = require("nathan-wien.plugins.lsp.config.jdtls"),
-    cond = false,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
   },
   -- Scala
   {

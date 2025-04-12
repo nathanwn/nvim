@@ -1,19 +1,21 @@
+local dap_enabled = true
 return {
   {
     "mfussenegger/nvim-dap",
-    version = "0.8.0",
-    cond = false,
+    version = "0.10.0",
+    cond = dap_enabled,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-telescope/telescope-dap.nvim",
+      "williamboman/mason.nvim",
     },
     config = require("nathan-wien.plugins.dap.config.dap"),
     keys = require("nathan-wien.plugins.dap.keys.dap"),
   },
   {
     "rcarriga/nvim-dap-ui",
-    cond = false,
+    cond = dap_enabled,
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
@@ -21,7 +23,7 @@ return {
   },
   {
     "nvim-telescope/telescope-dap.nvim",
-    cond = false,
+    cond = dap_enabled,
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       require("telescope").load_extension("dap")
@@ -29,7 +31,7 @@ return {
   },
   {
     "theHamsta/nvim-dap-virtual-text",
-    cond = false,
+    cond = dap_enabled,
     config = function()
       require("nvim-dap-virtual-text").setup({})
     end,

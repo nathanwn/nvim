@@ -10,6 +10,10 @@ return {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { "vim" },
+        disable = {
+          -- Disable noisy "missing required field" warnings
+          "missing-fields"
+        },
       },
       -- Inlay hints
       -- hint = { enable = true },
