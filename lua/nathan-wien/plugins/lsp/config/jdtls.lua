@@ -9,15 +9,27 @@ local start_jdtls = function()
   end, { desc = "debug test class", buffer = 0 })
 end
 
-local jdtPlayCmd = "JdtPlay"
-
 return function()
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "java" },
-    callback = function()
-      vim.api.nvim_create_user_command(jdtPlayCmd, start_jdtls, {})
-    end,
-    group = vim.api.nvim_create_augroup("jdtls", { clear = true }),
-  })
-  vim.keymap.set("n", "<Leader>gp", "<Cmd>" .. jdtPlayCmd .. "<CR>")
+  if vim.env.JDTLS_OFF == nil then
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "java" },
+      callback = start_jdtls,
+      group = vim.api.nvim_create_augroup("jdtls", { clear = true }),
+    })
+  end
 end
+
+-- local jdtPlayCmd = "JdtPlay"
+
+-- return function()
+--   if vim.env.JDTLS_OFF == nil then
+--   vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "java" },
+--     callback = function()
+--       vim.api.nvim_create_user_command(jdtPlayCmd, start_jdtls, {})
+--     end,
+--     group = vim.api.nvim_create_augroup("jdtls", { clear = true }),
+--   })
+--   vim.keymap.set("n", "<Leader>gp", "<Cmd>" .. jdtPlayCmd .. "<CR>")
+--   end
+-- end
