@@ -97,7 +97,7 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
+    commit = "a4ed825",
     event = "VimEnter",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
