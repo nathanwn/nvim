@@ -18,7 +18,12 @@ return function()
   end
   vim.fn.sign_define(
     "DapBreakpoint",
-    { text = "B", texthl = "DiagnosticError", linehl = "", numhl = "" }
+    {
+      text = "B",
+      texthl = "DiagnosticError",
+      linehl = "DapUIBreakpointsLine",
+      numhl = "DapUIBreakpointsLine",
+    }
   )
 
   -- https://github.com/mfussenegger/nvim-dap/wiki/Java
