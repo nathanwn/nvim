@@ -25,14 +25,15 @@ return function()
         )
       end
       local telescope_builtin = require("telescope.builtin")
+      local keys = require("nathan-wien.keys")
 
-      map("n", "<Leader>gd", vim.lsp.buf.definition, "Definition")
+      map("n", keys.lsp.definition, vim.lsp.buf.definition, "Definition")
 
       map("n", "<Leader>gD", vim.lsp.buf.declaration, "Declaration")
 
       -- map("n", "<Leader>gi", vim.lsp.buf.implementation, "Implementation")
       map("n", "<Leader>gi", telescope_builtin.lsp_implementations, "Implementation")
-      map("n", "<Leader>gu", telescope_builtin.lsp_references, "Usages/References")
+      map("n", keys.lsp.usages, telescope_builtin.lsp_references, "Usages/References")
 
       map("n", "<Leader>gt", vim.lsp.buf.type_definition, "Type Definition")
 

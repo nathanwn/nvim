@@ -53,7 +53,7 @@ return {
   config = config,
   keys = {
     {
-      "<Leader>ve",
+      require("nathan-wien.keys").view.filetree,
       "<cmd>NvimTreeToggle<CR>",
       mode = "n",
       desc = "Toggle file tree",

@@ -1,5 +1,6 @@
 local config = function()
   local telescope = require("telescope")
+  local keys = require("nathan-wien.keys")
 
   telescope.setup({
     defaults = {
@@ -29,7 +30,7 @@ local config = function()
   --   vim.keymap.set("n", key, fn, { desc = desc })
   -- end
 
-  vim.keymap.set("n", "<Leader>ff", function()
+  vim.keymap.set("n", keys.find.files, function()
     require("telescope.builtin").find_files({ hidden = true })
   end, { desc = "Files" })
   vim.keymap.set("n", "<Leader>fb", function()
@@ -43,7 +44,7 @@ local config = function()
   )
   vim.keymap.set(
     "n",
-    "<Leader>fg",
+    keys.find.grep,
     require("telescope.builtin").live_grep,
     { desc = "Grep" }
   )
@@ -64,7 +65,7 @@ local config = function()
   )
   vim.keymap.set(
     "n",
-    "<Leader>f;",
+    keys.find.commands,
     require("telescope.builtin").commands,
     { desc = "Command" }
   )
@@ -96,7 +97,7 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    tag = "0.1.8",
     event = "VimEnter",
     dependencies = {
       { "nvim-lua/plenary.nvim" },

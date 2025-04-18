@@ -42,6 +42,7 @@ return {
         },
         on_attach = function(bufnr)
           local gs = require("gitsigns")
+          local keys = require("nathan-wien.keys")
 
           local function map(mode, l, r, opts)
             opts = opts or {}
@@ -50,17 +51,17 @@ return {
           end
 
           -- Navigation
-          map("n", "]c", function()
+          map("n", keys.git.hunk.next, function()
             if vim.wo.diff then
-              vim.cmd.normal({ "]c", bang = true })
+              vim.cmd.normal({ keys.git.hunk.next, bang = true })
             else
               gs.nav_hunk("next")
             end
           end, { desc = "next hunk" })
 
-          map("n", "[c", function()
+          map("n", keys.git.hunk.prev, function()
             if vim.wo.diff then
-              vim.cmd.normal({ "[c", bang = true })
+              vim.cmd.normal({ keys.git.hunk.prev, bang = true })
             else
               gs.nav_hunk("prev")
             end
