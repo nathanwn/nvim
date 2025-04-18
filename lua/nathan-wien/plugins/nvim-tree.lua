@@ -49,7 +49,7 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
-  tag = "v1.7.0",
+  tag = "v1.11.0",
   config = config,
   keys = {
     {
