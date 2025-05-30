@@ -2,7 +2,6 @@ return {
   -- Core plugins
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
-  -- Grammar checker
   {
     "uga-rosa/ccc.nvim",
     config = function()
@@ -22,7 +21,6 @@ return {
       },
     },
   },
-  { "rhysd/vim-grammarous" },
   -- Startup time
   { "dstein64/vim-startuptime" },
   -- THEMES
