@@ -29,13 +29,33 @@ return function()
 
       map("n", keys.lsp.definition, vim.lsp.buf.definition, "Definition")
 
-      map("n", "<Leader>gD", vim.lsp.buf.declaration, "Declaration")
+      map("n", keys.lsp.declaration, vim.lsp.buf.declaration, "Declaration")
 
-      -- map("n", "<Leader>gi", vim.lsp.buf.implementation, "Implementation")
-      map("n", "<Leader>gi", telescope_builtin.lsp_implementations, "Implementation")
+      map("n", keys.lsp.implementation, vim.lsp.buf.implementation, "Implementation")
+      -- map("n", keys.lsp.implementation, telescope_builtin.lsp_implementations, "Implementation")
+
       map("n", keys.lsp.usages, telescope_builtin.lsp_references, "Usages/References")
 
-      map("n", "<Leader>gt", vim.lsp.buf.type_definition, "Type Definition")
+      map("n", keys.lsp.type_definition, vim.lsp.buf.type_definition, "Type Definition")
+
+      map("n", keys.lsp.rename, vim.lsp.buf.rename, "Rename")
+
+      -- Execute a code action, usually your cursor needs to be on top of an error
+      -- or a suggestion from your LSP for this to activate.
+      map("n", keys.lsp.code_actions, vim.lsp.buf.code_action, "Code Action")
+
+      map("n", keys.lsp.hover, vim.lsp.buf.hover, "Hover Documentation")
+
+      map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+
+      map("n", "<Leader>gl", vim.diagnostic.open_float, "Line diagnostic")
+
+      map("n", "<Leader>[d", function()
+        vim.diagnostic.jump({ count = -1, float = true })
+      end, "Prev diagnostic")
+      map("n", "<Leader>]d", function()
+        vim.diagnostic.jump({ count = 1, float = true })
+      end, "Next diagnostic")
 
       map(
         "n",
@@ -50,25 +70,6 @@ return function()
         require("telescope.builtin").lsp_dynamic_workspace_symbols,
         "Workspace Symbols"
       )
-
-      map("n", "<leader>gr", vim.lsp.buf.rename, "Rename")
-
-      -- Execute a code action, usually your cursor needs to be on top of an error
-      -- or a suggestion from your LSP for this to activate.
-      map("n", "<leader>ga", vim.lsp.buf.code_action, "Code Action")
-
-      map("n", "<leader>gk", vim.lsp.buf.hover, "Hover Documentation")
-
-      map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
-
-      map("n", "<Leader>gl", vim.diagnostic.open_float, "Line diagnostic")
-
-      map("n", "<Leader>[d", function()
-        vim.diagnostic.jump({ count = -1, float = true })
-      end, "Prev diagnostic")
-      map("n", "<Leader>]d", function()
-        vim.diagnostic.jump({ count = 1, float = true })
-      end, "Next diagnostic")
 
       map("n", "<Leader>g*", function()
         vim.cmd("e" .. vim.lsp.get_log_path())

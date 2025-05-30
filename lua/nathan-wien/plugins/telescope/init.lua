@@ -71,7 +71,7 @@ local config = function()
   )
   vim.keymap.set(
     "n",
-    "<Leader>fp",
+    keys.find.command_history,
     require("telescope.builtin").command_history,
     { desc = "Command history" }
   )
@@ -82,7 +82,7 @@ local config = function()
   -- )
   vim.keymap.set(
     "n",
-    "<Leader>fo",
+    keys.find.resume,
     require("telescope.builtin").resume,
     { desc = "Resume" }
   )
