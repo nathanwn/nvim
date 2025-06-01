@@ -19,7 +19,7 @@ return {
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
-    version = "v4.0.0",
+    commit = "881a69e2",
   },
   {
     "nvim-telescope/telescope-dap.nvim",
