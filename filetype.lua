@@ -31,6 +31,7 @@ vim.filetype.add({
     [".flake8"] = "cfg",
     ["Jenkinsfile"] = "groovy",
     [".eslintrc"] = "json",
+    [".envrc"] = "bash",
     [".prettierrc"] = "json",
     [".babelrc"] = "json",
     [".stylelintrc"] = "json",
