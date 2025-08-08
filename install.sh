@@ -10,6 +10,7 @@ file_names=(
     "lazy-lock.json"
 )
 
+mkdir -p "$IVIM_HOME"
 for f in "${file_names[@]}"
 do
     src_file="$PWD/$f"

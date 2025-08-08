@@ -14,23 +14,23 @@ local keys = {
   },
   git = {
     hunk = {
-      preview = "<leader>hp",
-      reset = "<leader>hr",
-      stage = "<leader>hs",
-      undo_stage = "<leader>hu",
+      preview = "<Leader>hp",
+      reset = "<Leader>hr",
+      stage = "<Leader>hs",
+      undo_stage = "<Leader>hu",
       -- nav
       prev = "[c",
       next = "]c",
     },
   },
   lsp = {
-    code_actions = "<leader>ga",
+    code_actions = "<Leader>ga",
     definition = "<Leader>gd",
     declaration = "<Leader>gD",
     implementation = "<Leader>gi",
-    hover = "<leader>gk",
+    hover = "<Leader>gk",
     signature_help = "<C-k>",
-    rename = "<leader>gr",
+    rename = "<Leader>gr",
     type_definition = "<Leader>gt",
     usages = "<Leader>gu",
     line_diagnostic = "<Leader>gl",
@@ -169,7 +169,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste over a selection without losing the paste register
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<Leader>p", [["_dP]])
+
+-- Filtering quickfix
+vim.cmd.packadd("cfilter")
 
 vim.filetype.add({
   extension = {
@@ -262,15 +265,6 @@ require("lazy").setup({
         map("n", hunk_keys.undo_stage, gs.undo_stage_hunk, "undo stage hunk")
       end,
     },
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      vim.cmd.colorscheme("tokyonight-moon")
-    end,
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -478,4 +472,47 @@ require("lazy").setup({
       end, {})
     end,
   },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     vim.cmd.colorscheme("tokyonight-moon")
+  --   end,
+  -- },
+  {
+    "https://github.com/pappasam/papercolor-theme-slim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("PaperColorSlimLight")
+    end,
+  },
+  {
+    "https://github.com/nvim-tree/nvim-tree.lua.git",
+    version = "v1.13.0",
+    opts = {
+      renderer = {
+        add_trailing = true,
+        group_empty = true,
+        icons = {
+          show = {
+            file = false,
+            folder = false,
+            folder_arrow = false,
+            git = false,
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        keys.view.filetree,
+        "<cmd>NvimTreeToggle<CR>",
+        mode = "n",
+        desc = "Toggle file tree",
+      },
+    },
+  }
 })
