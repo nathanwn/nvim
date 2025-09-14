@@ -57,7 +57,7 @@ _ = is_on_wsl2
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 -- Indentation
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
@@ -269,8 +269,10 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
+      local theme = "papercolor_light"  -- "auto"
       require("lualine").setup({
         options = {
+          theme = theme,
           section_separators = "",
           component_separators = "",
           icons_enabled = false,
@@ -472,23 +474,6 @@ require("lazy").setup({
       end, {})
     end,
   },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd.colorscheme("tokyonight-moon")
-  --   end,
-  -- },
-  {
-    "https://github.com/pappasam/papercolor-theme-slim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("PaperColorSlimLight")
-    end,
-  },
   {
     "https://github.com/nvim-tree/nvim-tree.lua.git",
     version = "v1.13.0",
@@ -514,5 +499,22 @@ require("lazy").setup({
         desc = "Toggle file tree",
       },
     },
-  }
+  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     vim.cmd.colorscheme("tokyonight-moon")
+  --   end,
+  -- },
+  {
+    "https://github.com/pappasam/papercolor-theme-slim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("PaperColorSlimLight")
+    end,
+  },
 })
