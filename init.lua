@@ -300,7 +300,10 @@ require("lazy").setup({
       })
     end,
   },
-  { "https://github.com/plan9-for-vimspace/plan9-for-vimspace" },
+  {
+    "https://github.com/plan9-for-vimspace/plan9-for-vimspace",
+    cond = not is_on_windows,
+  },
   {
     "https://github.com/NMAC427/guess-indent.nvim",
     config = function()
