@@ -57,7 +57,7 @@ _ = is_on_wsl2
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 -- Indentation
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
@@ -369,7 +369,7 @@ require("lazy").setup({
     dependencies = {
       { "https://github.com/mason-org/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       { "https://github.com/j-hui/fidget.nvim" },
-      { 'https://github.com/saghen/blink.cmp' },
+      { "https://github.com/saghen/blink.cmp" },
     },
     config = function()
       local lsp_create_on_attach = function(opts)
@@ -389,7 +389,7 @@ require("lazy").setup({
         flags = {
           debounce_text_changes = 150,
         },
-        capabilities = require('blink.cmp').get_lsp_capabilities({}),
+        capabilities = require("blink.cmp").get_lsp_capabilities({}),
         on_attach = lsp_create_on_attach({}),
       }
 
