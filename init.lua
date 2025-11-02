@@ -270,7 +270,10 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      local theme = "papercolor_light"  -- "auto"
+      -- local theme = "papercolor_light"  -- "auto"
+      -- local theme = "tokyonight"  -- "auto"
+      -- local theme = "auto"
+      local theme = "Tomorrow"
       require("lualine").setup({
         options = {
           theme = theme,
@@ -523,3 +526,6 @@ require("lazy").setup({
     end,
   },
 })
+
+vim.o.background = "light"
+vim.api.nvim_set_hl(0, 'QuickFixLine', { bg = '#aacccc'})
