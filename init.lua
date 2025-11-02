@@ -10,6 +10,7 @@ local keys = {
     git_files = "<Leader>fp",
     git_grep = "<Leader>fg",
     grep = "<Leader>fG",
+    help_tags = "<Leader>fh",
     resume = "<Leader>fo",
   },
   git = {
@@ -340,9 +341,9 @@ require("lazy").setup({
   },
   {
     "https://github.com/ibhagwan/fzf-lua",
-    opts = {},
     config = function()
       local fzf_lua = require("fzf-lua")
+      fzf_lua.setup({ "telescope" })
       vim.keymap.set("n", keys.find.git_files, fzf_lua.git_files, {})
       vim.keymap.set("n", keys.find.files, fzf_lua.files, {})
       vim.keymap.set("n", keys.find.git_grep, function()
@@ -353,6 +354,7 @@ require("lazy").setup({
       vim.keymap.set("n", keys.find.grep, fzf_lua.grep, {})
       vim.keymap.set("n", keys.find.resume, fzf_lua.resume, {})
       vim.keymap.set("n", keys.find.commands, fzf_lua.commands, {})
+      vim.keymap.set("n", keys.find.help_tags, fzf_lua.help_tags, {})
     end,
   },
   {
