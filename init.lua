@@ -172,6 +172,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Paste over a selection without losing the paste register
 vim.keymap.set("x", "<Leader>p", [["_dP]])
 
+-- Copy path to current file to clipboard
+vim.keymap.set("n", "\\cp", function ()
+  vim.cmd("let @+=expand(\"%:p\")")
+  vim.notify("Copied current file path to clipboard.")
+end)
+
 -- Filtering quickfix
 vim.cmd.packadd("cfilter")
 
