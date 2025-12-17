@@ -1,3 +1,5 @@
+local global_theme = vim.env.GLOBAL_THEME
+
 local keys = {
   diagnostic = {
     prev = "[d",
@@ -276,10 +278,16 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      -- local theme = "papercolor_light"  -- "auto"
-      -- local theme = "tokyonight"  -- "auto"
-      -- local theme = "auto"
-      local theme = "Tomorrow"
+      local theme = "auto"
+      if global_theme == "papercolor-light" then
+        theme = "papercolor_light"
+      elseif global_theme == "tokyonight-storm" then
+        theme = "tokyonight"
+      elseif global_theme == "solarized-dark" then
+        theme = "solarized-dark"
+      elseif global_theme == "nvim-light" then
+        theme = "Tomorrow"
+      end
       require("lualine").setup({
         options = {
           theme = theme,
@@ -514,18 +522,30 @@ require("lazy").setup({
       },
     },
   },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd.colorscheme("tokyonight-moon")
-  --   end,
-  -- },
+  {
+    "maxmx03/solarized.nvim",
+    lazy = false,
+    priority = 1000,
+    cond = (global_theme == "solarized-dark"),
+    config = function()
+      require('solarized').setup({})
+      vim.cmd.colorscheme('solarized')
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    cond = (global_theme == "tokyonight-storm"),
+    opts = {},
+    config = function()
+      vim.cmd.colorscheme("tokyonight-storm")
+    end,
+  },
   {
     "https://github.com/pappasam/papercolor-theme-slim",
     lazy = false,
+    cond = (global_theme == "papercolor-light"),
     priority = 1000,
     config = function()
       vim.cmd.colorscheme("PaperColorSlimLight")
@@ -533,5 +553,7 @@ require("lazy").setup({
   },
 })
 
-vim.o.background = "light"
-vim.api.nvim_set_hl(0, 'QuickFixLine', { bg = '#aacccc'})
+if global_theme == "nvim-light" then
+  vim.o.background = "light"
+  vim.api.nvim_set_hl(0, 'QuickFixLine', { bg = '#aacccc'})
+end
