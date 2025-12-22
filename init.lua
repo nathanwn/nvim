@@ -539,6 +539,7 @@ require("lazy").setup({
     cond = (global_theme == "tokyonight-storm"),
     opts = {},
     config = function()
+      vim.o.background = "dark"
       vim.cmd.colorscheme("tokyonight-storm")
     end,
   },
