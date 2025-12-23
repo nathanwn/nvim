@@ -281,8 +281,8 @@ require("lazy").setup({
       local theme = "auto"
       if global_theme == "papercolor-light" then
         theme = "papercolor_light"
-      elseif global_theme == "tokyonight-storm" then
-        theme = "tokyonight"
+      elseif vim.startswith(global_theme, "tokyonight") then
+        theme = global_theme
       elseif global_theme == "solarized-dark" then
         theme = "solarized-dark"
       elseif global_theme == "nvim-light" then
@@ -536,11 +536,15 @@ require("lazy").setup({
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    cond = (global_theme == "tokyonight-storm"),
+    cond = vim.startswith(global_theme, "tokyonight"),
     opts = {},
     config = function()
-      vim.o.background = "dark"
-      vim.cmd.colorscheme("tokyonight-storm")
+      if global_theme == "tokyonight-day" then
+        vim.o.background = "light"
+      else
+        vim.o.background = "dark"
+      end
+      vim.cmd.colorscheme(global_theme)
     end,
   },
   {
