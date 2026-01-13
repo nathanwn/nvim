@@ -342,36 +342,158 @@ require("lazy").setup({
     },
   },
   {
-    "https://github.com/saghen/blink.cmp",
-    event = "VimEnter",
-    version = "1.*",
-    opts = {
-      keymap = { preset = "super-tab" },
-      sources = { default = { "lsp", "path" } },
-      -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-      -- which automatically downloads a prebuilt binary when enabled.
-      -- Use the Lua implementation instead.
-      -- May enable the rust implementation via `'prefer_rust_with_warning'`
-      -- See :h blink-cmp-config-fuzzy.
-      fuzzy = { implementation = "lua" },
+    "https://github.com/hrsh7th/nvim-cmp",
+    version = "v0.2.1",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-omni" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
     },
+    config = function()
+      local cmp = require("cmp")
+      cmp.setup({
+        mapping = {
+          ["<C-s>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+          ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+          ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+          ["<C-y>"] = cmp.config.disable,
+          ["<C-e>"] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+          }),
+          ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = false, -- false == only confirm explicitly selected items
+          }),
+          ["<Tab>"] = function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end,
+          ["<S-Tab>"] = function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end,
+        },
+        sources = cmp.config.sources({
+          -- prioritise according to order
+          { name = "nvim_lua" }, -- this source can detect whether it should turn on
+          { name = "nvim_lsp", keyword_length = 2 },
+          { name = "nvim_lsp_signature_help" },
+          { name = "omni" },
+          { name = "path" },
+          { name = "luasnip" },
+          { name = "buffer", keyword_length = 4 },
+        }),
+      })
+      end
   },
   {
-    "https://github.com/ibhagwan/fzf-lua",
+    "https://github.com/nvim-telescope/telescope.nvim",
+    version = "v0.2.1",
+    event = "VimEnter",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim" },
+    },
     config = function()
-      local fzf_lua = require("fzf-lua")
-      fzf_lua.setup({ "telescope" })
-      vim.keymap.set("n", keys.find.git_files, fzf_lua.git_files, {})
-      vim.keymap.set("n", keys.find.files, fzf_lua.files, {})
-      vim.keymap.set("n", keys.find.git_grep, function()
-        fzf_lua.live_grep({
-          cmd = "git grep --line-number --column --color=always",
-        })
-      end, {})
-      vim.keymap.set("n", keys.find.grep, fzf_lua.grep, {})
-      vim.keymap.set("n", keys.find.resume, fzf_lua.resume, {})
-      vim.keymap.set("n", keys.find.commands, fzf_lua.commands, {})
-      vim.keymap.set("n", keys.find.help_tags, fzf_lua.help_tags, {})
+      local telescope = require("telescope")
+      telescope.setup({
+        defaults = {
+          sorting_strategy = "ascending",
+          layout_config = {
+            prompt_position = "top",
+          },
+          file_ignore_patterns = {
+            ".git/",
+            "__pycache__",
+          },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+          },
+        },
+      })
+      -- local map = function(key, fn, desc)
+      --   vim.keymap.set("n", key, fn, { desc = desc })
+      -- end
+      vim.keymap.set("n", keys.find.files, function()
+        require("telescope.builtin").find_files({ hidden = true })
+      end, { desc = "Files" })
+      vim.keymap.set("n", "<Leader>fb", function()
+        require("telescope.builtin").buffers({ previewer = false })
+      end, { desc = "Buffers" })
+      vim.keymap.set(
+        "n",
+        "<Leader>fc",
+        require("telescope.builtin").current_buffer_fuzzy_find,
+        { desc = "Current buffer" }
+      )
+      vim.keymap.set(
+        "n",
+        keys.find.grep,
+        require("telescope.builtin").live_grep,
+        { desc = "Grep" }
+      )
+      vim.keymap.set("n", "<Leader>fG", function()
+        require("telescope.builtin").live_grep({ hidden = true })
+      end, { desc = "Grep include hidden" })
+      vim.keymap.set(
+        "n",
+        "<Leader>fh",
+        require("telescope.builtin").help_tags,
+        { desc = "Help tags" }
+      )
+      vim.keymap.set(
+        "n",
+        "<Leader>fk",
+        require("telescope.builtin").keymaps,
+        { desc = "Keys" }
+      )
+      vim.keymap.set(
+        "n",
+        keys.find.commands,
+        require("telescope.builtin").commands,
+        { desc = "Command" }
+      )
+      vim.keymap.set(
+        "n",
+        keys.find.command_history,
+        require("telescope.builtin").command_history,
+        { desc = "Command history" }
+      )
+      vim.keymap.set(
+        "n",
+        keys.find.resume,
+        require("telescope.builtin").resume,
+        { desc = "Resume" }
+      )
+      vim.keymap.set(
+        "n",
+        "<Leader>fa",
+        require("telescope.builtin").builtin,
+        { desc = "Built-ins" }
+      )
+    end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    config = function()
+      require("telescope").load_extension("fzf")
     end,
   },
   {
@@ -388,7 +510,7 @@ require("lazy").setup({
     dependencies = {
       { "https://github.com/mason-org/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       { "https://github.com/j-hui/fidget.nvim" },
-      { "https://github.com/saghen/blink.cmp" },
+      { "hrsh7th/cmp-nvim-lsp" },
     },
     config = function()
       local lsp_create_on_attach = function(opts)
@@ -408,7 +530,7 @@ require("lazy").setup({
         flags = {
           debounce_text_changes = 150,
         },
-        capabilities = require("blink.cmp").get_lsp_capabilities({}),
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
         on_attach = lsp_create_on_attach({}),
       }
 
