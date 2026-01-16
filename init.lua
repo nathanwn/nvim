@@ -235,6 +235,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     "https://github.com/lewis6991/gitsigns.nvim",
+    version = "v2.0.0",
     opts = {
       signs = {
         add = { text = "+" },
