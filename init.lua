@@ -463,35 +463,15 @@ require("lazy").setup({
   },
   {
     "https://github.com/neovim/nvim-lspconfig",
+    version = "v2.5.0",
     cond = not is_on_windows,
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "https://github.com/mason-org/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       { "https://github.com/j-hui/fidget.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
     },
     config = function()
-      local lsp_create_on_attach = function(opts)
-        opts = opts or {}
-        return function(client, bufnr)
-          if opts.pre_attach then
-            opts.pre_attach(client, bufnr)
-          end
-          if not opts.formatting then
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end
-        end
-      end
-
-      local default_config = {
-        flags = {
-          debounce_text_changes = 150,
-        },
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-        on_attach = lsp_create_on_attach({}),
-      }
-
       local servers = {
         lua_ls = {
           settings = {
@@ -506,16 +486,15 @@ require("lazy").setup({
               },
             },
           },
-          on_attach = lsp_create_on_attach({ formatting = false }),
         },
         pyright = {},
         gopls = {},
       }
 
-      for name, config in pairs(servers) do
-        require("lspconfig")[name].setup(
-          vim.tbl_deep_extend("force", default_config, config)
-        )
+      for server_name, server_config in pairs(servers) do
+        server_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+        vim.lsp.config[server_name] = server_config
+        vim.lsp.enable(server_name)
       end
 
       vim.api.nvim_create_autocmd("LspAttach", {
