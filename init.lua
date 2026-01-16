@@ -8,8 +8,8 @@ local keys = {
   find = {
     command_history = "<Leader>fP",
     commands = "<Leader>f;",
-    files = "<Leader>ff",
-    git_files = "<Leader>fp",
+    git_files = "<Leader>ff",
+    files = "<Leader>fF",
     git_grep = "<Leader>fg",
     grep = "<Leader>fG",
     help_tags = "<Leader>fh",
@@ -413,10 +413,6 @@ require("lazy").setup({
           layout_config = {
             prompt_position = "top",
           },
-          file_ignore_patterns = {
-            ".git/",
-            "__pycache__",
-          },
         },
         extensions = {
           fzf = {
@@ -427,66 +423,28 @@ require("lazy").setup({
           },
         },
       })
-      -- local map = function(key, fn, desc)
-      --   vim.keymap.set("n", key, fn, { desc = desc })
-      -- end
-      vim.keymap.set("n", keys.find.files, function()
-        require("telescope.builtin").find_files({ hidden = true })
-      end, { desc = "Files" })
-      vim.keymap.set("n", "<Leader>fb", function()
-        require("telescope.builtin").buffers({ previewer = false })
-      end, { desc = "Buffers" })
-      vim.keymap.set(
-        "n",
-        "<Leader>fc",
-        require("telescope.builtin").current_buffer_fuzzy_find,
-        { desc = "Current buffer" }
-      )
-      vim.keymap.set(
-        "n",
-        keys.find.grep,
-        require("telescope.builtin").live_grep,
-        { desc = "Grep" }
-      )
-      vim.keymap.set("n", "<Leader>fG", function()
-        require("telescope.builtin").live_grep({ hidden = true })
-      end, { desc = "Grep include hidden" })
-      vim.keymap.set(
-        "n",
-        "<Leader>fh",
-        require("telescope.builtin").help_tags,
-        { desc = "Help tags" }
-      )
-      vim.keymap.set(
-        "n",
-        "<Leader>fk",
-        require("telescope.builtin").keymaps,
-        { desc = "Keys" }
-      )
-      vim.keymap.set(
-        "n",
-        keys.find.commands,
-        require("telescope.builtin").commands,
-        { desc = "Command" }
-      )
-      vim.keymap.set(
-        "n",
-        keys.find.command_history,
-        require("telescope.builtin").command_history,
-        { desc = "Command history" }
-      )
-      vim.keymap.set(
-        "n",
-        keys.find.resume,
-        require("telescope.builtin").resume,
-        { desc = "Resume" }
-      )
-      vim.keymap.set(
-        "n",
-        "<Leader>fa",
-        require("telescope.builtin").builtin,
-        { desc = "Built-ins" }
-      )
+      local map = function(key, desc, fn)
+        vim.keymap.set("n", key, fn, { desc = desc })
+      end
+      local builtin = require("telescope.builtin")
+      map(keys.find.git_files, "Git files", builtin.git_files)
+      map(keys.find.files, "Files", function()
+        builtin.find_files({ hidden = true })
+      end)
+      map("<Leader>fb", "Buffers", function()
+        builtin.buffers({ previewer = false })
+      end)
+      map("<Leader>fc", "Current buffer", builtin.current_buffer_fuzzy_find)
+      map(keys.find.grep, "Grep", builtin.live_grep)
+      map("<Leader>fG", "Grep include hidden", function()
+        builtin.live_grep({ hidden = true })
+      end)
+      map("<Leader>fh", "Help tags", builtin.help_tags)
+      map("<Leader>fk", "Keys", builtin.keymaps)
+      map(keys.find.commands, "Command", builtin.commands)
+      map(keys.find.command_history, "Command history", builtin.command_history)
+      map(keys.find.resume, "Resume", builtin.resume)
+      map("<Leader>fa", "Built-ins", builtin.builtin)
     end,
   },
   {
