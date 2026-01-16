@@ -175,8 +175,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("x", "<Leader>p", [["_dP]])
 
 -- Copy path to current file to clipboard
-vim.keymap.set("n", "\\cp", function ()
-  vim.cmd("let @+=expand(\"%:p\")")
+vim.keymap.set("n", "\\cp", function()
+  vim.cmd('let @+=expand("%:p")')
   vim.notify("Copied current file path to clipboard.")
 end)
 
@@ -276,17 +276,17 @@ require("lazy").setup({
     },
   },
   {
-    "nvim-lualine/lualine.nvim",
+    "https://github.com/nvim-lualine/lualine.nvim",
     config = function()
       local theme = "auto"
       if global_theme == "papercolor-light" then
         theme = "papercolor_light"
       elseif vim.startswith(global_theme, "tokyonight") then
         theme = global_theme
-      elseif global_theme == "solarized-dark" then
-        theme = "solarized-dark"
       elseif global_theme == "nvim-light" then
         theme = "Tomorrow"
+      elseif vim.startswith(global_theme, "catppuccin") then
+        theme = "catppuccin"
       end
       require("lualine").setup({
         options = {
@@ -395,7 +395,7 @@ require("lazy").setup({
           { name = "buffer", keyword_length = 4 },
         }),
       })
-      end
+    end,
   },
   {
     "https://github.com/nvim-telescope/telescope.nvim",
@@ -488,7 +488,7 @@ require("lazy").setup({
         flags = {
           debounce_text_changes = 150,
         },
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
         on_attach = lsp_create_on_attach({}),
       }
 
@@ -603,16 +603,6 @@ require("lazy").setup({
     },
   },
   {
-    "maxmx03/solarized.nvim",
-    lazy = false,
-    priority = 1000,
-    cond = (global_theme == "solarized-dark"),
-    config = function()
-      require('solarized').setup({})
-      vim.cmd.colorscheme('solarized')
-    end
-  },
-  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
@@ -630,8 +620,8 @@ require("lazy").setup({
   {
     "https://github.com/pappasam/papercolor-theme-slim",
     lazy = false,
-    cond = (global_theme == "papercolor-light"),
     priority = 1000,
+    cond = (global_theme == "papercolor-light"),
     config = function()
       vim.cmd.colorscheme("PaperColorSlimLight")
     end,
@@ -640,5 +630,5 @@ require("lazy").setup({
 
 if global_theme == "nvim-light" then
   vim.o.background = "light"
-  vim.api.nvim_set_hl(0, 'QuickFixLine', { bg = '#aacccc'})
+  vim.api.nvim_set_hl(0, "QuickFixLine", { bg = "#aacccc" })
 end
