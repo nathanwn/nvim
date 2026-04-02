@@ -436,6 +436,11 @@ require("lazy").setup({
         builtin.buffers({ previewer = false })
       end)
       map("<Leader>fc", "Current buffer", builtin.current_buffer_fuzzy_find)
+      map(keys.find.git_grep, "Git grep", function()
+        builtin.live_grep({
+          vimgrep_arguments = {"git", "grep", "--line-number", "--column", "-I", "--ignore-case"}
+        })
+      end)
       map(keys.find.grep, "Grep", builtin.live_grep)
       map("<Leader>fG", "Grep include hidden", function()
         builtin.live_grep({ hidden = true })
