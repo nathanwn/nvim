@@ -235,7 +235,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     "https://github.com/lewis6991/gitsigns.nvim",
-    version = "v2.0.0",
+    version = "v2.1.0",
     opts = {
       signs = {
         add = { text = "+" },
@@ -469,7 +469,7 @@ require("lazy").setup({
   },
   {
     "https://github.com/neovim/nvim-lspconfig",
-    version = "v2.5.0",
+    version = "v2.7.0",
     cond = not is_on_windows,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
@@ -540,7 +540,7 @@ require("lazy").setup({
   },
   {
     "https://github.com/stevearc/conform.nvim",
-    version = "v9.0.0",
+    version = "v9.1.0",
     config = function()
       require("conform").setup({
         notify_on_error = false,
@@ -563,7 +563,7 @@ require("lazy").setup({
   },
   {
     "https://github.com/nvim-tree/nvim-tree.lua.git",
-    version = "v1.13.0",
+    version = "v1.16.0",
     opts = {
       renderer = {
         add_trailing = true,
@@ -588,7 +588,8 @@ require("lazy").setup({
     },
   },
   {
-    "folke/tokyonight.nvim",
+    "https://github.com/folke/tokyonight.nvim",
+    version = "v4.14.1",
     lazy = false,
     priority = 1000,
     cond = vim.startswith(global_theme, "tokyonight"),
