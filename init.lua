@@ -438,7 +438,14 @@ require("lazy").setup({
       map("<Leader>fc", "Current buffer", builtin.current_buffer_fuzzy_find)
       map(keys.find.git_grep, "Git grep", function()
         builtin.live_grep({
-          vimgrep_arguments = {"git", "grep", "--line-number", "--column", "-I", "--ignore-case"}
+          vimgrep_arguments = {
+            "git",
+            "grep",
+            "--line-number",
+            "--column",
+            "-I",
+            "--ignore-case",
+          },
         })
       end)
       map(keys.find.grep, "Grep", builtin.live_grep)
@@ -592,24 +599,16 @@ require("lazy").setup({
     version = "v4.14.1",
     lazy = false,
     priority = 1000,
-    cond = vim.startswith(global_theme, "tokyonight"),
     opts = {},
     config = function()
-      if global_theme == "tokyonight-day" then
-        vim.o.background = "light"
-      else
-        vim.o.background = "dark"
+      if vim.startswith(global_theme, "tokyonight") then
+        if global_theme == "tokyonight-day" then
+          vim.o.background = "light"
+        else
+          vim.o.background = "dark"
+        end
+        vim.cmd.colorscheme(global_theme)
       end
-      vim.cmd.colorscheme(global_theme)
-    end,
-  },
-  {
-    "https://github.com/pappasam/papercolor-theme-slim",
-    lazy = false,
-    priority = 1000,
-    cond = (global_theme == "papercolor-light"),
-    config = function()
-      vim.cmd.colorscheme("PaperColorSlimLight")
     end,
   },
 })
