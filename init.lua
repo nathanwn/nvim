@@ -611,6 +611,23 @@ require("lazy").setup({
       end
     end,
   },
+  {
+    "https://github.com/catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = {},
+    config = function()
+      if vim.startswith(global_theme, "catppuccin") then
+        if global_theme == "catppuccin-latte" then
+          vim.o.background = "light"
+        else
+          vim.o.background = "dark"
+        end
+        vim.cmd.colorscheme(global_theme)
+      end
+    end,
+
+  },
 })
 
 if global_theme == "nvim-light" then
